@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Editor</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+        <style type="text/css" media="screen">
+    body {
+        overflow: hidden;
+    }
+    #editor {
+        position: relative;
+        height: 400px;
+    }
+    #editor2 {
+        position: relative;
+        height: 166px;
+    }
+    #editor3 {
+        position: relative;
+        height: 166px;
+    }
+  </style>
+    </head>
+    <body>
+        <div class="container-fluid">
+            
+            <div class="header">
+                <div class="row">
+                    <div class="col-md-6" style="background-color: #39424E; color:#FFFFFF; height: 50px; ">
+                        <h5 style="margin-top: 10px">Question List: A&nbsp;|&nbsp;B&nbsp;|&nbsp;C&nbsp;|&nbsp;D</h5>
+                    </div>
+                    <div class="col-md-6" style="background-color: #39424E; color:#FFFFFF; height: 50px;">
+                        <h5 style="margin-top: 10px; text-align: right">Time 2M 17S &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;#3/47 </h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6" style="background-color: #BFE9FF; color:#0C4149; height: 635px">
+                    <div class="row">
+                        <div class="col-md-8" style="background-color: #70CFFF; height: 35px">
+                            <h6 style="margin-top: 7px; color:#FFFFFF">DESCRIPTION | SOLUTIONS </h6>
+                            <br>
+                            <p>Given a sorted array of integers A, find such an integer x that Z|A[i]-x| over all i has the minimum possible value. If there are several possible answers, output the smallest one.</p>
+                            <h5>Example:</h5>
+                            <h6>Input: </h6>
+                            <code>
+                                4 5 78
+                            </code>
+                            <h6>Output: </h6>
+                            <code>
+                                A B FG
+                            </code>
+                            <h5>Input/Output</h5>
+                            <ul>
+                                <li> [time limit] 4000ms</li>
+                                <li> [integer] array.integer A</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4" style="background-color: #0D869B; text-align: right; height: 35px">
+                            <h6 style="margin-top: 7px; color:#FFFFFF">SCORE (0/300)</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6" style="background-color: #353535; color:#FFFFFF; height: 635px;">
+                    
+                    <div class="row">
+                        <div class="col-md-6" style="background-color: #70CFFF; height: 35px">
+                            <h6 style="margin-top: 7px; color:#FFFFFF">CODE.CPP</h6>
+                        </div>
+                        <div class="col-md-3" style="background-color: #6DB8C4; text-align: center; height: 35px">
+                            <!--<h6 style="margin-top: 7px; color:#FFFFFF">LANGUAGE </h6>-->
+                            <select id="languageSelector" onchange="changeLanguage()" name="lang" required="required" class="form-control languageSelector">
+                                <option value="1" selected="selected">C </option>
+                                <option value="2">C++ </option>
+                                <option value="9">C# </option>
+                                <option value="3">Java</option>
+                                <option value="20">Javascript </option>
+                                <option value="5">Python </option>
+                            </select>
+                        </div>
+                        <div class="col-md-3" style="background-color: #0D869B; text-align: center; height: 35px">
+                            <h6 style="margin-top: 7px; color:#FFFFFF">RESET</h6>
+                        </div>
+                    </div>
+
+                    <!--Editor-->
+                    <div class="row" style="margin-left: -30px; margin-right: -30px;">
+                        <div class="col-md-12">
+                            <div id="editor"></div>
+                        </div>
+                    </div>
+                    
+                    <!--Input/Output-->
+                    <div class="row">
+                        <div class="col-md-6" style="background-color: #D5DD25; height:35px">
+                            <h6 style="color:#FFFFFF">INPUT</h6>
+                        </div>
+                        <div class="col-md-6" style="background-color: #FCB042; text-align: center; height:35px">
+                            <h6 style="color:#FFFFFF">OUTPUT</h6>
+                        </div>
+                    </div>
+
+                    <div class="row" style="">
+                        <div class="col-md-6">
+                            <div id="editor2" style="border-color: 10px white solid"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <div id="editor3"></div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="footer" style="position: fixed; bottom: 0; left: 0; right: 0; height: 50px;">
+                <div class="row">
+                    <div class="col-md-6" style="background-color: #D81D5E; height: 50px">
+                        <h5 style="margin-top: 10px; text-align: right; color:#FFFFFF">LIKE | DISLIKE | FLAG</h5>
+                    </div>
+                    <div class="col-md-6" style="background-color: #D81D5E; height: 50px; text-align: right">
+                        <!--<h5 style="margin-top: 10px; text-align: right; color:#FFFFFF">RUN  |  SUBMIT</h5>-->
+                        <button onclick="run()" type = "button" class = "btn btn-info" style="margin-top: 6px; margin-right: 15px">RUN</button>
+                        <button type = "button" class = "btn btn-success" style="margin-top: 6px; margin-right: 15px">SUBMIT</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="/javascripts/bootstrap.min.js"></script>
+        <script src="/javascripts/jquery.js"></script>
+        <script src="/javascripts/tester.js"></script>
+
+        <script src="/javascripts/ace-builds-master/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+        <script>
+            var editor = ace.edit("editor");
+            editor.setTheme("ace/theme/twilight");
+            editor.session.setMode("ace/mode/c_cpp");
+            editor.setShowPrintMargin(false);
+            document.getElementById('editor').style.fontSize='18px';
+
+            var editor2 = ace.edit("editor2");
+            editor2.setTheme("ace/theme/twilight");
+            editor2.session.setMode("ace/mode/plain_text");
+            editor2.renderer.setShowGutter(false);
+            document.getElementById('editor2').style.fontSize='18px';
+
+            var editor3 = ace.edit("editor3");
+            editor3.setTheme("ace/theme/twilight");
+            editor3.session.setMode("ace/mode/plain_text");
+            editor3.renderer.setShowGutter(false);
+            document.getElementById('editor3').style.fontSize='18px';
+
+        </script>
+    </body>
+</html>

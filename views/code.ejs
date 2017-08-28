@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Editor</title>
+  <style type="text/css" media="screen">
+    body {
+        overflow: hidden;
+    }
+    #editor {
+        margin: 1000;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 100px;
+        right: 500px;
+    }
+  </style>
+</head>
+<body>
+<div class="row">
+	<div class="col-md-6">
+<pre id="editor">function foo(items) {
+    var i;
+    for (i = 0; i &lt; items.length; i++) {
+        alert("Ace Rocks " + items[i]);
+    }
+}</pre>
+	</div>
+	<div class="col-md-6">
+		asdasdsadasdasd
+	</div>
+</div>
+
+<script src="/javascripts/bootstrap.min.js"></script>
+<script src="javascripts/ace-builds-master/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/twilight");
+    editor.session.setMode("ace/mode/javascript");
+</script>
+
+</body>
+</html>
