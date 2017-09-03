@@ -73,12 +73,15 @@
                         <div class="col-md-3" style="background-color: #6DB8C4; text-align: center; height: 35px">
                             <!--<h6 style="margin-top: 7px; color:#FFFFFF">LANGUAGE </h6>-->
                             <select id="languageSelector" onchange="changeLanguage()" name="lang" required="required" class="form-control languageSelector">
-                                <option value="1" selected="selected">C </option>
-                                <option value="2">C++ </option>
-                                <option value="9">C# </option>
-                                <option value="3">Java</option>
-                                <option value="20">Javascript </option>
-                                <option value="5">Python </option>
+                            <% if(lang==""){ %>
+                                <option value="-1" lang="" selected="selected" >Select a Language </option>
+                            <% } %>
+                                <option value="1" lang="c" <% if(lang=="c"){ %> selected="selected" <% } %> >C </option>
+                                <option value="2" lang="cpp" <% if(lang=="cpp"){ %> selected="selected" <% } %> >C++ </option>
+                                <!-- <option value="9">C# </option> -->
+                                <option value="3" lang="java" <% if(lang=="java"){ %> selected="selected" <% } %> >Java</option>
+                                <option value="20" lang="javascript" <% if(lang=="javascript"){ %> selected="selected" <% } %> >Javascript </option>
+                                <!-- <option value="5">Python </option> -->
                             </select>
                         </div>
                         <div class="col-md-3" style="background-color: #0D869B; text-align: center; height: 35px">
@@ -95,11 +98,11 @@
                     
                     <!--Input/Output-->
                     <div class="row">
-                        <div class="col-md-6" style="background-color: #D5DD25; height:35px">
-                            <h6 style="color:#FFFFFF">INPUT</h6>
+                        <div class="col-md-6" style="background-color: #D5DD25; text-align: center; height:35px;">
+                            <h6 style="color:#FFFFFF; margin-top: 7px">INPUT</h6>
                         </div>
                         <div class="col-md-6" style="background-color: #FCB042; text-align: center; height:35px">
-                            <h6 style="color:#FFFFFF">OUTPUT</h6>
+                            <h6 style="color:#FFFFFF; margin-top: 7px">OUTPUT</h6>
                         </div>
                     </div>
 
@@ -122,8 +125,8 @@
                     </div>
                     <div class="col-md-6" style="background-color: #D81D5E; height: 50px; text-align: right">
                         <!--<h5 style="margin-top: 10px; text-align: right; color:#FFFFFF">RUN  |  SUBMIT</h5>-->
-                        <button onclick="run()" type = "button" class = "btn btn-info" style="margin-top: 6px; margin-right: 15px">RUN</button>
-                        <button type = "button" class = "btn btn-success" style="margin-top: 6px; margin-right: 15px">SUBMIT</button>
+                        <button id="runButton" type = "button" class = "btn btn-info" style="margin-top: 6px; margin-right: 15px">RUN</button>
+                        <button id="submitButton" type = "button" class = "btn btn-success" style="margin-top: 6px; margin-right: 15px">SUBMIT</button>
                     </div>
                 </div>
             </div>
@@ -131,14 +134,28 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="/javascripts/bootstrap.min.js"></script>
-        <script src="/javascripts/jquery.js"></script>
+        <script src="/javascripts/jquery-3.2.1.min.js"></script>
         <script src="/javascripts/tester.js"></script>
 
         <script src="/javascripts/ace-builds-master/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
         <script>
             var editor = ace.edit("editor");
             editor.setTheme("ace/theme/twilight");
+            
+            <% if(lang=="javascript") { %>
+            editor.session.setMode("ace/mode/javascript");
+            <% } else if(lang=="c") {%>
             editor.session.setMode("ace/mode/c_cpp");
+            <% } else if(lang=="cpp") {%>
+            editor.session.setMode("ace/mode/c_cpp");
+            <% } else if(lang=="java") {%>
+            editor.session.setMode("ace/mode/c_cpp");
+            <% } else { %>
+            editor.session.setMode("ace/mode/plain_text");
+            <% } %>
+            // var code = "ace/mode/"+ langCode ;
+            // alert(code);
+            // editor.session.setMode(code);
             editor.setShowPrintMargin(false);
             document.getElementById('editor').style.fontSize='18px';
 
