@@ -41,7 +41,7 @@
                 <div class="col-md-6" style="background-color: #BFE9FF; color:#0C4149; height: 635px">
                     <div class="row">
                         <div class="col-md-8" style="background-color: #70CFFF; height: 35px">
-                            <h6 style="margin-top: 7px; color:#FFFFFF">DESCRIPTION | SOLUTIONS </h6>
+                            <h6 style="margin-top: 7px; color:#FFFFFF">DESCRIPTION | SOLUTIONS &gt</h6>
                             <br>
                             <p>Given a sorted array of integers A, find such an integer x that Z|A[i]-x| over all i has the minimum possible value. If there are several possible answers, output the smallest one.</p>
                             <h5>Example:</h5>
@@ -157,19 +157,20 @@
             // alert(code);
             // editor.session.setMode(code);
             editor.setShowPrintMargin(false);
-            document.getElementById('editor').style.fontSize='18px';
+            document.getElementById('editor').style.fontSize='17px';
 
             var editor2 = ace.edit("editor2");
             editor2.setTheme("ace/theme/twilight");
             editor2.session.setMode("ace/mode/plain_text");
             editor2.renderer.setShowGutter(false);
-            document.getElementById('editor2').style.fontSize='18px';
+            document.getElementById('editor2').style.fontSize='15px';
 
             var editor3 = ace.edit("editor3");
             editor3.setTheme("ace/theme/twilight");
             editor3.session.setMode("ace/mode/plain_text");
             editor3.renderer.setShowGutter(false);
-            document.getElementById('editor3').style.fontSize='18px';
+            editor3.setReadOnly(true);
+            document.getElementById('editor3').style.fontSize='15px';
 
         </script>
     </body>

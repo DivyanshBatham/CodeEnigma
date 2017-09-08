@@ -17,8 +17,15 @@ $('#runButton').click(function(){
 				url:'/run',
 				data:config,
 				dataType:'json',
-				success: function(){
+				success: function(res){
 					console.log("Hey");
+					var R = JSON.parse(res);
+					console.log(R);
+					console.log(R.result);
+					if(R.result.compilemessage=="")
+						editor3.setValue(R.result.stdout[0]);
+					else
+						editor3.setValue(R.result.compilemessage);
 				}
 			});
 

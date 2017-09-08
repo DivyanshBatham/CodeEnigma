@@ -1,0 +1,28 @@
+db.questions.insert( {
+	"id" : 'A',
+	"description" : `Given an array of  integers, can you find the sum of its elements?`,
+	"inputFormat" : `The first line contains an integer N denoting the size of the array. The second line contains N space-separated integers representing the arrays elements.`,
+	"outputFormat" : `Print the sum of the arrays elements as a single integer.`,
+	"sampleInput" : `6</br>1 2 4 7 9 -1`,
+	"sampleOutput" : `22`,
+} );
+
+
+db.questions.insert( {
+	"id" : 'B',
+
+	"description" : `Alice and Bob each created one problem for HackerRank. A reviewer rates the two challenges, awarding points on a scale from 1 to 100 for three categories: problem clarity, originality, and difficulty.</br>We define the rating for Alice's challenge to be the triplet <code>A = (a0,a1,a2)</code>, and the rating for Bob's challenge to be the triplet <code>B = (b0,b1,b2)</code>.</br>Your task is to find their comparison points by comparing a0 with b0, a1 with b1, and a2 with b2.
+	<ul>
+<li>If ai > bi, then Alice is awarded 1 point.</li>
+<li>If ai < bi, then Bob is awarded 1 point.</li>
+<li>If ai = bi, then neither person receives a point.</li>
+	</ul>
+	</br>Comparison points is the total points a person earned.</br>Given  and , can you compare the two challenges and print their respective comparison points?`,
+
+	"inputFormat" : `The first line contains an integer N denoting the size of the array. The second line contains N space-separated integers representing the arrays elements.`,
+	
+
+	"outputFormat" : `Print the sum of the arrays elements as a single integer.`,
+	"sampleInput" : `6</br>1 2 4 7 9 -1`,
+	"sampleOutput" : `22`,
+} );
