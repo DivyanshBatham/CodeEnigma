@@ -5,7 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongo = require('mongodb');
-//var fs = require('fs');
+var mongoose = require('mongoose');
+var fs = require('fs');
 
 
 // Routes :
@@ -14,8 +15,6 @@ var users = require('./routes/users');
 var editor = require('./routes/editor');
 var run = require('./routes/run');
 var login = require('./routes/login');
-
-// Models for Mongoose :
 
 
 var app = express();
@@ -31,6 +30,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Connecting to MongoDB:
+mongoose.connect('mongodb://localhost:27017/enigmadb');
+
+// Models for Mongoose :
+fs.readdirSync(__dirname + '/models').forEach(function(filename){
+  if(~filename.indexOf('.js'))
+  require(__dirname + '/models/' + filename);
+});
 
 // app.use('/', index);
 app.use('/users', users);
