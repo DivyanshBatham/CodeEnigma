@@ -4,11 +4,18 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongo = require('mongodb');
+var mongoose = require('mongoose');
+var fs = require('fs');
 
-var index = require('./routes/index');
+
+// Routes :
+// var index = require('./routes/index');
 var users = require('./routes/users');
 var editor = require('./routes/editor');
 var run = require('./routes/run');
+var login = require('./routes/login');
+
 
 var app = express();
 
@@ -24,10 +31,20 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
+// Connecting to MongoDB:
+mongoose.connect('mongodb://localhost:27017/enigmadb');
+
+// Models for Mongoose :
+fs.readdirSync(__dirname + '/models').forEach(function(filename){
+  if(~filename.indexOf('.js'))
+  require(__dirname + '/models/' + filename);
+});
+
+// app.use('/', index);
 app.use('/users', users);
 app.use('/editor', editor);
 app.use('/run', run);
+app.use('/login', login);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -4,12 +4,52 @@
 		"selected_items":
 		[
 			[
-				"ge",
-				"getElementById"
+				"mongo",
+				"MongoClient"
+			],
+			[
+				"in",
+				"inputs"
+			],
+			[
+				"res",
+				"result"
+			],
+			[
+				"editr",
+				"editor2"
+			],
+			[
+				"lan",
+				"langNo"
+			],
+			[
+				"va",
+				"value"
+			],
+			[
+				"language",
+				"languageSelector"
 			],
 			[
 				"get",
-				"getValue"
+				"getElementById"
+			],
+			[
+				"javasc",
+				"javascript"
+			],
+			[
+				"lang",
+				"langCode"
+			],
+			[
+				"margin",
+				"margin-top"
+			],
+			[
+				"ge",
+				"getElementById"
 			],
 			[
 				"ed",
@@ -26,10 +66,6 @@
 			[
 				"wid",
 				"width"
-			],
-			[
-				"margin",
-				"margin-left"
 			],
 			[
 				"mar",
@@ -114,10 +150,6 @@
 			[
 				"bacl",
 				"background-color"
-			],
-			[
-				"res",
-				"result"
 			],
 			[
 				"conncet",
@@ -260,10 +292,6 @@
 				"dbpwd"
 			],
 			[
-				"in",
-				"input\tTag"
-			],
-			[
 				"ali",
 				"align-content"
 			],
@@ -299,16 +327,33 @@
 			"file": "app.js",
 			"settings":
 			{
-				"buffer_size": 1382,
+				"buffer_size": 1551,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "public/javascripts/tester.js",
+			"file": "/C/Users/HOME/Desktop/JS Ground/BloggingSite/myapp/routes/users.js",
 			"settings":
 			{
-				"buffer_size": 2806,
+				"buffer_size": 521,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "routes/login.js",
+			"settings":
+			{
+				"buffer_size": 878,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "routes/editor.js",
+			"settings":
+			{
+				"buffer_size": 473,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -317,7 +362,16 @@
 			"file": "routes/run.js",
 			"settings":
 			{
-				"buffer_size": 197,
+				"buffer_size": 893,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/javascripts/tester.js",
+			"settings":
+			{
+				"buffer_size": 1938,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -326,8 +380,38 @@
 			"file": "views/editor.ejs",
 			"settings":
 			{
-				"buffer_size": 7918,
+				"buffer_size": 9073,
 				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "views/login.ejs",
+			"settings":
+			{
+				"buffer_size": 1490,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "mongodb code/questions.txt",
+			"settings":
+			{
+				"buffer_size": 1641,
+				"encoding": "UTF-8",
+				"line_ending": "Windows",
+				"name": "db.questions.insert( {"
+			}
+		},
+		{
+			"contents": "db.users.insert( \n\t[ { id : \"CE001\", pass : \"12345\" },\n\t{ id : \"CE002\", pass : \"12345\" },\n\t{ id : \"CE003\", pass : \"12345\" },\n\t{ id : \"CE004\", pass : \"12345\" } ]\n);",
+			"file": "mongodb code/users.txt",
+			"file_size": 0,
+			"file_write_time": 131491829779951500,
+			"settings":
+			{
+				"buffer_size": 163,
 				"line_ending": "Windows"
 			}
 		}
@@ -378,6 +462,7 @@
 	"expanded_folders":
 	[
 		"/C/Users/HOME/Desktop/Code Enigma/CodeEnigma",
+		"/C/Users/HOME/Desktop/Code Enigma/CodeEnigma/bin",
 		"/C/Users/HOME/Desktop/Code Enigma/CodeEnigma/public",
 		"/C/Users/HOME/Desktop/Code Enigma/CodeEnigma/public/javascripts",
 		"/C/Users/HOME/Desktop/Code Enigma/CodeEnigma/routes",
@@ -385,9 +470,22 @@
 	],
 	"file_history":
 	[
-		"/C/Users/HOME/Desktop/Code Enigma/CodeEnigma/routes/users.js",
-		"/C/Users/HOME/Desktop/Code Enigma/CodeEnigma/routes/index.js",
+		"/C/Users/HOME/Desktop/JS Ground/BloggingSite/myapp/app.js",
+		"/C/Users/HOME/Desktop/Code Enigma/CodeEnigma/package.json",
+		"/C/Users/HOME/Desktop/Code Enigma/CodeEnigma/db.js",
+		"/C/Users/HOME/Desktop/JS Ground/BloggingSite/myapp/db.js",
+		"/C/Users/HOME/Desktop/JS Ground/BloggingSite/myapp/routes/login.js",
+		"/C/Users/HOME/Desktop/College/Semester 5/OS Lab/5th Sept.txt",
+		"/C/Users/HOME/Desktop/Code Enigma/CodeEnigma/public/login.html",
+		"/C/Users/HOME/Desktop/Code Enigma/CodeEnigma/bin/www",
+		"/C/Users/HOME/Desktop/Code Enigma/CodeEnigma/public/stylesheets/login.css",
+		"/C/Users/HOME/Desktop/Code Enigma/Login Page/login.html",
+		"/C/Users/HOME/Desktop/Code Enigma/API Key.txt",
 		"/C/Users/HOME/Desktop/Code Enigma/CodeEnigma/views/code.ejs",
+		"/C/Users/HOME/Desktop/Code Enigma/CodeEnigma/public/javascripts/tester.js",
+		"/C/Users/HOME/Desktop/Code Enigma/CodeEnigma/routes/index.js",
+		"/C/Users/HOME/Desktop/Code Enigma/CodeEnigma/routes/users.js",
+		"/C/Users/HOME/Desktop/New Text Document (2).txt",
 		"/C/Users/HOME/Desktop/Code Enigma/CodeEnigma/routes/editor.js",
 		"/C/Users/HOME/Desktop/Code Enigma/ace.html",
 		"/C/Users/HOME/Desktop/Code Enigma/editor.html",
@@ -395,10 +493,7 @@
 		"/C/Users/HOME/Desktop/Code Enigma/CodeEnigma/views/editor.html",
 		"/C/Users/HOME/Desktop/Code Enigma/codemirror.html",
 		"/C/Users/HOME/Desktop/Code Enigma/CodeEnigma/public/javascripts/jquery-3.2.1.min.js",
-		"/C/Users/HOME/Desktop/Code Enigma/CodeEnigma/package.json",
 		"/C/Users/HOME/AppData/Roaming/npm/node_modules/express/index.js",
-		"/C/Users/HOME/Desktop/JS Ground/BloggingSite/myapp/app.js",
-		"/C/Users/HOME/Desktop/JS Ground/BloggingSite/myapp/db.js",
 		"/C/Users/HOME/Desktop/JS Ground/BloggingSite/myapp/routes/index.js",
 		"/C/Users/HOME/Desktop/JS Ground/BloggingSite/myapp/routes/about.js",
 		"/C/Users/HOME/Desktop/JS Ground/BloggingSite/myapp/routes/users.js",
@@ -409,7 +504,6 @@
 		"/C/Users/HOME/Desktop/JS Ground/BloggingSite/myapp/public/stylesheets/style.css",
 		"/C/Users/HOME/Desktop/Code Enigma/Bootstrap/textstyles.html",
 		"/C/Users/HOME/Desktop/JS Ground/BloggingSite/myapp/views/about.ejs",
-		"/C/Users/HOME/Desktop/JS Ground/BloggingSite/myapp/routes/login.js",
 		"/C/Users/HOME/Desktop/JS Ground/Blogging Website/Express Web Framework/myapp/routes/index.js",
 		"/C/Users/HOME/Desktop/JS Ground/Blogging Website/Express Web Framework/myapp/routes/about.js",
 		"/C/Users/HOME/Desktop/JS Ground/Blogging Website/Express Web Framework/myapp/routes/newblog.js",
@@ -503,16 +597,7 @@
 		"/C/Users/HOME/Desktop/LAB 01.txt",
 		"/C/Users/HOME/AppData/Local/Temp/7zO186B.tmp/Read Me FIRST.txt",
 		"/C/Users/HOME/Desktop/Google CodeJam/large_output.txt",
-		"/C/Users/HOME/Desktop/Google CodeJam/small_output.txt",
-		"/C/Users/HOME/Desktop/Google CodeJam/B-large.in",
-		"/C/Users/HOME/Documents/GitHub/Learning-GitHub/Readme.txt",
-		"/C/Users/HOME/Documents/GitHub/Learning-GitHub/index.html",
-		"/C/Users/HOME/Desktop/CPPSUDUKO/Main Files/Main File.cpp",
-		"/C/Users/HOME/Desktop/JS Ground/JavaScript30/01 - JavaScript Drum Kit/index-START.html",
-		"/C/Users/HOME/Desktop/Vedisoft/C & C++/File Handling/Notes.txt",
-		"/C/Users/HOME/Desktop/Vedisoft/C & C++/File Handling/Mehul.txt",
-		"/C/Users/HOME/Desktop/edX/ITMOx - How to win coding competitions secrets of champions/Week 1/input.txt",
-		"/C/Users/HOME/Desktop/edX/ITMOx - How to win coding competitions secrets of champions/Week 2/input.txt"
+		"/C/Users/HOME/Desktop/Google CodeJam/small_output.txt"
 	],
 	"find":
 	{
@@ -531,6 +616,15 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"Username",
+			"bodyParser",
+			"code",
+			"run",
+			"require",
+			"source: req.body.source,\n\t// language: parseInt(req.body.langNo),\n\t// ",
+			"\");\n",
+			"langCode",
+			"(",
 			"editor",
 			"row",
 			"plain_text",
@@ -604,7 +698,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -613,19 +707,130 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1382,
+						"buffer_size": 1551,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								894,
-								894
-							],
+								357,
+								357
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/C/Users/HOME/Desktop/JS Ground/BloggingSite/myapp/routes/users.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 521,
+						"regions":
+						{
+						},
+						"selection":
+						[
 							[
-								900,
-								900
+								97,
+								97
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "routes/login.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 878,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								396,
+								396
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "routes/editor.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 473,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								155,
+								155
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "routes/run.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 893,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								186,
+								186
 							]
 						],
 						"settings":
@@ -641,77 +846,50 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
+					"buffer": 5,
 					"file": "public/javascripts/tester.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2806,
+						"buffer_size": 1938,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2228,
-								2228
+								358,
+								358
 							]
 						],
 						"settings":
 						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
 							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2066.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "routes/run.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 197,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								166,
-								166
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 6,
 					"file": "views/editor.ejs",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7918,
+						"buffer_size": 9073,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5374,
-								5374
+								1781,
+								1781
 							]
 						],
 						"settings":
@@ -722,10 +900,98 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1581.0,
+						"translation.y": 650.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "views/login.ejs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1490,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								550,
+								550
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
+							"syntax": "Packages/EJS/EJS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "mongodb code/questions.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1641,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								444,
+								444
+							]
+						],
+						"settings":
+						{
+							"auto_name": "db.questions.insert( {",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "mongodb code/users.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 163,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								163,
+								163
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
 					"type": "text"
 				}
 			]
@@ -808,7 +1074,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 256.0,
+	"side_bar_width": 251.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
