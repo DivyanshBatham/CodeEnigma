@@ -1,0 +1,28 @@
+body {
+  height: 100%;
+}
+.container-fluid {
+  height: 500px;
+}
+
+#header {
+  height: 100px;
+  background-color: #23262D;
+  color: #F0F0F3;
+}
+
+#main-content {
+  height: 694px;
+}
+
+#left-col {
+  /*height: 90vh;*/
+  color: #636770;
+  background-color: #292D36;
+}
+
+#right-col {
+  /*height: 90vh;*/
+  color: #636770;
+  background-color: #31343D;
+}
