@@ -7,26 +7,47 @@
   </head>
   <body>
     <div class="container-fluid" style="height:100%;">
-      <div class="row" id="header">
-        <div class="col-md-3">
-          HEADER
-        </div>
-        <div class="col-md-9">
-          CLOCK
-        </div>
-      </div>
       <div class="row" id="main-content">
         <div class="col-md-3" id="left-col">
-          LEFT COL
+          <img src="Logo.jpg" alt="CodeEnigma Logo" id="logo">
+          <br>
+          <br>
+          <p id="timer">Time Remaining</p>
+          <p id="rank">#114/150</p>
+          <p id="points">(157 Points)</p>
+          <br>
+          <ul id="nav"> <!-- AJAX Calls -->
+            <li><a href="#" class="active">EASY (5 Points)</a></li>
+            <li><a href="#">MEDIUM (15 Points)</a></li>
+            <li><a href="#">HARD (25 Points)</a></li>
+            <li id="instructions"><a href="#">INSTRUCTIONS</a></li>
+          </ul>
         </div>
         <div class="col-md-9" id="right-col">
-          RIGHT COL
+          <br>Home > Easy
+          <br>
+          <ul id="ques"> <!-- Href Calls -->
+            <li><a href="#">A : Game of Stones : Two players (numbered  and ) are playing a game with  stones. Player  always plays first, and the two players move in alternating turns. The game's rules are as follows:</a></li>
+            <li><a href="#">A : Game of Stones : Two players (numbered  and ) are playing a game with  stones. Player  always plays first ...</a></li>
+            <li><a href="#">B : Amicable Number</a></li>
+            <li><a href="#">C : Bishop and Pawn</a></li>
+            <li><a href="#">D : Alphabetic Shift</a></li>
+            <li><a href="#">E : Amicable Number</a></li>
+            <li><a href="#">F : Bishop and Pawn</a></li>
+            <li><a href="#">G : Alphabetic Shift</a></li>
+            <li><a href="#">H : Amicable Number</a></li>
+            <li><a href="#">I : Bishop and Pawn</a></li>
+
+          </ul>
         </div>
       </div>
   </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="/javascripts/bootstrap.min.js"></script>
     <script src="/javascripts/jquery-3.2.1.min.js"></script>
+    <script src='/javascripts/nprogress.js'></script>
     <link rel="stylesheet" href="/stylesheets/dashboard.css">
+    <link rel='stylesheet' href='/stylesheets/nprogress.css'/>
+    <script src='/javascripts/timer.js'></script>
   </body>
 </html>

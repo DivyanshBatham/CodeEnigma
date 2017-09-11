@@ -3,15 +3,18 @@ $(document).ready(function(){
 	//alert("document ready");
 });
 $('#runButton').click(function(){
+	NProgress.done();
+	NProgress.start();
+
 	//alert("runButton");
 
 		var config = {
 			source : editor.getValue(),
 			input  : editor2.getValue(),
 			langNo : document.getElementById('languageSelector').value,
-		};	 
-	console.log(config);		
-		
+		};
+	console.log(config);
+
 		$.ajax({
 				type:'POST',
 				url:'/run',
@@ -26,9 +29,9 @@ $('#runButton').click(function(){
 						editor3.setValue(R.result.stdout[0]);
 					else
 						editor3.setValue(R.result.compilemessage);
+						NProgress.done();
 				}
 			});
-
 
 });
 
@@ -39,7 +42,7 @@ function changeLanguage(){
  switch(langNo){
 	 case "1":
 	 	lang="c";
-		break;	
+		break;
 	 case "2":
 	 	lang="cpp";
 		break;
@@ -53,21 +56,21 @@ function changeLanguage(){
 	 	lang="python";
 		break;
  }
-	
+
 	alert( $('#languageSelector') );
-	window.location.href = lang;	
+	window.location.href = lang;
 }
 
 function run()
 {
-		alert("Button Clicked"); 
+		alert("Button Clicked");
 		var config = {
 			source : editor.getValue(),
 			input  : editor2.getValue(),
 			language : 2
-		};	 
-		
-		
+		};
+
+
 		$.ajax({
 				type:'POST',
 				url:'/run',
@@ -77,7 +80,7 @@ function run()
 					console.log("Hey");
 				}
 			});
-			
+
 			// data=JSON.parse(data);
 			// var str = (data.result.compilemessage).toString();
 			// str=decodeURIComponent(escape(str));
@@ -88,15 +91,15 @@ function run()
 			// if(str==""){
 			// 	$("#runResponse").html("Compile Message: Compilation Successful <br><br>");
 			// 	$("#runResponse").append("Output: <br>");
-				
+
 			// 	(data.result.stdout).forEach(function(item,index){
 			// 	$("#runResponse").append(data.result.stdout[index]+"<br>");
-				
+
 			// });
 			// }
 			// else{
 			// 	$("#runResponse").html("Compile Message: "+ str+"<br><br>");
 			// }
-					
-			
+
+
 }
