@@ -1,0 +1,71 @@
+#header {
+  height: 7vh;
+  background-color: #202228;
+  color:#FFFFFF;
+}
+
+#main-content {
+  height: 86vh;
+}
+
+#left-col {
+  /*color:#0C4149;*/
+}
+
+#left-col-header, #right-col-header, #right-col-sub-header {
+  color: #FFF;
+  background-color: #31343D;
+  height: 6%;
+  padding-top: 10px;
+}
+
+#left-col-body {
+  color: #000;
+  background-color: #D9D9D9;
+  height: 94%;
+  overflow: auto;
+  overflow-x: hidden;
+  padding: 10px;
+}
+
+#editor {
+  position: relative;
+  /*height: 400px;*/
+  height: 66%;
+}
+
+#right-col-io {
+  height: 22%;
+}
+
+#ieditor {
+  position: relative;
+  height: 100%;
+}
+
+#oeditor {
+  position: relative;
+  height: 100%;
+}
+
+
+
+::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #202228;
+}
+
+::-webkit-scrollbar
+{
+	width: 7px;
+	background-color: #202228;
+}
+
+::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #ffbe4a;
+}

@@ -13,6 +13,7 @@ var fs = require('fs');
 var home = require('./routes/home');
 var users = require('./routes/users');
 var editor = require('./routes/editor');
+var editor2 = require('./routes/editor2');
 var run = require('./routes/run');
 var login = require('./routes/login');
 
@@ -43,6 +44,7 @@ fs.readdirSync(__dirname + '/models').forEach(function(filename){
 app.use('/', home);
 app.use('/users', users);
 app.use('/editor', editor);
+app.use('/editor2', editor2);
 app.use('/run', run);
 app.use('/login', login);
 
