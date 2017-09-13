@@ -11,11 +11,39 @@
         <div class="container-fluid">
             <!-- HEADER -->
             <div class="row" id="header">
-                <div class="col-md-6">
-                    <h5 style="margin-top: 10px">Question List: A&nbsp;|&nbsp;B&nbsp;|&nbsp;C&nbsp;|&nbsp;D</h5>
+                <div class="col-md-5">
+                    <!-- <img src="/Back2.png" alt="Back"> -->
+                    <!-- <img src="/Ques.png" alt="Back">
+                    <img src="/Ques.png" alt="Back">
+                    <img src="/Ques.png" alt="Back"> -->
+                    <!-- <ul> -->
+                      <!-- <li><a href="#">Back</a></li> -->
+                      <!-- <li><a href="#">A</a></li>
+                      <li><a href="#">B</a></li> -->
+                      <!-- <li><a href="#">C</a></li> -->
+                    <!-- </ul> -->
+                    <!-- <h5>Question List: A&nbsp;|&nbsp;B&nbsp;|&nbsp;C&nbsp;|&nbsp;D</h5> -->
+                    <!-- <img src="/Back2.png" alt="Back"> -->
+                    <ul>
+                      <!-- <li><span class="glyphicon glyphicon-chevron-left"></span></li> -->
+                      <li><img src="/Back3.png" alt="Back"></li>
+                      <li><button type="button" class="btn btn-circle">A</button></li>
+                      <li><button type="button" class="btn btn-circle active">B</button></li>
+                      <li><button type="button" class="btn btn-circle">C</button></li>
+                      <li><button type="button" class="btn btn-circle">D</button></li>
+                      <li><button type="button" class="btn btn-circle">✓</button></li>
+                      <li><button type="button" class="btn btn-circle">F</button></li>
+                    <ul>
                 </div>
-                <div class="col-md-6">
-                    <h5 style="margin-top: 10px; text-align: right">Time 2M 17S &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;#3/47 </h5>
+                <div class="col-md-2">
+                  EASY (5 Points)
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-2">
+                  <p id="timer">Time Remaining</p>
+                </div>
+                <div class="col-md-1">
+                  <p id="rank">#113/147</p>
                 </div>
             </div>
 
@@ -23,33 +51,71 @@
             <div class="row" id="main-content">
 
                 <div class="col-md-6" id="left-col">
-                      <div class="row" id="left-col-header">Description</div>
+                      <div class="row" id="left-col-header">
+                        <div class ="col-md-12">    <!-- Is this Needed ? -->
+                          <p>Description</p>
+                        </div>
+                      </div>
                       <div class="row" id="left-col-body">
-                        <p>
-                          <h5>Question Title</h5>
-                        <br>
-      
-                          <p>question description</p>
-                        </p>
+                        <div class ="col-md-12">
+                          <!-- Question Description and Examples Goes Here. -->
+                          <p>Given a sorted array of integers A, find such an integer x that Z|A[i]-x| over all i has the minimum possible value. If there are several possible answers, output the smallest one.</p>
+                          <!-- <img src="/Back.png" alt="Back"> -->
+                          <h5>Example:</h5>
+                          <h6>Input: </h6>
+                          <code>
+                              4 5 78
+                          </code>
+                          <h6>Output: </h6>
+                          <code>
+                              A B FG
+                          </code>
+                          <h5>Input/Output</h5>
+                          <ul>
+                              <li> [time limit] 4000ms</li>
+                              <li> [integer] array.integer A</li>
+                          </ul>
+
+                        </div>
                       </div>
                 </div>
 
                 <div class="col-md-6" id="right-col">
                       <div class="row" id="right-col-header">
-                          <div class="col-md-7">Code.cpp</div>
-                          <div class="col-md-4">Language</div>
+                          <div class="col-md-7">Code.<%= lang%></div>
+                          <div class="col-md-3">
+                            <select id="languageSelector" onchange="changeLanguage()" name="lang" required="required" class="form-control languageSelector">
+                            <% if(lang==""){ %>
+                                <option value="-1" lang="" selected="selected" >Select a Language </option>
+                            <% } %>
+                                <option value="1" lang="c" <% if(lang=="c"){ %> selected="selected" <% } %> >C </option>
+                                <option value="2" lang="cpp" <% if(lang=="cpp"){ %> selected="selected" <% } %> >C++ </option>
+                                <!-- <option value="9">C# </option> -->
+                                <option value="3" lang="java" <% if(lang=="java"){ %> selected="selected" <% } %> >Java</option>
+                                <option value="20" lang="javascript" <% if(lang=="javascript"){ %> selected="selected" <% } %> >Javascript </option>
+                                <!-- <option value="5">Python </option> -->
+                            </select>
+                          </div>
                           <div class="col-md-1">Reset</div>
+                          <div class="col-md-1">Full.</div>
                       </div>
-                      <div class="row" id="editor">Editor</div>
+                      <div class="row" id="editor">#include&lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+    // TODO..
+    return 0;
+}</div>
                       <div class="row" id="right-col-sub-header">
                         <div class="col-md-6">Input</div>
                         <div class="col-md-6">Output</div>
                       </div>
                       <div class="row" id="right-col-io">
                         <div class="col-md-6">
-                          <div class="row" id="ieditor">Input Editor</div>
+                          <div class="row" id="editor2">Give your inputs here, before running.</div>
                         </div>
-                        <div class="col-md-6" id="oeditor">Output Editor</div>
+                        <div class="col-md-6" id="editor3">Output comes here.</div>
                       </div>
                 </div>
             </div>
@@ -57,8 +123,12 @@
             <!-- FOOTER -->
             <div class="row" id="header">
                 <div class="col-md-10"></div>
-                <div class="col-md-1">RUN</div>
-                <div class="col-md-1">SUBMIT</div>
+                <div class="col-md-1">
+                  <button id="runButton" type = "button" class = "btn btn-info">RUN</button>
+                </div>
+                <div class="col-md-1">
+                  <button id="submitButton" type = "button" class = "btn btn-success">SUBMIT</button>
+                </div>
             </div>
 <!--
                 <div class="col-md-6" style="background-color: #353535; color:#FFFFFF; height: 635px;">
@@ -134,6 +204,7 @@
         <script src="/javascripts/jquery-3.2.1.min.js"></script>
         <script src="/javascripts/tester.js"></script>
         <script src='/javascripts/nprogress.js'></script>
+        <script src='/javascripts/timer.js'></script>
         <link rel="stylesheet" href="/stylesheets/editor2.css">
         <script src="/javascripts/ace-builds-master/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
         <script>
@@ -155,20 +226,20 @@
             // alert(code);
             // editor.session.setMode(code);
             editor.setShowPrintMargin(false);
-            document.getElementById('editor').style.fontSize='17px';
+            document.getElementById('editor').style.fontSize='15px';
 
-            var ieditor = ace.edit("ieditor");
-            ieditor.setTheme("ace/theme/twilight");
-            ieditor.session.setMode("ace/mode/plain_text");
-            // ieditor.renderer.setShowGutter(false);
-            document.getElementById('ieditor').style.fontSize='15px';
+            var editor2 = ace.edit("editor2");
+            editor2.setTheme("ace/theme/twilight");
+            editor2.session.setMode("ace/mode/plain_text");
+            // editor2.renderer.setShowGutter(false);
+            document.getElementById('editor2').style.fontSize='13px';
 
-            var oeditor = ace.edit("oeditor");
-            oeditor.setTheme("ace/theme/twilight");
-            oeditor.session.setMode("ace/mode/plain_text");
-            // oeditor.renderer.setShowGutter(false);
-            oeditor.setReadOnly(true);
-            document.getElementById('oeditor').style.fontSize='15px';
+            var editor3 = ace.edit("editor3");
+            editor3.setTheme("ace/theme/twilight");
+            editor3.session.setMode("ace/mode/plain_text");
+            // editor3.renderer.setShowGutter(false);
+            editor3.setReadOnly(true);
+            document.getElementById('editor3').style.fontSize='13px';
 
         </script>
     </body>

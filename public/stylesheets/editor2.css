@@ -1,22 +1,137 @@
 #header {
   height: 7vh;
+  line-height:7vh;
+  overflow: hidden;
+  text-align: center;
+  /*padding-bottom: 3vh;*/
+  /*padding-top: 3vh;*/
   background-color: #202228;
   color:#FFFFFF;
+}
+
+#header img {
+  height: 7vh;
+  cursor: pointer;
+}
+
+/*#header ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 6vh;
+}
+
+#header li {
+  /*background-color: #454545;* /
+  height: 6vh;
+  float:left;
+  color: #FFF;
+  /*margin: 2px;* /
+  margin-top: -5px;
+  margin-left: 2px;
+  margin-right: 2px;
+  background-image: url("../Ques.png");
+  background-repeat: no-repeat;
+}
+
+#header li a {
+  height: 6vh;
+  /*background-color: #454545;* /
+    /*display: block;* /
+    color: white;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    /*margin: 10px;* /
+    margin-left: 10px;
+    margin-right: 10px;
+    /*padding: 14px 16px;* /
+    text-decoration: none;
+}
+
+#header li a:hover:not(.active) {
+    background-color: #111;
+    background-image: url("../Ques-Hover.png");
+    background-repeat: no-repeat;
+}
+
+#header .active {
+    background-color: #4CAF50;
+}*/
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+  background-color: #202228;
+  border-color: #ffbe4a;
+  color: #ffbe4a;
+  cursor: pointer;
+}
+
+.btn-circle:hover {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+  background-color: #292c33;
+  border-color: #ffbe4a;
+  color: #ffbe4a;
+  cursor: pointer;
+}
+
+.active {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+  background-color: #ffbe4a;
+  border-color: #ffbe4a;
+  color: #202228;
+  cursor: pointer;
+}
+
+#header ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  /*height: 6vh;*/
+}
+#header li {
+  float: left;
+  margin-left: 5px;
+}
+
+#timer {
+  text-align: center;
+  color: #ffbe4a;
+}
+#rank {
+  text-align: left;
+  padding-left: 0px;
+  color: #ffbe4a;
 }
 
 #main-content {
   height: 86vh;
 }
 
-#left-col {
-  /*color:#0C4149;*/
-}
-
 #left-col-header, #right-col-header, #right-col-sub-header {
   color: #FFF;
   background-color: #31343D;
   height: 6%;
-  padding-top: 10px;
+  line-height:5vh;
 }
 
 #left-col-body {
@@ -26,6 +141,23 @@
   overflow: auto;
   overflow-x: hidden;
   padding: 10px;
+}
+
+#languageSelector {
+  background-color: #31343D;
+  color: white;
+  border: 1px solid white;
+  height: 5vh;
+  font-size: 13px;
+  width:75%;
+  float:right;
+  padding-top: 5px;
+  /*outline: none;*/
+  /*outline-color: #ffbe4a; */
+}
+#languageSelector option:hover {
+  color:red;
+  background-color: #ffbe4a;
 }
 
 #editor {
@@ -38,29 +170,49 @@
   height: 22%;
 }
 
-#ieditor {
+#editor2 {
   position: relative;
   height: 100%;
 }
 
-#oeditor {
+#editor3 {
   position: relative;
   height: 100%;
 }
 
+#runButton, #submitButton {
+  background-color: #202228;
+  border-color: #ffbe4a;
+  color: #ffbe4a;
+  cursor: pointer;
+}
 
+#submitButton:hover {
+  background-color: #ffbe4a;
+  border-color: #ffbe4a;
+  color: #202228;
+  cursor: pointer;
+}
+
+#runButton:hover {
+  background-color: #ffbe4a;
+  border-color: #ffbe4a;
+  color: #202228;
+  cursor: pointer;
+}
 
 ::-webkit-scrollbar-track
 {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 	border-radius: 10px;
-	background-color: #202228;
+	background-color: ##141414;
 }
 
 ::-webkit-scrollbar
 {
-	width: 7px;
-	background-color: #202228;
+  height: 5px;
+	width: 5px;
+	background-color: ##141414;
 }
 
 ::-webkit-scrollbar-thumb
