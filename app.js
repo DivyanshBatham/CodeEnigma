@@ -10,7 +10,7 @@ var fs = require('fs');
 
 
 // Routes :
-// var index = require('./routes/index');
+var home = require('./routes/home');
 var users = require('./routes/users');
 var editor = require('./routes/editor');
 var run = require('./routes/run');
@@ -40,7 +40,7 @@ fs.readdirSync(__dirname + '/models').forEach(function(filename){
   require(__dirname + '/models/' + filename);
 });
 
-// app.use('/', index);
+app.use('/', home);
 app.use('/users', users);
 app.use('/editor', editor);
 app.use('/run', run);
