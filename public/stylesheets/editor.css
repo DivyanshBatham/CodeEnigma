@@ -1,0 +1,26 @@
+body {
+    overflow: hidden;
+}
+#editor {
+    position: relative;
+    /*height: 400px;*/
+    height: 60vh;
+}
+#editor2 {
+    position: relative;
+    /*height: 166px;*/
+    height: 22vh;
+}
+#editor3 {
+    position: relative;
+    /*height: 166px;*/
+    height: 22vh;
+}
+
+.container-fluid {
+  height: 100vh;
+}
+
+#main-content {
+  height: 90vh;
+}

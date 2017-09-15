@@ -6,40 +6,23 @@
         <title>Editor</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
         <link rel='stylesheet' href='/stylesheets/nprogress.css'/>
-        <style type="text/css" media="screen">
-    body {
-        overflow: hidden;
-    }
-    #editor {
-        position: relative;
-        height: 400px;
-    }
-    #editor2 {
-        position: relative;
-        height: 166px;
-    }
-    #editor3 {
-        position: relative;
-        height: 166px;
-    }
-  </style>
     </head>
     <body>
         <div class="container-fluid">
 
             <div class="header">
                 <div class="row">
-                    <div class="col-md-6" style="background-color: #39424E; color:#FFFFFF; height: 50px; ">
+                    <div class="col-md-6" style="background-color: #39424E; color:#FFFFFF; height: 5vh; ">
                         <h5 style="margin-top: 10px">Question List: A&nbsp;|&nbsp;B&nbsp;|&nbsp;C&nbsp;|&nbsp;D</h5>
                     </div>
-                    <div class="col-md-6" style="background-color: #39424E; color:#FFFFFF; height: 50px;">
+                    <div class="col-md-6" style="background-color: #39424E; color:#FFFFFF; height: 5vh;">
                         <h5 style="margin-top: 10px; text-align: right">Time 2M 17S &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;#3/47 </h5>
                     </div>
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-md-6" style="background-color: #BFE9FF; color:#0C4149; height: 635px">
+            <div class="row" id="main-content">
+                <div class="col-md-6" style="background-color: #BFE9FF; color:#0C4149; ">
                     <div class="row">
                         <div class="col-md-8" style="background-color: #70CFFF; height: 35px">
                             <h6 style="margin-top: 7px; color:#FFFFFF">DESCRIPTION | SOLUTIONS &gt</h6>
@@ -65,7 +48,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6" style="background-color: #353535; color:#FFFFFF; height: 635px;">
+                <div class="col-md-6" style="background-color: #353535; color:#FFFFFF;">
 
                     <div class="row">
                         <div class="col-md-6" style="background-color: #70CFFF; height: 35px">
@@ -121,10 +104,10 @@
 
             <div class="footer" style="position: fixed; bottom: 0; left: 0; right: 0; height: 50px;">
                 <div class="row">
-                    <div class="col-md-6" style="background-color: #D81D5E; height: 50px">
+                    <div class="col-md-6" style="background-color: #39424E; height: 50px">
                         <h5 style="margin-top: 10px; text-align: right; color:#FFFFFF">LIKE | DISLIKE | FLAG</h5>
                     </div>
-                    <div class="col-md-6" style="background-color: #D81D5E; height: 50px; text-align: right">
+                    <div class="col-md-6" style="background-color: #39424E; height: 50px; text-align: right">
                         <!--<h5 style="margin-top: 10px; text-align: right; color:#FFFFFF">RUN  |  SUBMIT</h5>-->
                         <button id="runButton" type = "button" class = "btn btn-info" style="margin-top: 6px; margin-right: 15px">RUN</button>
                         <button id="submitButton" type = "button" class = "btn btn-success" style="margin-top: 6px; margin-right: 15px">SUBMIT</button>
@@ -138,7 +121,7 @@
         <script src="/javascripts/jquery-3.2.1.min.js"></script>
         <script src="/javascripts/tester.js"></script>
         <script src='/javascripts/nprogress.js'></script>
-
+        <link rel="stylesheet" href="/stylesheets/editor.css">
         <script src="/javascripts/ace-builds-master/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
         <script>
             var editor = ace.edit("editor");

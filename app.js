@@ -11,8 +11,10 @@ var fs = require('fs');
 
 // Routes :
 var home = require('./routes/home');
+var CodeEnigma = require('./routes/CodeEnigma');
 var users = require('./routes/users');
 var editor = require('./routes/editor');
+var editor2 = require('./routes/editor2');
 var run = require('./routes/run');
 var login = require('./routes/login');
 
@@ -40,11 +42,14 @@ fs.readdirSync(__dirname + '/models').forEach(function(filename){
   require(__dirname + '/models/' + filename);
 });
 
-app.use('/', home);
+// app.use('/', home);
+
+app.use('/CodeEnigma', CodeEnigma);
 app.use('/users', users);
 app.use('/editor', editor);
+app.use('/editor2', editor2);
 app.use('/run', run);
-app.use('/login', login);
+// app.use('/CodeEnigma/login', login);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
