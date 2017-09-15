@@ -8,4 +8,11 @@ It's my minor project. A web application that I'll be using to conduct Code Enig
 3) Install Node.js if you don't already have it.
 4) Enter `npm install` in the terminal, this will install all the dependecies listed in package.json file in one go.
 5) Run the project by this command `npm start`.
-6) Open http://localhost/login or http://localhost/editor
+6) Open http://localhost/CodeEnigma or http://localhost/CodeEnigma/login to login.
+
+## Route Structures:
++ http://localhost/CodeEnigma/difficulty/questionID/language
++ http://localhost/CodeEnigma/login
++ http://localhost/CodeEnigma/instructions (To be added)
++ http://localhost/CodeEnigma/results (To be added)
+
