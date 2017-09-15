@@ -17,9 +17,9 @@
           <p id="points">(157 Points)</p>
           <br>
           <ul id="nav"> <!-- AJAX Calls -->
-            <li><a href="#" class="active">EASY (5 Points)</a></li>
-            <li><a href="#">MEDIUM (15 Points)</a></li>
-            <li><a href="#">HARD (25 Points)</a></li>
+            <li><a href="/easy" <% if(difficulty=="easy"){ %> class="active" <% } %> >EASY (5 Points)</a></li>
+            <li><a href="/medium" <% if(difficulty=="medium"){ %> class="active" <% } %> >MEDIUM (15 Points)</a></li>
+            <li><a href="/hard" <% if(difficulty=="hard"){ %> class="active" <% } %> >HARD (25 Points)</a></li>
             <li id="instructions"><a href="#">INSTRUCTIONS</a></li>
           </ul>
         </div>

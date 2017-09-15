@@ -12,27 +12,22 @@
             <!-- HEADER -->
             <div class="row" id="header">
                 <div class="col-md-5">
-                    <!-- <img src="/Back2.png" alt="Back"> -->
-                    <!-- <img src="/Ques.png" alt="Back">
-                    <img src="/Ques.png" alt="Back">
-                    <img src="/Ques.png" alt="Back"> -->
-                    <!-- <ul> -->
-                      <!-- <li><a href="#">Back</a></li> -->
-                      <!-- <li><a href="#">A</a></li>
-                      <li><a href="#">B</a></li> -->
-                      <!-- <li><a href="#">C</a></li> -->
-                    <!-- </ul> -->
-                    <!-- <h5>Question List: A&nbsp;|&nbsp;B&nbsp;|&nbsp;C&nbsp;|&nbsp;D</h5> -->
-                    <!-- <img src="/Back2.png" alt="Back"> -->
+
                     <ul>
-                      <!-- <li><span class="glyphicon glyphicon-chevron-left"></span></li> -->
                       <li><img src="/Back3.png" alt="Back"></li>
-                      <li><button type="button" class="btn btn-circle">A</button></li>
+                      <% questions.forEach(function(question){ %>
+                        <% var url = question.id %>
+                        <% if(id==question.id){ %>
+                          <li><button type="button" class="btn btn-circle active"><%= question.id %></button></li>
+                        <% }else{ %>
+                          <li><button type="button" class="btn btn-circle" onclick="window.location ='../<%= question.id %>/cpp'"><%= question.id %></button></li>
+                      <% }}); %>
+                      <!-- <li><button type="button" class="btn btn-circle">A</button></li>
                       <li><button type="button" class="btn btn-circle active">B</button></li>
                       <li><button type="button" class="btn btn-circle">C</button></li>
                       <li><button type="button" class="btn btn-circle">D</button></li>
                       <li><button type="button" class="btn btn-circle">✓</button></li>
-                      <li><button type="button" class="btn btn-circle">F</button></li>
+                      <li><button type="button" class="btn btn-circle">F</button></li> -->
                     <ul>
                 </div>
                 <div class="col-md-2">
@@ -58,10 +53,20 @@
                       </div>
                       <div class="row" id="left-col-body">
                         <div class ="col-md-12">
-                          <!-- Question Description and Examples Goes Here. -->
-                          <p>Given a sorted array of integers A, find such an integer x that Z|A[i]-x| over all i has the minimum possible value. If there are several possible answers, output the smallest one.</p>
-                          <!-- <img src="/Back.png" alt="Back"> -->
-                          <h5>Example:</h5>
+                          <span id="span">
+                          <%= console.log('\n\nGOT THIS\n\n') %>
+
+                          <%    console.log(questions); %>
+                          <%    var x = "dasdasd0"; %>
+                          <!-- <h5><%= questions.title %></h5> -->
+                          <h5><%= questions[id.charCodeAt(0)-65].title %></h5>
+                          <p><%= questions[id.charCodeAt(0)-65].description %></p>
+                          <h6>Input Format:</h6>
+                          <%= questions[id.charCodeAt(0)-65].inputFormat %> </br></br>
+                          <h6>Output Format:</h6>
+                          <%= questions[id.charCodeAt(0)-65].outputFormat %> </br>
+                          </br></br>
+                          <h6>Example:</h6>
                           <h6>Input: </h6>
                           <code>
                               4 5 78
@@ -75,7 +80,7 @@
                               <li> [time limit] 4000ms</li>
                               <li> [integer] array.integer A</li>
                           </ul>
-
+                        </span>
                         </div>
                       </div>
                 </div>
@@ -205,9 +210,13 @@ int main()
         <script src="/javascripts/tester.js"></script>
         <script src='/javascripts/nprogress.js'></script>
         <script src='/javascripts/timer.js'></script>
+        <script src='/javascripts/description.js'></script>
         <link rel="stylesheet" href="/stylesheets/editor2.css">
         <script src="/javascripts/ace-builds-master/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
         <script>
+
+            // alert('<%= x %>');
+            // document.getElementById('span').innerHTML = "<h1>hello</h1>";
             var editor = ace.edit("editor");
             editor.setTheme("ace/theme/twilight");
 

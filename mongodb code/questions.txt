@@ -9,8 +9,9 @@ db.questions.insert( {
 
 
 db.questions.insert( {
+	"difficulty" : `easy`,
 	"id" : 'B',
-
+	"title" : `Competion between Alice and Bob`,
 	"description" : `Alice and Bob each created one problem for HackerRank. A reviewer rates the two challenges, awarding points on a scale from 1 to 100 for three categories: problem clarity, originality, and difficulty.</br>We define the rating for Alice's challenge to be the triplet <code>A = (a0,a1,a2)</code>, and the rating for Bob's challenge to be the triplet <code>B = (b0,b1,b2)</code>.</br>Your task is to find their comparison points by comparing a0 with b0, a1 with b1, and a2 with b2.
 	<ul>
 <li>If ai > bi, then Alice is awarded 1 point.</li>
@@ -20,9 +21,42 @@ db.questions.insert( {
 	</br>Comparison points is the total points a person earned.</br>Given  and , can you compare the two challenges and print their respective comparison points?`,
 
 	"inputFormat" : `The first line contains an integer N denoting the size of the array. The second line contains N space-separated integers representing the arrays elements.`,
-	
-
 	"outputFormat" : `Print the sum of the arrays elements as a single integer.`,
 	"sampleInput" : `6</br>1 2 4 7 9 -1`,
 	"sampleOutput" : `22`,
+} );
+
+
+
+db.questions.insert( {
+	"difficulty" : `easy`,
+	"id" : `C`,
+	"title" : `Recursive Sum of Digits`,
+	"description" : `Given a number N, find the sum of it's digits. If the sum if not a single digit number then again find the sum of it's digits. Repeat this procedure until you get a single digit sum and then print it.`,
+	"inputFormat" : `&lt;ul&gt;&lt;li&gt;1st line contains an integer T(Number of testcases/inputs).&lt;\li&gt;&lt;li&gt;Next T lines contains the numbers n&lt;sub&gt;1&lt;/sub&gt;, n&lt;sub&gt;2&lt;/sub&gt;, n&lt;sub&gt;3&lt;/sub&gt;, ..., n&lt;sub&gt;T&lt;/sub&gt;.`,
+	"outputFormat" : `For each number n&lt;sub&gt;1&lt;/sub&gt;, n&lt;sub&gt;2&lt;/sub&gt;, n&lt;sub&gt;3&lt;/sub&gt;, ..., n&lt;sub&gt;T&lt;/sub&gt;, print their recursive sum in separate lines.`,
+	"sampleInput" : `5&lt;/br&gt;456&lt;/br&gt;123&lt;/br&gt;17&lt;/br&gt;12345&lt;/br&gt;459`,
+	"sampleOutput" : `6&lt;/br&gt;6&lt;/br&gt;8&lt;/br&gt;6&lt;/br&gt;9`
+} );
+
+db.questions.insert( {
+"difficulty" : `easy`,
+"id" : `D`,
+"title" : `Recursive Sum of Digits`,
+"description" : `Given a number N, find the sum of it's digits. If the sum if not a single digit number then again find the sum of it's digits. Repeat this procedure until you get a single digit sum and then print it.`,
+"inputFormat" : `<ul><li>1st line contains an integer T(Number of testcases/inputs).</li><li>Next T lines contains the numbers n<sub>1</sub>, n<sub>2</sub>, n<sub>3</sub>, ..., n<sub>T</sub>.</li></ul>`,
+"outputFormat" : `For each number n<sub>1</sub>, n<sub>2</sub>, n<sub>3</sub>, ..., n<sub>T</sub>, print their recursive sum in separate lines.`,
+"sampleInput" : `5</br>456</br>123</br>17</br>12345</br>459`,
+"sampleOutput" : `6</br>6</br>8</br>6</br>9`
+} );
+
+db.questions.insert( {
+"difficulty" : "easy",
+"id" : "E",
+"title" : "Recursive Sum of Digits",
+"description" : "Given a number N, find the sum of it's digits. If the sum if not a single digit number then again find the sum of it's digits. Repeat this procedure until you get a single digit sum and then print it.",
+"inputFormat" : "<ul><li>1st line contains an integer T(Number of testcases/inputs).</li><li>Next T lines contains the numbers n<sub>1</sub>, n<sub>2</sub>, n<sub>3</sub>, ..., n<sub>T</sub>.</li></ul>",
+"outputFormat" : "For each number n<sub>1</sub>, n<sub>2</sub>, n<sub>3</sub>, ..., n<sub>T</sub>, print their recursive sum in separate lines.",
+"sampleInput" : "5</br>456</br>123</br>17</br>12345</br>459",
+"sampleOutput" : "6</br>6</br>8</br>6</br>9"
 } );

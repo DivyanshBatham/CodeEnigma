@@ -57,13 +57,13 @@ function changeLanguage(){
 		break;
  }
 
-	alert( $('#languageSelector') );
+	//alert( $('#languageSelector') );
 	window.location.href = lang;
 }
 
 function run()
 {
-		alert("Button Clicked");
+		//alert("Button Clicked");
 		var config = {
 			source : editor.getValue(),
 			input  : editor2.getValue(),
