@@ -12,7 +12,7 @@ It's my minor project. A web application that I'll be using to conduct Code Enig
 7) Open http://localhost/CodeEnigma or http://localhost/CodeEnigma/login to login.
 
 ## Route Structures:
-+ http://localhost/CodeEnigma/difficulty/questionID/language
++ http://localhost/CodeEnigma/difficulty/questionID/language (Example: /CodeEnigma/easy/A/cpp )
 + http://localhost/CodeEnigma/login
 + http://localhost/CodeEnigma/instructions (To be added)
 + http://localhost/CodeEnigma/results (To be added)
