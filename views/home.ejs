@@ -9,7 +9,8 @@
     <div class="container-fluid" style="height:100%;">
       <div class="row" id="main-content">
         <div class="col-md-3" id="left-col">
-          <img src="Logo.jpg" alt="CodeEnigma Logo" id="logo">
+          <!-- <img src="Logo.jpg" alt="CodeEnigma Logo" id="logo"> -->
+          <img src="../Logo.jpg" alt="CodeEnigma Logo" id="logo">
           <br>
           <br>
           <p id="timer">Time Remaining</p>
@@ -17,9 +18,11 @@
           <p id="points">(157 Points)</p>
           <br>
           <ul id="nav"> <!-- AJAX Calls -->
-            <li><a href="/easy" <% if(difficulty=="easy"){ %> class="active" <% } %> >EASY (5 Points)</a></li>
-            <li><a href="/medium" <% if(difficulty=="medium"){ %> class="active" <% } %> >MEDIUM (15 Points)</a></li>
-            <li><a href="/hard" <% if(difficulty=="hard"){ %> class="active" <% } %> >HARD (25 Points)</a></li>
+            <li><a href="easy" <% if(difficulty=="easy"){ %> class="active" <% } %> >EASY (5 Points)</a></li>
+            <li><a href="medium" <% if(difficulty=="medium"){ %> class="active" <% } %> >MEDIUM (15 Points)</a></li>
+            <li><a href="/CodeEnigma/hard" <% if(difficulty=="hard"){ %> class="active" <% } %> >HARD (25 Points)</a></li>
+            <!-- <a href="/CodeEnigma/hard" means totally new link  -->
+            <!-- <a href="hard" means change last subroute of current route  -->
             <li id="instructions"><a href="#">INSTRUCTIONS</a></li>
           </ul>
         </div>

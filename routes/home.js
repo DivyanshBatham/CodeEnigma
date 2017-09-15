@@ -6,6 +6,7 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   console.log("Top");
   // res.redirect('/login');
+  //console.log(window.location);
   res.render('home', { title: 'Home', difficulty: 'easy'});
 });
 
