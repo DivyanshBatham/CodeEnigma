@@ -43,7 +43,7 @@ router.get('/:difficulty(easy|medium|hard)/:id/:lang(c|cpp|java)', function(req,
   console.log(req.params.lang);
         mongoose.model('questions').find( { difficulty:req.params.difficulty } ,function(err,questions){
           if(req.params.id.charCodeAt(0)-64 <= questions.length)
-            res.render('editor2', { questions:questions , id:req.params.id ,lang: req.param.lang})
+            res.render('editor2', { questions:questions , id:req.params.id ,lang: req.params.lang})
           else {
             // Give 404 Error.
             // No such question found.

@@ -87,8 +87,14 @@
 
                 <div class="col-md-6" id="right-col">
                       <div class="row" id="right-col-header">
-                          <div class="col-md-7">Code.<%= lang%></div>
-                          <div class="col-md-3">
+                          <div class="col-md-6">
+                            <% if(lang!=""){ %>
+                              Code.<%= lang%>
+                            <% }else{ %>
+                              Code.txt
+                            <% } %>
+                          </div>
+                          <div class="col-md-4">
                             <select id="languageSelector" onchange="changeLanguage()" name="lang" required="required" class="form-control languageSelector">
                             <% if(lang==""){ %>
                                 <option value="-1" lang="" selected="selected" >Select a Language </option>
@@ -97,21 +103,37 @@
                                 <option value="2" lang="cpp" <% if(lang=="cpp"){ %> selected="selected" <% } %> >C++ </option>
                                 <!-- <option value="9">C# </option> -->
                                 <option value="3" lang="java" <% if(lang=="java"){ %> selected="selected" <% } %> >Java</option>
-                                <option value="20" lang="javascript" <% if(lang=="javascript"){ %> selected="selected" <% } %> >Javascript </option>
+                                <!-- <option value="20" lang="javascript" <% if(lang=="javascript"){ %> selected="selected" <% } %> >Javascript </option> -->
                                 <!-- <option value="5">Python </option> -->
                             </select>
                           </div>
                           <div class="col-md-1">Reset</div>
                           <div class="col-md-1">Full.</div>
                       </div>
-                      <div class="row" id="editor">#include&lt;iostream&gt;
+                      <div class="row" id="editor"><% if(lang=='cpp'){ %>#include&lt;iostream&gt;
 using namespace std;
 
 int main()
 {
-    // TODO..
+    // cout << "Hello from C++";
     return 0;
-}</div>
+}
+<% } else if(lang=='java'){ %>class Code
+{
+    public static void main( String args[] )
+    {
+        // System.out.println("Hello from Java");
+    }
+}
+<% } else if(lang=='c'){ %>#include&lt;stdio.h&gt;
+
+int main()
+{
+    // printf("Hello from C");
+    return 0;
+}
+<% } else { %> // Please Select a Language.<% } %>
+</div>
                       <div class="row" id="right-col-sub-header">
                         <div class="col-md-6">Input</div>
                         <div class="col-md-6">Output</div>
