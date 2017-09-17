@@ -42,6 +42,13 @@ fs.readdirSync(__dirname + '/models').forEach(function(filename){
   require(__dirname + '/models/' + filename);
 });
 
+app.use(function(req, res, next) {
+   if(req.url.substr(-1) == '/' && req.url.length > 1)
+       res.redirect(301, req.url.slice(0, -1));
+   else
+       next();
+});
+
 // app.use('/', home);
 
 app.use('/CodeEnigma', CodeEnigma);

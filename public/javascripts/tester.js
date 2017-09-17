@@ -35,7 +35,10 @@ $('#runButton').click(function(){
 
 });
 
-function changeLanguage(){
+function changeLanguage(currentOp){
+	//var e = document.getElementById("languageSelector");
+	//var strUser = e.options[e.selectedIndex].text;
+	//alert(strUser);
  var langNo=document.getElementById('languageSelector').value;
 
  var lang; // for Ace
@@ -57,6 +60,7 @@ function changeLanguage(){
 		break;
  }
 
+	//alert(req.url);
 	//alert( $('#languageSelector') );
 	window.location.href = lang;
 }

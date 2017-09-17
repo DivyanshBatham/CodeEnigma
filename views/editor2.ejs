@@ -19,9 +19,15 @@
                         <% var url = question.id %>
                         <% if(id==question.id){ %>
                           <li><button type="button" class="btn btn-circle active"><%= question.id %></button></li>
+                        <% }else if(lang!=""){ %>
+                          <li><button type="button" class="btn btn-circle" onclick="window.location ='../<%= question.id %>/<%= lang %>'"><%= question.id %></button></li>
                         <% }else{ %>
-                          <li><button type="button" class="btn btn-circle" onclick="window.location ='../<%= question.id %>/cpp'"><%= question.id %></button></li>
-                      <% }}); %>
+                          <li><button type="button" class="btn btn-circle" onclick="window.location ='<%= question.id %>'"><%= question.id %></button></li>
+                        <% }}); %>
+
+                        <!-- Instead of using buttons use anchor tags and add href for ip:port/... -->
+
+
                       <!-- <li><button type="button" class="btn btn-circle">A</button></li>
                       <li><button type="button" class="btn btn-circle active">B</button></li>
                       <li><button type="button" class="btn btn-circle">C</button></li>
@@ -54,17 +60,17 @@
                       <div class="row" id="left-col-body">
                         <div class ="col-md-12">
                           <span id="span">
-                          <%= console.log('\n\nGOT THIS\n\n') %>
+                          <%# console.log('\n\nGOT THIS\n\n') %>
 
-                          <%    console.log(questions); %>
-                          <%    var x = "dasdasd0"; %>
+                          <%#    console.log(questions); %>
+                          <%#    var x = "dasdasd0"; %>
                           <!-- <h5><%= questions.title %></h5> -->
-                          <h5><%= questions[id.charCodeAt(0)-65].title %></h5>
-                          <p><%= questions[id.charCodeAt(0)-65].description %></p>
+                          <h5><%- questions[id.charCodeAt(0)-65].title %></h5>
+                          <p><%- questions[id.charCodeAt(0)-65].description %></p>
                           <h6>Input Format:</h6>
-                          <%= questions[id.charCodeAt(0)-65].inputFormat %> </br></br>
+                          <%- questions[id.charCodeAt(0)-65].inputFormat %>
                           <h6>Output Format:</h6>
-                          <%= questions[id.charCodeAt(0)-65].outputFormat %> </br>
+                          <%- questions[id.charCodeAt(0)-65].outputFormat %> </br>
                           </br></br>
                           <h6>Example:</h6>
                           <h6>Input: </h6>
@@ -95,7 +101,7 @@
                             <% } %>
                           </div>
                           <div class="col-md-4">
-                            <select id="languageSelector" onchange="changeLanguage()" name="lang" required="required" class="form-control languageSelector">
+                            <select id="languageSelector" onchange="changeLanguage(this)" name="lang" required="required" class="form-control languageSelector">
                             <% if(lang==""){ %>
                                 <option value="-1" lang="" selected="selected" >Select a Language </option>
                             <% } %>
@@ -237,8 +243,8 @@ int main()
         <script src="/javascripts/ace-builds-master/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
         <script>
 
-            // alert('<%= x %>');
-            // document.getElementById('span').innerHTML = "<h1>hello</h1>";
+
+
             var editor = ace.edit("editor");
             editor.setTheme("ace/theme/twilight");
 

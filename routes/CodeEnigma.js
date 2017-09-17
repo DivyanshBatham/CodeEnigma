@@ -25,7 +25,7 @@ router.get('/:difficulty', function(req, res, next) {
 });
 
 router.get('/:difficulty(easy|medium|hard)/:id', function(req, res, next) {
-  console.log(req.params.lang);
+  console.log("/:id",req.params.lang);
   mongoose.model('questions').find( { difficulty:req.params.difficulty } ,function(err,questions){
     if(req.params.id.charCodeAt(0)-64 <= questions.length)
       res.render('editor2', { questions:questions , id:req.params.id ,lang: ""})
@@ -40,7 +40,7 @@ router.get('/:difficulty(easy|medium|hard)/:id', function(req, res, next) {
 router.get('/:difficulty(easy|medium|hard)/:id/:lang(c|cpp|java)', function(req, res, next) {
   // If helpful 404 error needed, then uncomment the following and remove regex for lang :
   // if(req.params.id.match(/c|cpp|java/)) {
-  console.log(req.params.lang);
+  console.log("/:id/",req.params.lang);
         mongoose.model('questions').find( { difficulty:req.params.difficulty } ,function(err,questions){
           if(req.params.id.charCodeAt(0)-64 <= questions.length)
             res.render('editor2', { questions:questions , id:req.params.id ,lang: req.params.lang})
