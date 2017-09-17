@@ -90,6 +90,16 @@ a:active { text-decoration: none; }
   margin-top: 15vh;
   /*bottom: 15px;*/
 }
+
+.badge {
+  /*color: #ffbe4a;*/
+  font-size: 18px;
+}
+
+.badge:hover {
+  color: #ffbe4a;
+}
+
 #ques li {
   margin-top:15px;
   margin-left: 25px;
@@ -101,8 +111,22 @@ a:active { text-decoration: none; }
     display: block;
     color: #FFF;
     padding: 8px 16px;
-    text-decoration: none;
     background-color: #202228;
+    text-decoration: none;
+}
+
+a p {
+  font-size: 15px;
+}
+
+#ques li .solved {
+    font-size: 20px;
+    /*text-align: center;*/
+    display: block;
+    /*color: #FFF;*/
+    padding: 8px 16px;
+    color: #636770;
+    text-decoration: none;
 }
 
 /* Change the link color on hover */
@@ -113,9 +137,15 @@ a:active { text-decoration: none; }
     color: #ffbe4a;
 }
 
+#ques li .solved:hover {
+    color: #FFF;
+}
+
+
 #ques li a.active {
   /*background-image: url("../Active.png");*/
 }
+
 
 ::-webkit-scrollbar-track
 {
