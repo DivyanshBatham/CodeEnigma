@@ -6,7 +6,8 @@ var hackerRank = require('machinepack-hackerrank');
 router.post('/', function(req, res, next) {
   	console.log("\n\n Got a request");
 	//console.log(req.body.input);
- 	var inputs = req.body.input.toString().split(/\W+/g);
+ // 	var inputs = req.body.input.toString().split(/\W+/g);
+ 	var inputs = [req.body.input];
  	console.log(inputs);
 hackerRank.submit({
 	apiKey: 'hackerrank|515066-1831|aefbf1c26653c1454fb1b2ad4a383892cbce27e9',
@@ -32,7 +33,7 @@ hackerRank.submit({
 	 res.json(response);
 	},
 	});
- 
+
 
 });
 
