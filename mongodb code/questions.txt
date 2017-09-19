@@ -60,3 +60,40 @@ db.questions.insert( {
 "sampleInput" : "5</br>456</br>123</br>17</br>12345</br>459",
 "sampleOutput" : "6</br>6</br>8</br>6</br>9"
 } );
+
+
+
+<h5>Recursive Sum of Digits</h5>
+
+Given a number N, find the sum of it's digits. If the sum if not a single digit
+number then again find the sum of it's digits. Repeat this procedure until you get a
+single digit sum and then print it.
+
+<br><br>
+
+<h6>Input Format:</h6>
+
+<ul><li>1st line contains an integer T(Number of testcases/inputs).</li><li>Next T lines contains the numbers n<sub>1</sub>, n<sub>2</sub>, n<sub>3</sub>, ..., n<sub>T</sub>.</li></ul>
+
+<h6>Output Format:</h6>
+For each number n<sub>1</sub>, n<sub>2</sub>, n<sub>3</sub>, ..., n<sub>T</sub>,
+print their recursive sum in separate lines.
+
+<br><br>
+
+<div class="row">
+    <div class="col-md-6">
+        <h6>Input:</h6>
+<pre class=code>
+ 7
+ 4 4 5 5 4 54
+</pre>
+    </div>
+    <div class="col-md-6">
+        <h6>Output:</h6>
+<pre class=code>
+ 7
+ 4 4 5 5 4 54
+</pre>
+    </div>
+</div>

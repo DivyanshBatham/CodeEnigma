@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>CodeEnigma | Insert</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+        <link rel='stylesheet' href='/stylesheets/nprogress.css'/>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <!-- HEADER -->
+            <div class="row" id="header">
+              <div class="col-md-12">
+                INSERT
+              </div>
+            </div>
+
+            <!-- MAIN-CONTENT -->
+            <div class="row" id="main-content">
+
+                <div class="col-md-6" id="left-col">
+                      <div class="row" id="left-col-header">
+                        <div class ="col-md-12">    <!-- Is this Needed ? -->
+                          <p>Description</p>
+                        </div>
+                      </div>
+                      <div class="row" id="left-col-body">
+                        <div class ="col-md-12">
+                          <span id="span">
+                        </span>
+                        </div>
+                      </div>
+                </div>
+
+                <div class="col-md-6" id="right-col">
+                      <div class="row" id="right-col-header">
+                          <div class="col-md-6">
+                            Description Markup
+                          </div>
+                          <div class="col-md-4">
+                            <select id="difficultySelector" name="lang" required="required">
+                                <option value="1" difficulty="easy" selected="selected" >Easy</option>
+                                <option value="2" difficulty="medium" selected="selected" >Medium</option>
+                                <option value="3" difficulty="hard" selected="selected" >Hard</option>
+                            </select>
+                          </div>
+                          <div class="col-md-1">Reset</div>
+                          <div class="col-md-1">Full.</div>
+                      </div>
+                      <div class="row" id="editor" onkeyup='showData()'></div>
+                      <div class="row" id="right-col-sub-header">
+                        <div class="col-md-6">Input</div>
+                        <div class="col-md-6">Output</div>
+                      </div>
+                      <div class="row" id="right-col-io">
+                        <div class="col-md-6">
+                          <div class="row" id="editor2">Give your inputs here, before running.</div>
+                        </div>
+                        <div class="col-md-6" id="editor3">Output comes here.
+Test Results:
+<!-- Test Case 1 : <span class="badge">✓</span> -->
+Test Case 1 : <span class="badge">✔</span>
+Test Case 2 : <span class="badge">✘</span>
+<!-- Test Case 2 : <span class="badge">✔️</span> -->
+<!-- Test Case 2 : <span class="badge">✖</span> -->
+
+                        </div>
+                      </div>
+                </div>
+            </div>
+
+            <!-- FOOTER -->
+            <div class="row" id="header">
+                <div class="col-md-10"></div>
+                <div class="col-md-1">
+                  <button id="insertButton" type = "button" class = "btn btn-success">INSERT</button>
+                </div>
+            </div>
+
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="/javascripts/bootstrap.min.js"></script>
+        <script src="/javascripts/jquery-3.2.1.min.js"></script>
+        <script src="/javascripts/tester.js"></script>
+        <script src='/javascripts/nprogress.js'></script>
+        <script src='/javascripts/insert.js'></script>
+        <link rel="stylesheet" href="/stylesheets/insert.css">
+        <script src="/javascripts/ace-builds-master/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+        <script>
+
+
+
+            var editor = ace.edit("editor");
+            editor.setTheme("ace/theme/twilight");
+            editor.getSession().setUseWrapMode(true);
+            editor.session.setMode("ace/mode/html");
+
+            // var code = "ace/mode/"+ langCode ;
+            // alert(code);
+            // editor.session.setMode(code);
+            editor.setShowPrintMargin(false);
+            document.getElementById('editor').style.fontSize='15px';
+
+            var editor2 = ace.edit("editor2");
+            editor2.setTheme("ace/theme/twilight");
+            editor2.session.setMode("ace/mode/plain_text");
+            // editor2.renderer.setShowGutter(false);
+            document.getElementById('editor2').style.fontSize='13px';
+
+            var editor3 = ace.edit("editor3");
+            editor3.setTheme("ace/theme/twilight");
+            editor3.session.setMode("ace/mode/plain_text");
+            // editor3.renderer.setShowGutter(false);
+            editor3.setReadOnly(true);
+            document.getElementById('editor3').style.fontSize='13px';
+
+        </script>
+    </body>
+</html>
