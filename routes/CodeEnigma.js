@@ -13,10 +13,6 @@ router.get('/:difficulty', function(req, res, next) {
   console.log("/:difficulty");
   if(req.params.difficulty=='login')
       res.render('login', { title: 'Login' });
-
-  if(req.params.difficulty=='insert')
-    res.render('insert', { title: 'Insert' });
-
   else if( ['easy','medium','hard','instructions'].indexOf(req.params.difficulty)!=-1 )
     mongoose.model('questions').find( { difficulty:req.params.difficulty } ,function(err,questions){
       res.render('home', { questions:questions, difficulty:req.params.difficulty })
