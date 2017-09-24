@@ -87,7 +87,7 @@
   cursor: pointer;
 }
 
-.active {
+#header .active {
   width: 30px;
   height: 30px;
   text-align: center;
@@ -134,6 +134,42 @@
   line-height:5vh;
 }
 
+#left-col-header ul {
+  height: 100%;
+  width: 100%;
+  margin-left: -16px;
+}
+#left-col-header ul li {
+  height: 100%;
+  color : #AAA;
+  display: inline;
+  text-align: center;
+  padding-left: 15px;
+  padding-right: 15px;
+  cursor: pointer;
+  /*margin-left: 10px;*/
+  /*margin-right: 10px;*/
+}
+
+
+#left-col-header ul li:hover {
+  display: inline;
+  color: #FFF;
+  padding-bottom: 0.9vh;
+  /*border-bottom: 2.8px solid #FFF;*/
+  transition: color .2s ease-out;
+}
+
+#left-col-header ul li.active {
+  display: inline;
+  color: #ffbe4a;
+  padding-bottom: 0.9vh;
+  border-bottom: 2.8px solid #ffbe4a;
+  /*transition: color .2s ease-in;*/
+  /*transition: border .2s ease-in;*/
+}
+
+/*
 #left-col-body {
   color: #000;
   background-color: #D9D9D9;
@@ -141,15 +177,37 @@
   overflow: auto;
   overflow-x: hidden;
   padding: 10px;
+}*/
+
+
+#left-col-body-description {
+  color: #000;
+  background-color: #D9D9D9;
+  height: 94%;
+  overflow: auto;
+  overflow-x: hidden;
+  padding: 10px;
+  display: none;
+}
+
+#left-col-body-test-results {
+  color: #000;
+  background-color: #D9D9D9;
+  height: 94%;
+  overflow: auto;
+  overflow-x: hidden;
+  padding: 10px;
+  /*display: none;*/
 }
 
 .code {
-  margin-left: 7px;
+  margin-left: 15px;
+  margin-right: 15px;
   padding: 8px;
   color: #D9D9D9;
-  background-color: #202228;
+  background-color: #202020;
+  border-left: 10px solid #353535;
 }
-
 
 #languageSelector {
   background-color: #31343D;
@@ -186,6 +244,41 @@
 #editor3 {
   position: relative;
   height: 100%;
+}
+
+#editor3 .ace_scroller {
+  cursor: not-allowed;
+}
+/*
+.radioLabel {
+  color: #AAAAAA;
+}
+.radioLabel:hover {
+  color : #ffbe4a;
+}
+.radio {
+  margin: 5px;
+  cursor: pointer;
+}
+
+.radio:hover {
+  color: #FFFFFF;
+}
+
+.radio:checked {
+  color: #ffbe4a;
+}*/
+
+.radio {
+  color : #AAAAAA;
+}
+
+.radio:hover {
+  color : #FFFFFF;
+}
+
+.radioButton:checked ~ .radioLabel {
+  color: #ffbe4a;
 }
 
 #runButton, #submitButton {

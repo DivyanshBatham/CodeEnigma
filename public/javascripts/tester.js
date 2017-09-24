@@ -107,3 +107,25 @@ function run()
 
 
 }
+
+
+function changeTab(clickedButton) {
+	// alert(clickedButton);
+	// console.log(clickedButton);
+	if(clickedButton=="Description")
+	{
+		document.getElementById('tabR').classList.remove('active');
+		document.getElementById('tabD').classList.remove('active');
+		document.getElementById('tabD').classList.add('active');
+		// document.getElementById('left-col-body-description').style.display = '';
+		// document.getElementById('left-col-body-test-results').style.display = 'none';
+	}
+	else
+	{
+		document.getElementById('tabD').classList.remove('active');
+		document.getElementById('tabR').classList.remove('active');
+		document.getElementById('tabR').classList.add('active');
+		// document.getElementById('left-col-body-description').style.display = 'none';
+		// document.getElementById('left-col-body-test-results').style.display = '';
+	}
+}

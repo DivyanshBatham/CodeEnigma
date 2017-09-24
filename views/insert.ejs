@@ -11,7 +11,20 @@
         <div class="container-fluid">
             <!-- HEADER -->
             <div class="row" id="header">
-              <div class="col-md-12">
+              <div class="col-md-1">
+                <input type="text" class="form-control" id="id" placeholder="id">
+              </div>
+              <div class="col-md-6">
+                <input type="text" class="form-control" id="title" placeholder="title">
+              </div>
+              <div class="col-md-3">
+                <select id="difficultySelector" name="lang" required="required">
+                    <option value="easy" selected="selected" >Easy</option>
+                    <option value="medium" >Medium</option>
+                    <option value="hard" >Hard</option>
+                </select>
+              </div>
+              <div class="col-md-2">
                 INSERT
               </div>
             </div>
@@ -22,7 +35,7 @@
                 <div class="col-md-6" id="left-col">
                       <div class="row" id="left-col-header">
                         <div class ="col-md-12">    <!-- Is this Needed ? -->
-                          <p>Description</p>
+                          <p>description</p>
                         </div>
                       </div>
                       <div class="row" id="left-col-body">
@@ -39,19 +52,19 @@
                             Description Markup
                           </div>
                           <div class="col-md-4">
-                            <select id="difficultySelector" name="lang" required="required">
-                                <option value="1" difficulty="easy" selected="selected" >Easy</option>
-                                <option value="2" difficulty="medium" selected="selected" >Medium</option>
-                                <option value="3" difficulty="hard" selected="selected" >Hard</option>
-                            </select>
+                            <!-- <select id="difficultySelector" name="lang" required="required">
+                                <option value="easy" selected="selected" >Easy</option>
+                                <option value="medium" selected="selected" >Medium</option>
+                                <option value="hard" selected="selected" >Hard</option>
+                            </select> -->
                           </div>
                           <div class="col-md-1">Reset</div>
-                          <div class="col-md-1">Full.</div>
+                          <div class="col-md-1"></div>
                       </div>
                       <div class="row" id="editor" onkeyup='showData()'></div>
                       <div class="row" id="right-col-sub-header">
-                        <div class="col-md-6">Input</div>
-                        <div class="col-md-6">Output</div>
+                        <div class="col-md-6">sampleInput</div>
+                        <div class="col-md-6">shortDescription</div>
                       </div>
                       <div class="row" id="right-col-io">
                         <div class="col-md-6">
@@ -113,7 +126,7 @@ Test Case 2 : <span class="badge">✘</span>
             editor3.setTheme("ace/theme/twilight");
             editor3.session.setMode("ace/mode/plain_text");
             // editor3.renderer.setShowGutter(false);
-            editor3.setReadOnly(true);
+            // editor3.setReadOnly(true);
             document.getElementById('editor3').style.fontSize='13px';
 
         </script>

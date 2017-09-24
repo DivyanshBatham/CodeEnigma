@@ -28,7 +28,16 @@
           </ul>
         </div>
         <div class="col-md-9" id="right-col">
-          <br>Home > Easy
+          <!-- <div class="dropdown">
+              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Welcome, CE001
+              <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li><a href="#">HTML</a></li>
+                <li><a href="#">CSS</a></li>
+                <li><a href="#">JavaScript</a></li>
+              </ul>
+            </div> -->
+          <br>Home > <%= difficulty.charAt(0).toUpperCase() + difficulty.slice(1) %>
           <br>
           <!-- <div class="progress">
             <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
@@ -38,14 +47,14 @@
 
           <ul id="ques"> <!-- Href Calls -->
             <% questions.forEach(function(question){ %>
-              <li><a href="<%= difficulty %>/<%= question.id %>">
+              <li><a href="<%= difficulty %>/<%= question.id %>/cpp">
                   <!-- <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span> -->
-                  <% if(question.id=='B' || question.id=='D'){ %>
-                    <span class="badge">✓</span>
-                  <% }else{ %>
+                  <%# if(question.id=='B' || question.id=='D'){ %>
+                    <!-- <span class="badge">✓</span> -->
+                  <%# }else{ %>
                     <span class="badge"><%= question.id %>.</span>
-                  <% } %>
-                  <%- question.title %>:<br><p><%- question.description.slice(0,250) %>...</p>
+                  <%# } %>
+                  <%- question.title %> :<br><p><%- question.shortDescription %></p>
                 </a>
               </li>
             <% }); %>

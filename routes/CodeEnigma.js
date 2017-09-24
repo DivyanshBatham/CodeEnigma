@@ -1,5 +1,6 @@
 var express = require('express');
 const mongoose = require('mongoose');
+var questions = require('../models/questions');
 var router = express.Router();
 
 /* GET home page. */
@@ -13,8 +14,10 @@ router.get('/:difficulty', function(req, res, next) {
   console.log("/:difficulty");
   if(req.params.difficulty=='login')
       res.render('login', { title: 'Login' });
+
   else if( ['easy','medium','hard','instructions'].indexOf(req.params.difficulty)!=-1 )
-    mongoose.model('questions').find( { difficulty:req.params.difficulty } ,function(err,questions){
+    // mongoose.model('questions').find( { difficulty:req.params.difficulty } ,function(err,questions){
+    questions.find( { difficulty:req.params.difficulty } ,function(err,questions){
       res.render('home', { questions:questions, difficulty:req.params.difficulty })
     });
   else {
@@ -28,7 +31,7 @@ router.get('/:difficulty(easy|medium|hard)/:id', function(req, res, next) {
   console.log("/:id",req.params.lang);
   mongoose.model('questions').find( { difficulty:req.params.difficulty } ,function(err,questions){
     if(req.params.id.charCodeAt(0)-64 <= questions.length)
-      res.render('editor2', { questions:questions , id:req.params.id ,lang: ""})
+      res.render('editor2', { questions:questions , id:req.params.id ,lang: "",difficulty:req.params.difficulty})
     else {
       // Give 404 Error.
       // No such question found.
@@ -43,7 +46,7 @@ router.get('/:difficulty(easy|medium|hard)/:id/:lang(c|cpp|java)', function(req,
   console.log("/:id/",req.params.lang);
         mongoose.model('questions').find( { difficulty:req.params.difficulty } ,function(err,questions){
           if(req.params.id.charCodeAt(0)-64 <= questions.length)
-            res.render('editor2', { questions:questions , id:req.params.id ,lang: req.params.lang})
+            res.render('editor2', { questions:questions , id:req.params.id ,lang: req.params.lang, difficulty:req.params.difficulty})
           else {
             // Give 404 Error.
             // No such question found.

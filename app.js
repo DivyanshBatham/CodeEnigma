@@ -17,6 +17,7 @@ var editor = require('./routes/editor');
 var editor2 = require('./routes/editor2');
 var run = require('./routes/run');
 var login = require('./routes/login');
+var insert = require('./routes/insert');
 
 
 var app = express();
@@ -37,10 +38,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 mongoose.connect('mongodb://localhost:27017/enigmadb');
 
 // Models for Mongoose :
-fs.readdirSync(__dirname + '/models').forEach(function(filename){
+var users = require('./models/users');
+var questions = require('./models/questions');
+var ques = require('./models/ques');
+/*fs.readdirSync(__dirname + '/models').forEach(function(filename){
   if(~filename.indexOf('.js'))
-  require(__dirname + '/models/' + filename);
-});
+    require(__dirname + '/models/' + filename);
+});*/
 
 app.use(function(req, res, next) {
    if(req.url.substr(-1) == '/' && req.url.length > 1)
@@ -56,6 +60,7 @@ app.use('/users', users);
 app.use('/editor', editor);
 app.use('/editor2', editor2);
 app.use('/run', run);
+app.use('/insert', insert);
 // app.use('/CodeEnigma/login', login);
 
 // catch 404 and forward to error handler

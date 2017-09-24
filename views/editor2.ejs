@@ -37,7 +37,13 @@
                     <ul>
                 </div>
                 <div class="col-md-2">
-                  EASY (5 Points)
+                  <% if(difficulty=='easy'){ %>
+                    EASY (5 Points)
+                  <% } else if(difficulty=='medium'){ %>
+                    MEDIUM (15 Points)
+                  <% } else if(difficulty=='hard'){ %>
+                    HARD (25 Points)
+                  <% } %>
                 </div>
                 <div class="col-md-2"></div>
                 <div class="col-md-2">
@@ -52,86 +58,102 @@
             <div class="row" id="main-content">
 
                 <div class="col-md-6" id="left-col">
+
+
+
+
+<div id="left-col-header" class="row">
+<ul>
+			<li id="tabD" class="active" onclick="changeTab('Description')">
+        Description
+			</li>
+      <li id="tabR" class="" onclick="changeTab('TestResults')">
+        Test Results
+			</li>
+</ul>
+</div>
+
+
+<div class="row" id="left-col-body-description">
+  <div class ="col-md-12">
+    <span id="span">
+<%- questions[id.charCodeAt(0)-65].description %>
+  </span>
+  </div>
+</div>
+
+<div class="row" id="left-col-body-test-results">
+  <div class ="col-md-12">
+
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+          <h4 class="panel-title">
+            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Collapsible Group Item #1
+            </a>
+          </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingTwo">
+          <h4 class="panel-title">
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              Collapsible Group Item #2
+            </a>
+          </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingThree">
+          <h4 class="panel-title">
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              Collapsible Group Item #3
+            </a>
+          </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+
+
+
+<!--
                       <div class="row" id="left-col-header">
-                        <div class ="col-md-12">    <!-- Is this Needed ? -->
+                        <div class ="col-md-12">    <!- - Is this Needed ? - ->
                           <p>Description</p>
                         </div>
                       </div>
                       <div class="row" id="left-col-body">
                         <div class ="col-md-12">
                           <span id="span">
-
-                            <h5>Recursive Sum of Digits</h5>
-
-                            Given a number N, find the sum of it's digits. If the sum if not a single digit
-                            number then again find the sum of it's digits. Repeat this procedure until you get a
-                            single digit sum and then print it.
-
-                            <br><br>
-
-                            <h6>Input Format:</h6>
-
-                            <ul><li>1st line contains an integer T(Number of testcases/inputs).</li><li>Next T lines contains the numbers n<sub>1</sub>, n<sub>2</sub>, n<sub>3</sub>, ..., n<sub>T</sub>.</li></ul>
-
-                            <h6>Output Format:</h6>
-                            For each number n<sub>1</sub>, n<sub>2</sub>, n<sub>3</sub>, ..., n<sub>T</sub>,
-                            print their recursive sum in separate lines.
-
-                            <br><br>
-
-                            <!-- <div class="row"> -->
-                                <div class="col-md-6">
-                                    <h6>Input:</h6>
-<pre class=code>
-  5
-  456
-  123
-  17
-  12345
-  459
-</pre>
-                                </div>
-                                <div class="col-md-6">
-                                    <h6>Output:</h6>
-<pre class=code>
-  6
-  6
-  8
-  6
-  9
-</pre>
-                                </div>
-                            <!-- </div> -->
-
-<!-- ############################################################## -->
-                          <!-- <%# console.log('\n\nGOT THIS\n\n') %>
-
-                          <%#    console.log(questions); %>
-                          <%#    var x = "dasdasd0"; %>
-                          <!- - <h5><%= questions.title %></h5> - ->
-                          <h5><%- questions[id.charCodeAt(0)-65].title %></h5>
-                          <p><%- questions[id.charCodeAt(0)-65].description %></p>
-                          <h6>Input Format:</h6>
-                          <%- questions[id.charCodeAt(0)-65].inputFormat %>
-                          <h6>Output Format:</h6>
-                          <%- questions[id.charCodeAt(0)-65].outputFormat %> </br>
-                          </br></br>
-
-                          <div class="row">
-                              <div class="col-md-6">
-                                  <h6>Input:</h6>
-                                  <%- questions[id.charCodeAt(0)-65].sampleInput %> </br>
-                              </div>
-                              <div class="col-md-6">
-                                  <h6>Output:</h6>
-                                  <%- questions[id.charCodeAt(0)-65].sampleOutput %> </br>
-                              </div>
-                          </div>
- -->
-                          <!-- ############################################################## -->
+    <%- questions[id.charCodeAt(0)-65].description %>
                         </span>
                         </div>
                       </div>
+-->
+
+
+
                 </div>
 
                 <div class="col-md-6" id="right-col">
@@ -189,16 +211,19 @@ int main()
                       </div>
                       <div class="row" id="right-col-io">
                         <div class="col-md-6">
-                          <div class="row" id="editor2">Give your inputs here, before running.</div>
+                          <div class="row" id="editor2"><%= questions[id.charCodeAt(0)-65].sampleInput %></div>
                         </div>
-                        <div class="col-md-6" id="editor3">Output comes here.
+                        <div class="col-md-6">
+                          <div class="row" id="editor3">Output comes here.
+
 <!-- Test Results: -->
 <!-- Test Case 1 : <span class="badge">✓</span> -->
-<!-- Test Case 1 : <span class="badge">✔</span> -->
-<!-- Test Case 2 : <span class="badge">✘</span> -->
+Test Case 1 : <span class="badge">✔</span>
+Test Case 2 : <span class="badge">✘</span>
 <!-- Test Case 2 : <span class="badge">✔️</span> -->
 <!-- Test Case 2 : <span class="badge">✖</span> -->
 
+                          </div>
                         </div>
                       </div>
                 </div>
@@ -206,7 +231,13 @@ int main()
 
             <!-- FOOTER -->
             <div class="row" id="header">
-                <div class="col-md-10"></div>
+                <div class="col-md-6"></div>
+                <div class="col-md-4">
+                  <div class="radio">
+                    <input type="radio" name="optradio" class="radioButton">
+                    <label class="radioLabel">Run againt custom input</label>
+                  </div>
+                </div>
                 <div class="col-md-1">
                   <button id="runButton" type = "button" class = "btn btn-info">RUN</button>
                 </div>

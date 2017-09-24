@@ -15,4 +15,4 @@ var usersSchema = new Schema({
   pass: String
 });
 
-mongoose.model('users', usersSchema);
+module.exports = mongoose.model('users', usersSchema);
