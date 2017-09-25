@@ -1,6 +1,8 @@
 $(document).ready(function(){
+	$(".pHead").click(function(){
+				$(this).next().slideToggle("medium");
+    });
 
-	//alert("document ready");
 });
 $('#runButton').click(function(){
 	NProgress.done();
@@ -117,6 +119,9 @@ function changeTab(clickedButton) {
 		document.getElementById('tabR').classList.remove('active');
 		document.getElementById('tabD').classList.remove('active');
 		document.getElementById('tabD').classList.add('active');
+		$("#left-col-body-description").show();
+		$("#left-col-body-test-results").hide();
+
 		// document.getElementById('left-col-body-description').style.display = '';
 		// document.getElementById('left-col-body-test-results').style.display = 'none';
 	}
@@ -125,7 +130,21 @@ function changeTab(clickedButton) {
 		document.getElementById('tabD').classList.remove('active');
 		document.getElementById('tabR').classList.remove('active');
 		document.getElementById('tabR').classList.add('active');
+		$("#left-col-body-description").hide();
+		$("#left-col-body-test-results").show();
+
 		// document.getElementById('left-col-body-description').style.display = 'none';
 		// document.getElementById('left-col-body-test-results').style.display = '';
 	}
+}
+
+function pToggle(x) {
+		console.log(x);
+
+		// console.log(x.next());
+
+
+					$(".pBody").slideToggle("slow");
+
+
 }
