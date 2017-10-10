@@ -10,30 +10,98 @@ $('#runButton').click(function(){
 
 	//alert("runButton");
 
+	console.log(config);
+	console.log(sampleOutput);
+	console.log(sampleInput);
+
+	if($("#customInput").is(':checked'))
+	{
+		// Custom Inputs.
 		var config = {
 			source : editor.getValue(),
 			input  : editor2.getValue(),
 			langNo : document.getElementById('languageSelector').value,
 		};
-	console.log(config);
-
-		$.ajax({
-				type:'POST',
-				url:'/run',
-				data:config,
-				dataType:'json',
-				success: function(res){
-					console.log("Hey");
-					var R = JSON.parse(res);
-					console.log(R);
-					console.log(R.result);
-					if(R.result.compilemessage=="")
-						editor3.setValue(R.result.stdout[0]);
-					else
-						editor3.setValue(R.result.compilemessage);
+				$.ajax({
+					type:'POST',
+					url:'/run',
+					data:config,
+					dataType:'json',
+					success: function(res){
+						console.log("Hey");
+						var R = JSON.parse(res);
+						console.log(R);
+						console.log(R.result);
+						if(R.result.compilemessage=="")
+						{
+							editor3.setValue(R.result.stdout[0]);
+						}
+						else
+						{
+							editor3.setValue(R.result.compilemessage);
+						}
 						NProgress.done();
-				}
-			});
+					}
+				});
+	}
+	else
+	{
+		// Test againsts sampleInput
+		var config = {
+			source : editor.getValue(),
+			input  : sampleInput,
+			langNo : document.getElementById('languageSelector').value,
+		};
+				$.ajax({
+					type:'POST',
+					url:'/run',
+					data:config,
+					dataType:'json',
+					success: function(res){
+						console.log("Hey");
+						var R = JSON.parse(res);
+						console.log(R);
+						console.log(R.result);
+						if(R.result.compilemessage=="")
+						{
+
+							// var matches = R.result.stdout[0].split('\n');
+							// var userOutputs = [];
+							// for( var i=0; i<matches.length; )
+							// {
+							//   t = matches.length/outputs.length;
+							//   testcase = [];
+							//   while(t--)
+							//   {
+							//     testcase.push(matches[i]);
+							//     i++;
+							//   }
+							//   userOutputs.push(testcase.join('\n'));
+							// }
+
+							// ALL THIS VALIDATION SHOULD BE DONE ON SERVER SIDE, WE SHOULD NOT OPEN THE VARIABLES TO CLIENT SIDE JS.
+							// Separate Outputs.
+								// outputLines/
+							// Match Corresponding outputs:
+								// Set icon, output, input(optional)
+								// $("td.output").each(function(){
+								// 	$(this).children().text(userOutputs.shift());
+								// });
+
+							// if(R.result.stdout[0]==sampleOutput)
+							// 	alert("Correct");
+
+							editor3.setValue(R.result.stdout[0]);
+							// Use jQuerry to retrive an array of output and set them
+						}
+						else
+						{
+							editor3.setValue(R.result.compilemessage);
+						}
+						NProgress.done();
+					}
+				});
+	}
 
 });
 
@@ -138,13 +206,13 @@ function changeTab(clickedButton) {
 	}
 }
 
-function pToggle(x) {
-		console.log(x);
-
-		// console.log(x.next());
-
-
-					$(".pBody").slideToggle("slow");
-
-
-}
+// function pToggle(x) {
+// 		console.log(x);
+//
+// 		// console.log(x.next());
+//
+//
+// 					$(".pBody").slideToggle("slow");
+//
+//
+// }

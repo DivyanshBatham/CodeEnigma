@@ -41,18 +41,122 @@
   line-height:5vh;
 }
 
-#left-col-body {
+
+#left-col-header ul {
+  height: 100%;
+  width: 100%;
+  margin-left: -16px;
+}
+#left-col-header ul li {
+  height: 100%;
+  color : #AAA;
+  display: inline;
+  text-align: center;
+  padding-left: 15px;
+  padding-right: 15px;
+  cursor: pointer;
+  /*margin-left: 10px;*/
+  /*margin-right: 10px;*/
+}
+
+
+#left-col-header ul li:hover {
+  display: inline;
+  color: #FFF;
+  padding-bottom: 0.9vh;
+  /*border-bottom: 2.8px solid #FFF;*/
+  transition: color .2s ease-out;
+}
+
+#left-col-header ul li.active {
+  display: inline;
+  color: #ffbe4a;
+  padding-bottom: 0.9vh;
+  border-bottom: 2.8px solid #ffbe4a;
+  /*transition: color .2s ease-in;*/
+  /*transition: border .2s ease-in;*/
+}
+
+#left-col-body-description {
   color: #000;
   background-color: #D9D9D9;
   height: 94%;
   overflow: auto;
   overflow-x: hidden;
   padding: 10px;
+  display: none;
+}
+
+#left-col-body-sample {
+  color: #000;
+  background-color: #D9D9D9;
+  height: 94%;
+  overflow: auto;
+  overflow-x: hidden;
+  padding: 10px;
+  /*display: none;*/
+}
+
+#left-col-body-hidden {
+  color: #000;
+  background-color: #D9D9D9;
+  height: 94%;
+  overflow: auto;
+  overflow-x: hidden;
+  padding: 10px;
+  display: none;
+}
+
+.pHead {
+  background-color: #202020;
+  color: #FFF;
+  /*color : #ffbe4a;*/
+  padding:10px;
+  margin-top: 12px;
+  cursor: pointer;
+}
+
+.badge {
+  color : #ffbe4a;
+}
+
+#arrow {
+  float: right;
+}
+
+.pBody {
+  background-color: #353535;
+  color: #FFF;
+  padding:10px;
+  /*display: none;*/
+}
+
+.pBody table {
+  width: 100%;
+  /*text-align: center;*/
+  table-layout: fixed;
+}
+
+.pBody table td {
+  width: 33%;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 10px;
+  /*overflow: scroll;*/
+  /*border: 2px solid black;*/
+  /*text-align: center;*/
+}
+
+.pBody .code {
+  margin: 0px;
+  border-left: 0px;
+  /*margin-left: 5px;*/
+  /*margin-right: 5px;*/
 }
 
 .code {
-  margin-left: 15px;
-  margin-right: 15px;
+  /*margin-left: 15px;*/
+  /*margin-right: 15px;*/
   padding: 8px;
   color: #D9D9D9;
   background-color: #202020;

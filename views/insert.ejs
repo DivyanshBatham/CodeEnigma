@@ -34,17 +34,86 @@
 
                 <div class="col-md-6" id="left-col">
                       <div class="row" id="left-col-header">
-                        <div class ="col-md-12">    <!-- Is this Needed ? -->
-                          <p>description</p>
-                        </div>
+                        <ul>
+                        			<li id="tabD" class="tab" onclick="changeTab('Description')">
+                                Description
+                        			</li>
+                              <li id="tabS" class="tab active" onclick="changeTab('Sample')">
+                                Sample Testcases
+                        			</li>
+                              <li id="tabH" class="tab" onclick="changeTab('Hidden')">
+                                Hidden Testcases
+                        			</li>
+                        </ul>
                       </div>
-                      <div class="row" id="left-col-body">
+                      <!-- <div class="row" id="left-col-body">
                         <div class ="col-md-12">
                           <span id="span">
                         </span>
                         </div>
+                      </div> -->
+                      <div class="row" id="left-col-body-description">
+                        <div class ="col-md-12">
+                          <span id="span"></span>
+                        </div>
                       </div>
-                </div>
+                      <!-- left-col-body-test-results -->
+                      <div class="row" id="left-col-body-sample">
+                        <div class ="col-md-12">
+                          <table>
+                            <tr>
+                              <td style="width:28%">Lines to ignore</td>
+                              <td style="width:70%; padding-left:20px;"><input type="number" class="form-control" id="ignoreLines" placeholder="ignoreLines"></td>
+                            </tr>
+                            <tr>
+                              <td>Lines to read for testcases</td>
+                              <td style="width:70%; padding-left:20px;"><input type="number" class="form-control" id="inputLines" placeholder="inputLines"></td>
+                            </tr>
+                            <tr>
+                              <td>Lines to read for Output</td>
+                              <td style="width:70%; padding-left:20px;"><input type="number" class="form-control" id="outputLines" placeholder="outputLines"></td>
+                            </tr>
+                            <tr>
+                              <td>sampleInput</td>
+                              <td style="width:70%; padding-left:20px;"><textarea class="form-control" rows="5" id="sampleInput"></textarea></td>
+                            </tr>
+                            <tr>
+                              <td>sampleOutput</td>
+                              <td style="width:70%; padding-left:20px;"><textarea class="form-control" rows="5" id="sampleOutput"></textarea></td>
+                            </tr>
+                          </table>
+
+                        </div>
+                      </div> <!-- left-col-body-sample -->
+
+                      <div class="row" id="left-col-body-hidden">
+                        <div class ="col-md-12">
+                            <table>
+                              <tr>
+                                <td style="width:28%">Lines to ignore</td>
+                                <td style="width:70%; padding-left:20px;"><input type="number" class="form-control"  placeholder="ignoreLines" disabled></td>
+                              </tr>
+                              <tr>
+                                <td>Lines to read for testcases</td>
+                                <td style="width:70%; padding-left:20px;"><input type="number" class="form-control" placeholder="inputLines" disabled></td>
+                              </tr>
+                              <tr>
+                                <td>Lines to read for Output</td>
+                                <td style="width:70%; padding-left:20px;"><input type="number" class="form-control"  placeholder="outputLines" disabled></td>
+                              </tr>
+                              <tr>
+                                <td>hiddenInput</td>
+                                <td style="width:70%; padding-left:20px;"><textarea class="form-control" rows="5" id="hiddenInput"></textarea></td>
+                              </tr>
+                              <tr>
+                                <td>hiddenOutput</td>
+                                <td style="width:70%; padding-left:20px;"><textarea class="form-control" rows="5" id="hiddenOutput"></textarea></td>
+                              </tr>
+                            </table>
+                        </div>
+                      </div>
+
+                </div>  <!--"#left-col" -->
 
                 <div class="col-md-6" id="right-col">
                       <div class="row" id="right-col-header">
@@ -96,8 +165,8 @@ Test Case 2 : <span class="badge">✘</span>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="/javascripts/bootstrap.min.js"></script>
         <script src="/javascripts/jquery-3.2.1.min.js"></script>
-        <script src="/javascripts/tester.js"></script>
-        <script src='/javascripts/nprogress.js'></script>
+        <!-- <script src="/javascripts/tester.js"></script> -->
+        <!-- <script src='/javascripts/nprogress.js'></script> -->
         <script src='/javascripts/insert.js'></script>
         <link rel="stylesheet" href="/stylesheets/insert.css">
         <script src="/javascripts/ace-builds-master/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>

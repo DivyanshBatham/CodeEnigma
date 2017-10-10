@@ -30,10 +30,47 @@ router.post('/', function(req, res, next) {
     title: req.body.title,
     description : req.body.description,
     shortDescription : req.body.shortDescription,
-    sampleInput : req.body.sampleInput
+    ignoreLines : req.body.ignoreLines,
+    inputLines : req.body.inputLines,
+    outputLines : req.body.outputLines,
+    sampleInput : req.body.sampleInput,
+    sampleOutput : req.body.sampleOutput
   }
 
-  console.log(data);
+  // ignoreLines : From insert.js
+  // inputLines : From insert.js
+  // outputLines : From insert.js
+
+// sampleInput : String
+// sampleOutput : String
+// inputs = [];   If saved in DB then it'll only be requred to calculate once.
+// outputs = [];   If saved in DB then it'll only be requred to calculate once.
+
+var matches = data.sampleInput.split('\n');
+var inputs = [], outputs = [], testcase = [], t;
+for( var i=data.ignoreLines; i<matches.length; )
+{
+  t = data.inputLines;
+  testcase = [];
+  while(t--)
+  {
+    testcase.push(matches[i]);
+    i++;
+  }
+  inputs.push(testcase.join('\n'));
+}
+  outputs = data.sampleOutput.split('\n');
+
+data.inputs = inputs;
+data.outputs = outputs;
+
+// hiddenInput : From insert.js
+// hiddenOutput : From insert.js
+// hiddenTestCases = [];   If saved in DB then it'll only be requred to calculate once.
+// Calculare the array and save in db.
+
+  console.log("Insert.js(Route)" , data);
+  console.log(inputs);
   var data = new questions(data);
   data.save();
 

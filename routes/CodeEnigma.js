@@ -58,29 +58,4 @@ router.get('/:difficulty(easy|medium|hard)/:id/:lang(c|cpp|java)', function(req,
   // }
 });
 
-//router.get('/easy', function(req, res, next) {
-// router.get('/easy', function(req, res, next) {
-//   console.log("/easy");
-//   mongoose.model('questions').find( { difficulty:'easy' } ,function(err,questions){
-//     res.render('home', { questions:questions, difficulty:'easy' })
-//   });
-// });
-//
-// router.get('/easy/:id', function(req, res, next) {
-//   console.log("/easy/:id");
-//   mongoose.model('questions').find( { difficulty:'easy' } ,function(err,questions){
-//     res.render('editor2', { questions:questions , id:req.params.id ,lang: ""})
-//   });
-// });
-//
-//
-//router.get('/medium', function(req, res, next) {
-//router.get('/hard', function(req, res, next) {
-//router.get('/instructions', function(req, res, next) {
-//router.get('/results', function(req, res, next) {
-
-//router.get('/:username(\\w+)', this is regular expression.
-
-//router.use('/login', login)
-
 module.exports = router;

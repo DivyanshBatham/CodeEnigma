@@ -105,8 +105,57 @@
         </tr>
       </table>
     </div> -->
-
-    <div class="pHead"> ✘  Testcase 1</div>
+    <div class="pHead"> &nbsp ✓ &nbsp&nbsp Overall Result</div>
+    <div class="pBody">
+      <table>
+        <tr>
+          <td style="width:20%;">Input</td>
+          <!-- <td style="width:80%;"><pre class="code"><%# testcase.join('\n')  %></pre></td> -->
+          <td class="input" style="width:80%;"><pre class="code"><%= questions[id.charCodeAt(0)-65].sampleInput  %></pre></td>
+        </tr>
+        <tr>
+          <td style="width:20%;">Output</td>
+          <td class="output" style="width:80%;"><pre class="code">User's Output Comes Here</pre></td>
+        </tr>
+        <tr>
+          <td style="width:20%;">Expected</td>
+          <td class="expected" style="width:80%;"><pre class="code"><%= questions[id.charCodeAt(0)-65].sampleOutput  %></pre></td>
+        </tr>
+      </table>
+    </div>
+    <hr>
+    NOTE : This is totally experimental, don't compeletely rely on these results. Check the Input/Output for surity.
+<%# questions.forEach(function(question){ %>
+<% for(var i=0; i<questions[id.charCodeAt(0)-65].inputs.length; i++ ){ %>
+    <div class="pHead"> &nbsp ✘ &nbsp&nbsp Testcase <%= i+1 %></div>
+    <div class="pBody">
+      <table>
+        <tr>
+          <td style="width:20%;">Input</td>
+          <!-- <td style="width:80%;"><pre class="code"><%# testcase.join('\n')  %></pre></td> -->
+          <td class="input" style="width:80%;"><pre class="code"><%= questions[id.charCodeAt(0)-65].inputs[i]  %></pre></td>
+        </tr>
+        <tr>
+          <td style="width:20%;">Output</td>
+          <td class="output" style="width:80%;"><pre class="code">User's Output Comes Here</pre></td>
+        </tr>
+        <tr>
+          <td style="width:20%;">Expected</td>
+          <td class="expected" style="width:80%;"><pre class="code"><%= questions[id.charCodeAt(0)-65].outputs[i]  %></pre></td>
+        </tr>
+      </table>
+    </div>
+<% } %>
+<!-- <%# var test = 454; %> -->
+<script>
+  // var sampleOutput = <%# test %>;
+  var sampleOutput = `<%= questions[id.charCodeAt(0)-65].sampleOutput %>`;
+  var outputs = `<%= questions[id.charCodeAt(0)-65].outputs %>`;
+  var sampleInput = `<%= questions[id.charCodeAt(0)-65].sampleInput %>`;
+  //console.log(sO);
+  // var sampleOutput = "sss";
+</script>
+    <!-- <div class="pHead"> &nbsp ✔ &nbsp&nbsp Testcase 2</div>
     <div class="pBody">
       <table>
         <tr>
@@ -124,7 +173,7 @@
           <td style="width:80%;"><pre class="code">12345</pre></td>
         </tr>
       </table>
-    </div>
+    </div> -->
 
     <!-- <img src="/404_bot.png" style="width:100%;" alt="BOT"> -->
     <!-- <img src="/687722592.jpg" style="width:100%;" alt="BOT"> -->
@@ -233,7 +282,7 @@ Test Case 2 : <span class="badge">✘</span>
                 <div class="col-md-6"></div>
                 <div class="col-md-4">
                   <div class="radio">
-                    <input type="radio" name="optradio" class="radioButton">
+                    <input id="customInputs" type="checkbox" name="optradio" class="radioButton">
                     <label class="radioLabel">Run againt custom input</label>
                   </div>
                 </div>
