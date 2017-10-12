@@ -117,8 +117,8 @@
   text-align: center;
   color: #ffbe4a;
 }
-#rank {
-  text-align: left;
+#rank,#points {
+  text-align: center;
   padding-left: 0px;
   color: #ffbe4a;
 }
@@ -127,7 +127,7 @@
   height: 86vh;
 }
 
-#left-col-header, #right-col-header, #right-col-sub-header {
+#left-col-header, #right-col-header {
   color: #FFF;
   background-color: #31343D;
   height: 6%;
@@ -277,26 +277,29 @@
 #editor {
   position: relative;
   /*height: 400px;*/
-  height: 66%;
+  height: 94%;
 }
 
-#right-col-io {
-  height: 22%;
+#right-col-sub-header {
+  color: #FFF;
+  background-color: #31343D;
+  height: 6%;
+  line-height:5vh;
+  display: none;
 }
+/*
+#right-col-io {
+  display: none;
+  height: 22%;
+}*/
 
 #editor2 {
+  display: none;
   position: relative;
-  height: 100%;
+  /*height: 22%;*/
+  height: 17%;
 }
 
-#editor3 {
-  position: relative;
-  height: 100%;
-}
-
-#editor3 .ace_scroller {
-  cursor: not-allowed;
-}
 /*
 .radioLabel {
   color: #AAAAAA;
@@ -317,7 +320,7 @@
   color: #ffbe4a;
 }*/
 
-.radio {
+/*.radio {
   color : #AAAAAA;
 }
 
@@ -327,6 +330,11 @@
 
 .radioButton:checked ~ .radioLabel {
   color: #ffbe4a;
+}*/
+
+.radioLabel, #customInputs {
+  color: #AAAAAA;
+  cursor: pointer;
 }
 
 #runButton, #submitButton {

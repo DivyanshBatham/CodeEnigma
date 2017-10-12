@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>CodeEnigma | Editor %></title>
+        <title>CodeEnigma | <%= difficulty.charAt(0).toUpperCase() + difficulty.slice(1) %> | <%= id %> </title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
         <link rel='stylesheet' href='/stylesheets/nprogress.css'/>
     </head>
@@ -38,19 +38,22 @@
                 </div>
                 <div class="col-md-2">
                   <% if(difficulty=='easy'){ %>
-                    EASY (5 Points)
+                    EASY (5 Points Each)
                   <% } else if(difficulty=='medium'){ %>
-                    MEDIUM (15 Points)
+                    MEDIUM (15 Points Each)
                   <% } else if(difficulty=='hard'){ %>
-                    HARD (25 Points)
+                    HARD (25 Points Each)
                   <% } %>
                 </div>
                 <div class="col-md-2"></div>
-                <div class="col-md-2">
+                <div class="col-md-1">
                   <p id="timer">Time Remaining</p>
                 </div>
                 <div class="col-md-1">
                   <p id="rank">#113/147</p>
+                </div>
+                <div class="col-md-1">
+                  <p id="points">(95 Points)</p>
                 </div>
             </div>
 
@@ -105,25 +108,34 @@
         </tr>
       </table>
     </div> -->
-    <div class="pHead"> &nbsp ✓ &nbsp&nbsp Overall Result</div>
+
+    <!-- <img src="/bot2C.jpg" style="width:70%;"> You haven't gave me instructions to test! Hit RUN or SUBMIT. -->
+
+    <!-- <div class="pHead"> &nbsp ✓ &nbsp&nbsp Overall Result</div> -->
+    <div class="pHead"> &nbsp No Testcases Ran</div>
     <div class="pBody">
       <table>
         <tr>
           <td style="width:20%;">Input</td>
           <!-- <td style="width:80%;"><pre class="code"><%# testcase.join('\n')  %></pre></td> -->
-          <td class="input" style="width:80%;"><pre class="code"><%= questions[id.charCodeAt(0)-65].sampleInput  %></pre></td>
+          <!-- <td class="input" style="width:80%;"><pre class="code" id="input"><%= questions[id.charCodeAt(0)-65].sampleInput  %></pre></td> -->
+          <td class="input" style="width:80%;"><pre class="code" id="input">Inputs Comes Here</pre></td>
         </tr>
         <tr>
           <td style="width:20%;">Output</td>
-          <td class="output" style="width:80%;"><pre class="code">User's Output Comes Here</pre></td>
+          <td class="output" style="width:80%;"><pre class="code" style="max-height:50vh;" id="output">User's Output Comes Here</pre></td>
         </tr>
-        <tr>
+        <tr id="expectedRow">
           <td style="width:20%;">Expected</td>
-          <td class="expected" style="width:80%;"><pre class="code"><%= questions[id.charCodeAt(0)-65].sampleOutput  %></pre></td>
+          <!-- <td class="expected" style="width:80%;"><pre class="code" id="expected"><%= questions[id.charCodeAt(0)-65].sampleOutput  %></pre></td> -->
+          <td class="expected" style="width:80%;"><pre class="code" id="expected">Expected Output Comes Here</pre></td>
         </tr>
       </table>
     </div>
-    <hr>
+
+
+
+    <!-- <hr>
     NOTE : This is totally experimental, don't compeletely rely on these results. Check the Input/Output for surity.
 <%# questions.forEach(function(question){ %>
 <% for(var i=0; i<questions[id.charCodeAt(0)-65].inputs.length; i++ ){ %>
@@ -132,7 +144,6 @@
       <table>
         <tr>
           <td style="width:20%;">Input</td>
-          <!-- <td style="width:80%;"><pre class="code"><%# testcase.join('\n')  %></pre></td> -->
           <td class="input" style="width:80%;"><pre class="code"><%= questions[id.charCodeAt(0)-65].inputs[i]  %></pre></td>
         </tr>
         <tr>
@@ -143,9 +154,10 @@
           <td style="width:20%;">Expected</td>
           <td class="expected" style="width:80%;"><pre class="code"><%= questions[id.charCodeAt(0)-65].outputs[i]  %></pre></td>
         </tr>
+
       </table>
     </div>
-<% } %>
+<% } %> -->
 <!-- <%# var test = 454; %> -->
 <script>
   // var sampleOutput = <%# test %>;
@@ -155,52 +167,15 @@
   //console.log(sO);
   // var sampleOutput = "sss";
 </script>
-    <!-- <div class="pHead"> &nbsp ✔ &nbsp&nbsp Testcase 2</div>
-    <div class="pBody">
-      <table>
-        <tr>
-          <td style="width:20%;">Input</td>
-          <td style="width:80%;"><pre class="code">12345123451234512345123451234512345123451234512345123451234512345123451234512345123451234512345123451234512345123451234512345
-          dasda
-        asds</pre></td>
-        </tr>
-        <tr>
-          <td style="width:20%;">Output</td>
-          <td style="width:80%;"><pre class="code">12345</pre></td>
-        </tr>
-        <tr>
-          <td style="width:20%;">Expected</td>
-          <td style="width:80%;"><pre class="code">12345</pre></td>
-        </tr>
-      </table>
-    </div> -->
 
-    <!-- <img src="/404_bot.png" style="width:100%;" alt="BOT"> -->
-    <!-- <img src="/687722592.jpg" style="width:100%;" alt="BOT"> -->
 
-  </div>
+
+
+
+
+    </div>
 </div>
 <!-- left-col-body-test-results -->
-
-
-
-
-<!--
-                      <div class="row" id="left-col-header">
-                        <div class ="col-md-12">    <!- - Is this Needed ? - ->
-                          <p>Description</p>
-                        </div>
-                      </div>
-                      <div class="row" id="left-col-body">
-                        <div class ="col-md-12">
-                          <span id="span">
-    <%- questions[id.charCodeAt(0)-65].description %>
-                        </span>
-                        </div>
-                      </div>
--->
-
-
 
                 </div>
 
@@ -236,8 +211,7 @@ int main()
 {
     // cout << "Hello from C++";
     return 0;
-}
-<% } else if(lang=='java'){ %>class Code
+}<% } else if(lang=='java'){ %>class Code
 {
     public static void main( String args[] )
     {
@@ -254,26 +228,10 @@ int main()
 <% } else { %> // Please Select a Language.<% } %>
 </div>
                       <div class="row" id="right-col-sub-header">
-                        <div class="col-md-6">Input</div>
-                        <div class="col-md-6">Output</div>
+                        <div class="col-md-12">Input</div>
+                        <!-- <div class="col-md-6">Output</div> -->
                       </div>
-                      <div class="row" id="right-col-io">
-                        <div class="col-md-6">
-                          <div class="row" id="editor2"><%= questions[id.charCodeAt(0)-65].sampleInput %></div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="row" id="editor3">Output comes here.
-
-<!-- Test Results: -->
-<!-- Test Case 1 : <span class="badge">✓</span> -->
-Test Case 1 : <span class="badge">✔</span>
-Test Case 2 : <span class="badge">✘</span>
-<!-- Test Case 2 : <span class="badge">✔️</span> -->
-<!-- Test Case 2 : <span class="badge">✖</span> -->
-
-                          </div>
-                        </div>
-                      </div>
+                      <div class="row" id="editor2"></div>
                 </div>
             </div>
 
@@ -282,8 +240,10 @@ Test Case 2 : <span class="badge">✘</span>
                 <div class="col-md-6"></div>
                 <div class="col-md-4">
                   <div class="radio">
-                    <input id="customInputs" type="checkbox" name="optradio" class="radioButton">
-                    <label class="radioLabel">Run againt custom input</label>
+                    <label class="radioLabel">
+                      <input id="customInputs" type="checkbox" name="optradio" class="radioButton">
+                      Run againt custom input
+                    </label>
                   </div>
                 </div>
                 <div class="col-md-1">
@@ -398,15 +358,16 @@ Test Case 2 : <span class="badge">✘</span>
             var editor2 = ace.edit("editor2");
             editor2.setTheme("ace/theme/twilight");
             editor2.session.setMode("ace/mode/plain_text");
+            editor2.setShowPrintMargin(false);
             // editor2.renderer.setShowGutter(false);
-            document.getElementById('editor2').style.fontSize='13px';
+            document.getElementById('editor2').style.fontSize='15px';
 
-            var editor3 = ace.edit("editor3");
-            editor3.setTheme("ace/theme/twilight");
-            editor3.session.setMode("ace/mode/plain_text");
-            // editor3.renderer.setShowGutter(false);
-            editor3.setReadOnly(true);
-            document.getElementById('editor3').style.fontSize='13px';
+            // var editor3 = ace.edit("editor3");
+            // editor3.setTheme("ace/theme/twilight");
+            // editor3.session.setMode("ace/mode/plain_text");
+            // // editor3.renderer.setShowGutter(false);
+            // editor3.setReadOnly(true);
+            // document.getElementById('editor3').style.fontSize='13px';
 
         </script>
     </body>

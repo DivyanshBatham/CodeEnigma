@@ -4,6 +4,33 @@ $(document).ready(function(){
     });
 
 });
+
+$('#customInputs').click(function(){
+	// alert("customInputs clicked");
+	if(document.getElementById('customInputs').checked)
+	{
+		// SetVisible editor2 and editor3
+		// alert("display inputs");
+		$('#editor').css("height","71%");
+		ace.edit("editor").resize();
+		$('#right-col-sub-header').show();
+		$('#editor2').show();
+		ace.edit("editor2").resize();
+		$(".radioLabel").css("color","#ffbe4a");
+		// alert("checked");
+	}
+	else {
+		// SetInVisible editor2 and editor3
+		$('#right-col-sub-header').hide();
+		$('#editor2').hide();
+		$('#editor').css("height","94%");
+		ace.edit("editor").resize();
+		ace.edit("editor2").resize();
+		$(".radioLabel").css("color","#AAAAAA");
+		// alert("unchecked")
+	}
+});
+
 $('#runButton').click(function(){
 	NProgress.done();
 	NProgress.start();
@@ -14,13 +41,20 @@ $('#runButton').click(function(){
 	console.log(sampleOutput);
 	console.log(sampleInput);
 
-	if($("#customInput").is(':checked'))
+	var url = JSON.stringify(window.location).split('/');
+	url.pop();
+	var id = url.pop();
+	var difficulty = url.pop();
+
+	// if($("#customInput").is(':checked'))
+	if(document.getElementById('customInputs').checked)
 	{
 		// Custom Inputs.
 		var config = {
 			source : editor.getValue(),
 			input  : editor2.getValue(),
 			langNo : document.getElementById('languageSelector').value,
+			requestType : "custom"
 		};
 				$.ajax({
 					type:'POST',
@@ -29,16 +63,25 @@ $('#runButton').click(function(){
 					dataType:'json',
 					success: function(res){
 						console.log("Hey");
-						var R = JSON.parse(res);
+						// var R = JSON.parse(res);
+						var R = res;
 						console.log(R);
 						console.log(R.result);
 						if(R.result.compilemessage=="")
 						{
-							editor3.setValue(R.result.stdout[0]);
+							$(".pHead").html(R.status);
+							$("#input").html(editor2.getValue());
+							$("#output").html(R.result.stdout[0]);
+							$("#expectedRow").hide();
+							// editor3.setValue(R.result.stdout[0]);
 						}
 						else
 						{
-							editor3.setValue(R.result.compilemessage);
+							$(".pHead").html(R.status);
+							$("#input").html(editor2.getValue());
+							$("#output").html(R.result.compilemessage);
+							$("#expectedRow").hide();
+							// editor3.setValue(R.result.compilemessage);
 						}
 						NProgress.done();
 					}
@@ -46,11 +89,14 @@ $('#runButton').click(function(){
 	}
 	else
 	{
+		// MAKE AN AJAX REQUEST WHICH TESTS AGAINTS SAMPLEINPUTS.
 		// Test againsts sampleInput
 		var config = {
 			source : editor.getValue(),
-			input  : sampleInput,
 			langNo : document.getElementById('languageSelector').value,
+			requestType : "run",
+			id : id,
+			difficulty : difficulty
 		};
 				$.ajax({
 					type:'POST',
@@ -59,12 +105,13 @@ $('#runButton').click(function(){
 					dataType:'json',
 					success: function(res){
 						console.log("Hey");
-						var R = JSON.parse(res);
+						// var R = JSON.parse(res);
+						var R = res;
 						console.log(R);
 						console.log(R.result);
 						if(R.result.compilemessage=="")
 						{
-
+/*
 							// var matches = R.result.stdout[0].split('\n');
 							// var userOutputs = [];
 							// for( var i=0; i<matches.length; )
@@ -93,15 +140,31 @@ $('#runButton').click(function(){
 
 							editor3.setValue(R.result.stdout[0]);
 							// Use jQuerry to retrive an array of output and set them
+*/
+								// $("#output").html( respose varaible . result );
+								$(".pHead").html(R.status);
+								$("#input").html(R.sampleInput[0]);
+								$("#output").html(R.result.stdout[0]);
+								$("#expected").html(R.sampleOutput);
+								$("#expectedRow").show();
+								// changeTab("TestResults");
 						}
 						else
 						{
-							editor3.setValue(R.result.compilemessage);
+								$(".pHead").html(R.status);
+								$("#input").html(R.sampleInput[0]);
+								$("#output").html(R.result.compilemessage);
+								$("#expected").html(R.sampleOutput);
+								$("#expectedRow").show();
+								// changeTab("TestResults");
+
+							//editor3.setValue(R.result.compilemessage);
 						}
 						NProgress.done();
 					}
 				});
 	}
+
 
 });
 
