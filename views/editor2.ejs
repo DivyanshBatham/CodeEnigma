@@ -15,25 +15,45 @@
 
                     <ul>
                       <li><img src="/Back3.png" alt="Back" onclick="window.location = '../'"></li>
-                      <% questions.forEach(function(question){ %>
-                        <% var url = question.id %>
-                        <% if(id==question.id){ %>
-                          <li><button type="button" class="btn btn-circle active"><%= question.id %></button></li>
-                        <% }else if(lang!=""){ %>
-                          <li><button type="button" class="btn btn-circle" onclick="window.location ='../<%= question.id %>/<%= lang %>'"><%= question.id %></button></li>
-                        <% }else{ %>
-                          <li><button type="button" class="btn btn-circle" onclick="window.location ='<%= question.id %>'"><%= question.id %></button></li>
-                        <% }}); %>
+<!--
+                      <%# questions.forEach(function(question){ %>
+                        <%# if(id==question.id){ %>  <!- -To Prevent from reloading the same page.- ->
+                          <li><button type="button" class="btn btn-circle active"><%#= question.id %></button></li>
+                        <%# }else if(lang!=""){ %>
+                          <li><button type="button" class="btn btn-circle" onclick="window.location ='../<%#= question.id %>/<%#= lang %>'"><%#= question.id %></button></li>
+                        <%# }else{ %>
+                          <li><button type="button" class="btn btn-circle" onclick="window.location ='<%#= question.id %>'"><%#= question.id %></button></li>
+                        <%# }}); %>
+ -->
+
+ <!-- WHEN USER's DATABASE IS ACTIVE: -->
+                        <% questions.forEach(function(question){ %>
+
+                          <% if(id==question.id){ %>
+                            <li><button type="button" class="btn btn-circle active">
+                          <% }else if(lang!=""){ %>
+                            <li><button type="button" class="btn btn-circle" onclick="window.location ='../<%= question.id %>/<%= lang %>'">
+                          <% }else{ %>
+                            <li><button type="button" class="btn btn-circle" onclick="window.location ='<%= question.id %>'">
+                          <% } %>
+
+                          <% if(user.solvedQuestions[difficulty].indexOf(question.id)!=-1 ) { %>
+                            ✓</button></li>
+                          <% }else{ %>
+                            <%= question.id %></button></li>
+                          <% } %>
+
+                        <% }); %>
+
+
+
+
 
                         <!-- Instead of using buttons use anchor tags and add href for ip:port/... -->
 
 
-                      <!-- <li><button type="button" class="btn btn-circle">A</button></li>
-                      <li><button type="button" class="btn btn-circle active">B</button></li>
-                      <li><button type="button" class="btn btn-circle">C</button></li>
-                      <li><button type="button" class="btn btn-circle">D</button></li> -->
-                      <li><button type="button" class="btn btn-circle">✓</button></li>
-                      <!-- <li><button type="button" class="btn btn-circle">F</button></li> -->
+                      <!-- <li><button type="button" class="btn btn-circle">✓</button></li> -->
+                      <!-- <li><button type="button" class="btn btn-circle"><span class="badge">✓</span></button></li> -->
                     <ul>
                 </div>
                 <div class="col-md-2">
@@ -182,6 +202,7 @@
                 <div class="col-md-6" id="right-col">
                       <div class="row" id="right-col-header">
                           <div class="col-md-6">
+                            <!-- <span class=".glyphicon-glyphicon-credit-card" aria-hidden="true"></span> -->
                             <% if(lang!=""){ %>
                               Code.<%= lang%>
                             <% }else{ %>

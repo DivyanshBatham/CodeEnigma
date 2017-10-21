@@ -38,8 +38,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
 	cookieName: 'session',
 	secret: '%3RGSb.e-||Qd?$kF:IJf(8#2{(oIbaG&1w/J87T)d2_x;zQf^UIZeH%8VB/h,"A+)%)$>q}c1M"*hOlMA1LI^F%Zz%9D"[x',	// used for unique encryption and decryption
-	duration: 30 * 60 * 1000, // Time after which session will expire (in milisecond), used for banking sites
-	activeDuration: 5 * 60 * 1000
+	duration: 30 * 60 * 60 * 1000, // Time after which session will expire (in milisecond), used for banking sites
+	activeDuration: 5 * 60 * 60 * 1000
 }));
 
 // Connecting to MongoDB:

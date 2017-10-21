@@ -72,6 +72,7 @@ router.get('/:difficulty', requireLogin, function(req, res, next) {
   }
 });
 
+// CHANGE find to findOne, for better efficiency or use AngularJS to reduce server load.
 router.get('/:difficulty(easy|medium|hard)/:id', requireLogin, function(req, res, next) {
   console.log("/:id",req.params.lang);
   mongoose.model('questions').find( { difficulty:req.params.difficulty } ,function(err,questions){
