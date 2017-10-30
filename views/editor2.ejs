@@ -6,6 +6,7 @@
         <title>CodeEnigma | <%= difficulty.charAt(0).toUpperCase() + difficulty.slice(1) %> | <%= id %> </title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
         <link rel='stylesheet' href='/stylesheets/nprogress.css'/>
+
     </head>
     <body>
         <div class="container-fluid">
@@ -73,7 +74,7 @@
                   <p id="rank">#113/147</p>
                 </div>
                 <div class="col-md-1">
-                  <p id="points">(95 Points)</p>
+                  <p id="points">(<%= user.score %> Points)</p>
                 </div>
             </div>
 
@@ -231,6 +232,7 @@ using namespace std;
 int main()
 {
     // cout << "Hello from C++";
+    // cout << "4\n5\n6";
     return 0;
 }<% } else if(lang=='java'){ %>class Code
 {
@@ -352,8 +354,10 @@ int main()
         <script src='/javascripts/description.js'></script>
         <link rel="stylesheet" href="/stylesheets/editor2.css">
         <script src="/javascripts/ace-builds-master/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
-        <script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+        <script src='/javascripts/live.js'></script>
 
+        <script>
 
 
             var editor = ace.edit("editor");

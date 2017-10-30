@@ -19,7 +19,8 @@ var usersSchema = new Schema({
     easy : [String],
     medium : [String],
     hard : [String]
-  }
+  },
+  lastSubmission : Number
   // lastSubmission : { type : Date, default: Date.now }
   /*
   // Keeping record of solved questions.

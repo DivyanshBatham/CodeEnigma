@@ -37,9 +37,9 @@ $('#runButton').click(function(){
 
 	//alert("runButton");
 
-	console.log(config);
-	console.log(sampleOutput);
-	console.log(sampleInput);
+	// console.log(config);
+	// console.log(sampleOutput);
+	// console.log(sampleInput);
 
 	var url = JSON.stringify(window.location).split('/');
 	url.pop();

@@ -21,6 +21,9 @@ var login = require('./routes/login');
 var insert = require('./routes/insert');
 
 var app = express();
+// Socket.io
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -55,6 +58,12 @@ var ques = require('./models/ques');
 });*/
 
 
+// On connection to the socket:
+io.on('connection',function(socket){
+	console.log(`Made a socket connection.`,socket.id);
+});
+
+
 // Session Middleware : Checks and Refreshes the Session if needed.
 app.use(function(req, res, next) {
   if (req.session && req.session.user) {
@@ -73,6 +82,15 @@ app.use(function(req, res, next) {
   }
 });
 
+// Add middleware for determining the rank, add to session?
+
+// Socket Middleware (passing our socket to our response object) :
+app.use(function(req, res, next){
+  res.io = io;
+  next();
+});
+
+// URL middleware :
 app.use(function(req, res, next) {
    if(req.url.substr(-1) == '/' && req.url.length > 1)
        res.redirect(301, req.url.slice(0, -1));
@@ -118,4 +136,5 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+// module.exports = app;
+module.exports = {app: app, server: server};
