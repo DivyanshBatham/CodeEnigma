@@ -6,8 +6,30 @@
         <title>CodeEnigma | Insert</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
         <link rel='stylesheet' href='/stylesheets/nprogress.css'/>
+        <link rel="stylesheet" href="/stylesheets/loader.css">
+        <link rel="stylesheet" href="/stylesheets/loaders.css">
+
     </head>
-    <body>
+    <body onload="myFunction()">
+    <!-- <body> -->
+    <div id="loaderContainer">
+      <div class="loader"><div class="ball-grid-pulse"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
+    </div>
+    <script>
+    function myFunction() {
+      var myVar = setTimeout(showPage, 1000);
+    }
+
+    function showPage()
+    {
+      // console.log("Hide Loader and show page");
+      // $(".loader").hide();
+      $("#loaderContainer").hide();
+      $(".container-fluid").show();
+      // $("#main-content").show();
+    }
+    </script>
+
         <div class="container-fluid">
             <!-- HEADER -->
             <div class="row" id="header">
@@ -35,10 +57,10 @@
                 <div class="col-md-6" id="left-col">
                       <div class="row" id="left-col-header">
                         <ul>
-                        			<li id="tabD" class="tab" onclick="changeTab('Description')">
+                        			<li id="tabD" class="tab active" onclick="changeTab('Description')">
                                 Description
                         			</li>
-                              <li id="tabS" class="tab active" onclick="changeTab('Sample')">
+                              <li id="tabS" class="tab" onclick="changeTab('Sample')">
                                 Sample Testcases
                         			</li>
                               <li id="tabH" class="tab" onclick="changeTab('Hidden')">
@@ -63,15 +85,15 @@
                           <table>
                             <tr>
                               <td style="width:28%">Lines to ignore</td>
-                              <td style="width:70%; padding-left:20px;"><input type="number" class="form-control" id="ignoreLines" placeholder="ignoreLines"></td>
+                              <td style="width:70%; padding-left:20px;"><input type="number" class="form-control" id="ignoreLines" placeholder="ignoreLines" disabled></td>
                             </tr>
                             <tr>
                               <td>Lines to read for testcases</td>
-                              <td style="width:70%; padding-left:20px;"><input type="number" class="form-control" id="inputLines" placeholder="inputLines"></td>
+                              <td style="width:70%; padding-left:20px;"><input type="number" class="form-control" id="inputLines" placeholder="inputLines" disabled></td>
                             </tr>
                             <tr>
                               <td>Lines to read for Output</td>
-                              <td style="width:70%; padding-left:20px;"><input type="number" class="form-control" id="outputLines" placeholder="outputLines"></td>
+                              <td style="width:70%; padding-left:20px;"><input type="number" class="form-control" id="outputLines" placeholder="outputLines" disabled></td>
                             </tr>
                             <tr>
                               <td>sampleInput</td>
@@ -132,29 +154,20 @@
                       </div>
                       <div class="row" id="editor" onkeyup='showData()'></div>
                       <div class="row" id="right-col-sub-header">
-                        <div class="col-md-6">sampleInput</div>
-                        <div class="col-md-6">shortDescription</div>
+                        <div class="col-md-12">shortDescription</div>
+                        <!-- <div class="col-md-6">Output</div> -->
                       </div>
-                      <div class="row" id="right-col-io">
-                        <div class="col-md-6">
-                          <div class="row" id="editor2">Give your inputs here, before running.</div>
-                        </div>
-                        <div class="col-md-6" id="editor3">Output comes here.
-Test Results:
-<!-- Test Case 1 : <span class="badge">✓</span> -->
-Test Case 1 : <span class="badge">✔</span>
-Test Case 2 : <span class="badge">✘</span>
-<!-- Test Case 2 : <span class="badge">✔️</span> -->
-<!-- Test Case 2 : <span class="badge">✖</span> -->
+                      <div class="row" id="editor2"></div>
 
-                        </div>
-                      </div>
                 </div>
             </div>
 
             <!-- FOOTER -->
             <div class="row" id="header">
                 <div class="col-md-10"></div>
+                <div class="col-md-1">
+                  <button id="backButton" type = "button" class = "btn btn-success">BACK</button>
+                </div>
                 <div class="col-md-1">
                   <button id="insertButton" type = "button" class = "btn btn-success">INSERT</button>
                 </div>
@@ -191,12 +204,12 @@ Test Case 2 : <span class="badge">✘</span>
             // editor2.renderer.setShowGutter(false);
             document.getElementById('editor2').style.fontSize='13px';
 
-            var editor3 = ace.edit("editor3");
-            editor3.setTheme("ace/theme/twilight");
-            editor3.session.setMode("ace/mode/plain_text");
-            // editor3.renderer.setShowGutter(false);
-            // editor3.setReadOnly(true);
-            document.getElementById('editor3').style.fontSize='13px';
+            // var editor3 = ace.edit("editor3");
+            // editor3.setTheme("ace/theme/twilight");
+            // editor3.session.setMode("ace/mode/plain_text");
+            // // editor3.renderer.setShowGutter(false);
+            // // editor3.setReadOnly(true);
+            // document.getElementById('editor3').style.fontSize='13px';
 
         </script>
     </body>

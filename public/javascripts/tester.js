@@ -104,50 +104,20 @@ $('#runButton').click(function(){
 					data:config,
 					dataType:'json',
 					success: function(res){
-						console.log("Hey");
+						// console.log("Hey");
 						// var R = JSON.parse(res);
 						var R = res;
-						console.log(R);
-						console.log(R.result);
+						// console.log(R);
+						// console.log(R.result);
 						if(R.result.compilemessage=="")
 						{
-/*
-							// var matches = R.result.stdout[0].split('\n');
-							// var userOutputs = [];
-							// for( var i=0; i<matches.length; )
-							// {
-							//   t = matches.length/outputs.length;
-							//   testcase = [];
-							//   while(t--)
-							//   {
-							//     testcase.push(matches[i]);
-							//     i++;
-							//   }
-							//   userOutputs.push(testcase.join('\n'));
-							// }
-
-							// ALL THIS VALIDATION SHOULD BE DONE ON SERVER SIDE, WE SHOULD NOT OPEN THE VARIABLES TO CLIENT SIDE JS.
-							// Separate Outputs.
-								// outputLines/
-							// Match Corresponding outputs:
-								// Set icon, output, input(optional)
-								// $("td.output").each(function(){
-								// 	$(this).children().text(userOutputs.shift());
-								// });
-
-							// if(R.result.stdout[0]==sampleOutput)
-							// 	alert("Correct");
-
-							editor3.setValue(R.result.stdout[0]);
-							// Use jQuerry to retrive an array of output and set them
-*/
 								// $("#output").html( respose varaible . result );
 								$(".pHead").html(R.status);
 								$("#input").html(R.sampleInput[0]);
 								$("#output").html(R.result.stdout[0]);
 								$("#expected").html(R.sampleOutput);
 								$("#expectedRow").show();
-								// changeTab("TestResults");
+								changeTab("TestResults");
 						}
 						else
 						{
@@ -156,7 +126,7 @@ $('#runButton').click(function(){
 								$("#output").html(R.result.compilemessage);
 								$("#expected").html(R.sampleOutput);
 								$("#expectedRow").show();
-								// changeTab("TestResults");
+								changeTab("TestResults");
 
 							//editor3.setValue(R.result.compilemessage);
 						}

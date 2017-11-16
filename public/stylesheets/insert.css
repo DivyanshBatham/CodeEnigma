@@ -84,7 +84,7 @@
   overflow: auto;
   overflow-x: hidden;
   padding: 10px;
-  display: none;
+  /*display: none;*/
 }
 
 #left-col-body-sample {
@@ -94,7 +94,7 @@
   overflow: auto;
   overflow-x: hidden;
   padding: 10px;
-  /*display: none;*/
+  display: none;
 }
 
 #left-col-body-hidden {
@@ -166,7 +166,7 @@
 #editor {
   position: relative;
   /*height: 400px;*/
-  height: 66%;
+  height: 71%;
 }
 
 #right-col-io {
@@ -174,8 +174,10 @@
 }
 
 #editor2 {
+  /*display: none;*/
   position: relative;
-  height: 100%;
+  /*height: 22%;*/
+  height: 17%;
 }
 
 #editor3 {
@@ -183,14 +185,14 @@
   height: 100%;
 }
 
-#insertButton {
+#insertButton, #backButton {
   background-color: #202228;
   border-color: #ffbe4a;
   color: #ffbe4a;
   cursor: pointer;
 }
 
-#insertButton:hover {
+#insertButton:hover, #backButton:hover {
   background-color: #ffbe4a;
   border-color: #ffbe4a;
   color: #202228;

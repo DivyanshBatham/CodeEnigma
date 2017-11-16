@@ -1,0 +1,144 @@
+# TITLE : CodeEnigma (Web Application)
+This is a web application which is used for hosting a coding competition Code Enigma, which is being held in LNCT Bhopal anually for the last three years (2015-17).
+
+# PROBLEMS IN THE EARLIER APPROACH (First three seasons 2015-17): 
+	
+	Obsolute Testing of Code : 
+		The volunteers had to go to each contestant and manually check their code with the testcases however all the testcases could not be covered because it was a time consuming process. Which lead to false acceptace of invalid code.
+
+	Obsolute Ranking System :
+		There was no time monitoring due to which the rank of the contestant couldn't be decided if they have solved the same number of questions. Also posting the list of contestants in the increasing order of rank was a problem because they had to sort the list of contestants manually.
+	
+	Loose Timing Constraints : 
+		Even when the competition ends, several contestants could still code secretly by avoiding the sight of the volunteers until the volunteer tests their code.
+
+	Wastage of Papers : 
+		The questions were printed on a papers for each contests while incurred additional printing charges and wastage of paper.
+		
+
+# HOW A WEB APPLICATION HELPS : 
+	Testing the Code : 
+		On RUN : Contestant's code is tested against Sample Test cases which are visible (Input, Output and Expected Output) to the contestants.
+		On SUBMIT : Contestant's code is tested against Hidden Test cases which are not visible to the contestants. 
+
+		Also contestants can run their code against cutom inputs (which they have to provide themselves), for the debugging purposes.
+
+	Ranking System : 
+		While submitting the code, the server keeps a record of the last submission time (in miliseconds) for each contestants. Hence the contestants could be ranked properly if they have same score. However in a very unlikely situation where two contestants have the same score and last submission time then, they are ranked according to their time of registration for the event (As the ids are given as CE001, CE002, ... at the time of registration).
+
+	Strict Timings : 
+		The timings of the Competition will be saved in the database, hence the server will not allow any contestant to submit their code before the competition starts or after the competition ends.
+		
+	No Papers Required : 
+		Since the competition is held online, there is no need to print the questions on the paper.
+
+
+# Technologies Used / Dependencies :
+	Node.js
+	Express.js
+	Machinepack-Hackerrank (API)
+	EJS (Rendering Engine)
+	Client Sessions (NPM Package)
+	Cookie Parser (NPM Package)
+	MongoDB (Database)
+	Mongoose (ORM for MongoDB)
+	NProgress (NPM Package)
+	Socket.io (NPM Package)
+	Bootstrap 
+	JQuerry
+	Loaders.css
+
+
+# TECHINCAL DETAILS
+
+Routes / URL Available :
+For Contestants :
+	/CodeEnigma/login
+	/CodeEnigma/instructions
+	/CodeEnigma/results
+	/CodeEnigma/[difficulty]    where difficulty = easy / medium / hard
+	/CodeEnigma/[difficulty]/[questionID]/[languageCode]    
+		where,
+		 difficulty : easy / medium / hard
+		 questionID : A, B, C, etc... (Depends on Database)
+		 languageCode : c, cpp, java, etc... (Depends on HackerRank API)
+
+For Admin : All the above, plus :
+	/config
+	/insert
+
+For AJAX Calls (POST Requests) :
+	/config
+	/insert
+	/getRank
+	/getTime
+	/run
+	/logout
+
+Models used in Mongoose (ORM for MongoDB) :
+users
+questions
+contest
+
+Database Structure : 
+
+
+
+Language Supported : 
+C
+C++
+Java
+C#
+PHP
+Ruby
+Python 2 & 3
+Perl
+Haskell
+Clojure
+Scala
+Bash
+Lua
+Erlang
+javascript
+Go
+D
+OCaml
+Pascal
+Lisp
+Groovy
+Objective C
+F#
+COBOL
+VB.NET (Visual Basic)
+Smalltalk
+Rust
+Swift
+
+
+
+# INNOVATIVENESS / USEFULLNESS :
+Automatic Code Checker
+
+# CURRENT STATUS OF DEVELOPEMENT
+Almost Complete, Testing is being done.
+
+
+
+# FUTURE ADDITIONS (Keeping it only for CodeEnimga)
+- Saving the codes of the contestants in the database, so that :
+	- They can continue to code where they left (For now they code is reset to boiler plate code)
+	- After competition ends the contestants can see the solutions of other contestants.
+- Forum / Commenting Section could be added so that contestants can publically ask doubts or anything like that.
+- Messenger : So that contestants can chat with each other
+- More Language Support could be added
+- User Profile could be added
+
+
+# FUTURE SCOPE (If creating an startup/company)
+If we create our own server side compiler, then we can built a company like CodeChef, HackerRank, HackerEarth, Codewars, Codefights, etc.
+
+If we are making a company : 
+- We can make the website a community driven site where all the users can post new questions.
+- Automatic Tournaments could be hosted every 30 mins.
+- Monthy Marathons could be created.
+(Basically Everything a competitive coding website has)

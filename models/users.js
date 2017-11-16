@@ -13,6 +13,7 @@ var Schema = mongoose.Schema;
 var usersSchema = new Schema({
   // Teamid: String,
   id: String,
+  type: String,
   pass: String,
   score : Number,
   solvedQuestions : {
@@ -20,7 +21,11 @@ var usersSchema = new Schema({
     medium : [String],
     hard : [String]
   },
+  lastSubmissionDisplay : String,
   lastSubmission : Number
+  // lastSubmission : Number
+
+
   // lastSubmission : { type : Date, default: Date.now }
   /*
   // Keeping record of solved questions.

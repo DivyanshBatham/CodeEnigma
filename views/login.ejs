@@ -6,10 +6,32 @@
         <title>CodeEnigma | Login</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
         <link rel="stylesheet" href="/stylesheets/login.css">
-    </head>
-    <body>
+        <link rel="stylesheet" href="/stylesheets/loader.css">
+        <link rel="stylesheet" href="/stylesheets/loaders.css">
 
-    <div class = "container">
+    </head>
+    <body onload="myFunction()">
+    <!-- <body> -->
+    <div id="loaderContainer">
+      <div class="loader"><div class="ball-grid-pulse"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
+    </div>
+    <script>
+    function myFunction() {
+      var myVar = setTimeout(showPage, 1000);
+    }
+
+    function showPage()
+    {
+      // console.log("Hide Loader and show page");
+      // $(".loader").hide();
+      $("#loaderContainer").hide();
+      $(".container-fluid").show();
+      // $("#main-content").show();
+    }
+    </script>
+
+
+    <div class = "container-fluid">
         <div class="wrapper">
             <form action="" method="post" name="Login_Form" class="form-signin">
                 <h3 class="form-signin-heading">Welcome Back! Please Sign In</h3>

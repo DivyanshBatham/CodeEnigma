@@ -2,6 +2,7 @@ var express = require('express');
 const mongoose = require('mongoose');
 var questions = require('../models/questions');
 var users = require('../models/users');
+var contest = require('../models/contest');
 var router = express.Router();
 
 function requireLogin (req, res, next) {
@@ -57,14 +58,43 @@ router.post('/:difficulty', function(req, res, next) {
 
 router.get('/:difficulty', requireLogin, function(req, res, next) {
   console.log("/:difficulty");
+  console.log(req.params.difficulty);
   //if(req.params.difficulty=='login')
   //    res.render('login', { title: 'Login', error: '' });
 
-  if( ['easy','medium','hard','instructions'].indexOf(req.params.difficulty)!=-1 )
+  if( ['easy','medium','hard'].indexOf(req.params.difficulty)!=-1 )
     // mongoose.model('questions').find( { difficulty:req.params.difficulty } ,function(err,questions){
     questions.find( { difficulty:req.params.difficulty } ,function(err,questions){
       res.render('home', { questions:questions, difficulty:req.params.difficulty })
     });
+  else if( 'instructions' == req.params.difficulty )
+  {
+      res.render('instructions', { title: 'Configuration'});
+  }
+  else if( 'results' == req.params.difficulty )
+  {
+        // contest.findOne( { } ,function(err,contest){
+          // var startDate = new Date(contest.startDate).getTime();
+
+              users.find( { type : "contestant" } ,function(err,users){
+                users = users.sort(function(a,b){
+                  if(a.score != b.score)
+                  {
+                    return b.score - a.score;
+                  }
+                  else
+                    if(a.score == b.score)
+                    {
+                        if(a.lastSubmission != b.lastSubmission)
+                          return a.lastSubmission - b.lastSubmission ;
+                        else
+                          return (a.id.match(/\d+/)[0]) - (b.id.match(/\d+/)[0]) ;
+                    }
+                });
+                res.render('results', { users:users });
+              });
+      // });
+  }
   else {
       // Give 404 Error.
       // No such page found.

@@ -13,12 +13,15 @@ var session = require('client-sessions');
 // Routes :
 var home = require('./routes/home');
 var CodeEnigma = require('./routes/CodeEnigma');
-var users = require('./routes/users');
-var editor = require('./routes/editor');
+var loader = require('./routes/loader');
+// var editor = require('./routes/editor');
 var editor2 = require('./routes/editor2');
 var run = require('./routes/run');
 var login = require('./routes/login');
 var insert = require('./routes/insert');
+var getRank = require('./routes/getRank');
+var getTime = require('./routes/getTime');
+var config = require('./routes/config');
 
 var app = express();
 // Socket.io
@@ -51,7 +54,7 @@ mongoose.connect('mongodb://localhost:27017/enigmadb');
 // Models for Mongoose :
 var users = require('./models/users');
 var questions = require('./models/questions');
-var ques = require('./models/ques');
+var contest = require('./models/contest');
 /*fs.readdirSync(__dirname + '/models').forEach(function(filename){
   if(~filename.indexOf('.js'))
     require(__dirname + '/models/' + filename);
@@ -98,6 +101,89 @@ app.use(function(req, res, next) {
        next();
 });
 
+// Contest Not Yet Started Middleware: (Should I forcefully test whether the url is only a valid route, asking because of the requests for .js and .css)
+app.use(function(req, res, next) {
+
+	if(req.user)
+  {
+		contest.findOne( { } ,function(err,contest){
+			// var countDownDate = new Date("Nov 3, 2018 21:09:00").getTime();
+			var startDate = new Date(contest.startDate).getTime();
+			var now = new Date().getTime();
+			// Find the distance between now an the count down date
+			var timeRemaining = startDate - now;
+
+			if( req.user.type != 'admin' && timeRemaining >= 0 && req.url!='/CodeEnigma/instructions' && req.url!='/logout' && req.url!='/login'  && req.url!='/getRank' && req.url!='/getTime'  )
+			{
+				console.log("COMPETITION IS NOT STARTED THEREFORE REDIRECTED TO /CodeEnigma/instructions (Due to Middleware)");
+				res.redirect('/CodeEnigma/instructions');
+			}
+			else
+			   next();
+		});
+	}
+	else {
+		next();
+	}
+});
+
+
+// Contest Running Middleware for results : (Should I forcefully test whether the url is only a valid route, asking because of the requests for .js and .css)
+app.use(function(req, res, next) {
+
+	if(req.user)
+  {
+		contest.findOne( { } ,function(err,contest){
+			// var countDownDate = new Date("Nov 3, 2018 21:09:00").getTime();
+			var endDate = new Date(contest.endDate).getTime();
+			var now = new Date().getTime();
+			// Find the distance between now an the count down date
+			var timeRemaining = endDate - now;
+
+			if( req.user.type != 'admin' && timeRemaining >= 0 && req.url=='/CodeEnigma/results' )
+			{
+				console.log("COMPETITION IS RUNNING THEREFORE REDIRECTED TO /CodeEnigma/easy SINCE USER CANNOT CHECK THE RESULTS YET");
+				res.redirect('/CodeEnigma/easy');
+			}
+			else
+			   next();
+		});
+	}
+	else {
+		next();
+	}
+});
+
+
+// Contest Ended Middleware : (Should I forcefully test whether the url is only a valid route, asking because of the requests for .js and .css)
+app.use(function(req, res, next) {
+
+	// if (req.session && req.session.user) {
+	if(req.user)
+  {
+		contest.findOne( { } ,function(err,contest){
+			// var countDownDate = new Date("Nov 3, 2018 21:09:00").getTime();
+			var endDate = new Date(contest.endDate).getTime();
+			var now = new Date().getTime();
+			// Find the distance between now an the count down date
+			var timeRemaining = endDate - now;
+			if( req.user.type != 'admin' && timeRemaining < 0 && req.url!='/CodeEnigma/results' && req.url!='/logout' && req.url!='/login' && req.url!='/getRank' && req.url!='/getTime' )
+			// if( timeRemaining < 1 && req.url!='/CodeEnigma/results' && req.url!='/logout' && req.url!='/login' && req.url!='/config' )
+			{
+				console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>> REQ.URL "+req.url+" <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
+				console.log("COMPETITION IS ENDED THEREFORE REDIRECTED TO /CodeEnigma/results");
+				res.redirect('/CodeEnigma/results');
+			}
+			else
+			   next();
+		});
+	}
+	else {
+		next();
+	}
+});
+
+
 // app.use('/', home);
 app.get('/', function(req, res) {
   if (!req.user)
@@ -106,12 +192,16 @@ app.get('/', function(req, res) {
     res.redirect('/CodeEnigma');
 });
 app.use('/CodeEnigma', CodeEnigma);
-// app.use('/users', users);
+app.use('/users', users);
 // app.use('/editor', editor);
 // app.use('/editor2', editor2);
 app.use('/run', run);
 app.use('/insert', insert);
 app.use('/login', login);
+app.use('/getRank', getRank);
+app.use('/getTime', getTime);
+app.use('/config', config);
+app.use('/loader', loader);
 app.get('/logout', function(req, res) {
   req.session.reset();
   res.redirect('/login');
