@@ -1,0 +1,36 @@
+
+/*.loader {
+  background-color: #202228;
+  color: #ffbe4a;
+}*/
+
+.container-fluid {
+  display: none;
+}
+
+body {
+  background-color: #202228;
+  overflow:hidden;
+}
+
+#loaderContainer {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: #202228;
+}
+
+/*body {
+  background-color: #202228;
+}*/
+
+.ball-grid-pulse {
+  position:absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  bottom: 0;
+  margin: auto;
+  margin-top: -43px;
+
+}

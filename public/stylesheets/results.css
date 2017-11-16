@@ -77,11 +77,14 @@
     /*background-color: #f1f1f1;*/
 }
 
+.myHR {
+  background-color: #ffbe4a;
+}
+
 #nav #instructions {
   margin-top: 4vh;
   /*bottom: 15px;*/
 }
-
 #nav li {
   margin-top:5px;
 }
@@ -148,65 +151,62 @@ a:active { text-decoration: none; }
   background-color: #ffbe4a;
 }
 
-#ques {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    /*background-color: #f1f1f1;*/
-}
-#ques #instructions {
-  margin-top: 15vh;
-  /*bottom: 15px;*/
-}
-
-.badge {
-  /*color: #ffbe4a;*/
-  font-size: 18px;
-}
-
-#ques li {
-  margin-top:15px;
-  margin-left: 25px;
-  margin-right: 25px;
-}
-#ques li:hover a,#ques li:hover .badge {
-  color: #ffbe4a;
-}
-#ques li a {
-    font-size: 20px;
-    /*text-align: center;*/
-    display: block;
-    color: #FFF;
-    padding: 8px 16px;
-    background-color: #202228;
-    text-decoration: none;
-}
-
-#ques li a p {
+table {
   font-size: 15px;
+  vertical-align: middle;
+  text-align: center;
+  background-color: #202228;
 }
 
-#ques li .solved {
-    font-size: 20px;
-    /*text-align: center;*/
-    display: block;
-    /*color: #FFF;*/
-    padding: 8px 16px;
-    color: #636770;
-    text-decoration: none;
+table thead {
+  line-height: 30px;
+  font-size: 17px;
+  background-color: #202228;
 }
 
-
-#ques li .solved:hover {
-    color: #FFF;
+table tbody td {
+  vertical-align: middle;
+}
+table tr {
+  background-color: #202228;
 }
 
-
-#ques li a.active {
-  /*background-image: url("../Active.png");*/
+#filler {
+  position: fixed;
+  /*background-color: red;*/
+  background-color: #202228;
+  height: 50px;
+  width: 7.5px;
+  left: 98.5%;
 }
 
+#resultTableHeader {
+  background-color: #202228;
+  width:99.5%;
+}
+#resultTableHeader th{
+  background-color: #202228;
+}
+
+#tableWrapper {
+  height: 82vh;
+  overflow: auto;
+  margin-top:-10px;
+}
+
+#resultTable {
+  /*display: block;*/
+  margin-top: 0px;
+  margin-bottom: 0px;
+  /*height: 500px;*/
+  /*overflow-y: scroll;*/
+}
+#resultTable tbody {
+  /*display: block;*/
+  margin-top: -10px;
+  height: 80px;
+  overflow-y: scroll;
+}
 
 ::-webkit-scrollbar-track
 {

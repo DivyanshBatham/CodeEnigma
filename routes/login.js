@@ -1,21 +1,43 @@
 var express = require('express');
 const mongoose = require('mongoose');
+var users = require('../models/users');
 // var mongodb = require('mongodb');
 // var MongoClient = require('./../db.js');
 var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('login', { title: 'Login' });
+  if (req.user) {
+    console.log("REDIRECTED BECAUSE ALREADY LOGGED IN");
+    res.redirect('/CodeEnigma');
+  }
+  else
+    res.render('login', { title: 'Login', error: '' });
 });
 
 router.post('/', function(req, res, next) {
-  console.log(req.body.TeamId,req.body.Password);
-  mongoose.model('users').findOne( { id:req.body.TeamId, pass:req.body.Password } ,function(err,users){
-    res.send(users);
+
+  // User.findOne({ email: req.body.email }, function(err, user) {
+  // users.findOne( { id:req.body.TeamId, pass:req.body.Password } ,function(err,users){
+  users.findOne( { id:req.body.TeamId } ,function(err,user){
+  if (!user) {
+    console.log("Invalid TeamId");
+    res.render('login.ejs', { error: 'Invalid TeamId.' });
+  } else {
+    console.log(req.body.TeamId,req.body.Password,user,user.pass);
+    if (req.body.Password === user.pass) {
+      console.log("Correct Login");
+      // res.send(users);
+      // sets a cookie with the user's info
+      req.session.user = user;
+      res.redirect('/CodeEnigma');
+    } else {
+      console.log("Invalid TeamId or Password");
+      res.render('login.ejs', { error: 'Invalid TeamId or Password.' });
+    }
+  }
   });
 
-  //res.render('login', { title: 'Login' });
 });
 
 

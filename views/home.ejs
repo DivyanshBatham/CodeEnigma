@@ -2,10 +2,33 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>CodeEnigma | <%= difficulty.charAt(0).toUpperCase() + difficulty.slice(1) %>  </title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+    <title>CodeEnigma | <%= difficulty.charAt(0).toUpperCase() + difficulty.slice(1) %> </title>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="/stylesheets/loader.css">
+    <link rel="stylesheet" href="/stylesheets/loaders.css">
+
   </head>
-  <body>
+  <body onload="myFunction()">
+  <!-- <body> -->
+  <div id="loaderContainer">
+    <div class="loader"><div class="ball-grid-pulse"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
+  </div>
+  <script>
+  function myFunction() {
+    var myVar = setTimeout(showPage, 1000);
+  }
+
+  function showPage()
+  {
+    // console.log("Hide Loader and show page");
+    // $(".loader").hide();
+    $("#loaderContainer").hide();
+    $(".container-fluid").show();
+    // $("#main-content").show();
+  }
+  </script>
+
     <div class="container-fluid" style="height:100%;">
       <div class="row" id="main-content">
         <div class="col-md-3" id="left-col">
@@ -13,21 +36,74 @@
           <img src="../Logo.jpg" alt="CodeEnigma Logo" id="logo">
           <br>
           <br>
+          <p id="status">Competition ends in</p>
           <p id="timer">Time Remaining</p>
-          <p id="rank">#114/150</p>
-          <p id="points">(157 Points)</p>
-          <br>
+          <p id="rank">Rank</p>
+          <!-- <p id="points">(157 Points)</p> -->
+          <p id="points">(<%= user.score %> Points)</p>
+          <!-- <br> -->
 
+          <hr class="myHRTop"><br>
           <ul id="nav"> <!-- AJAX Calls -->
-            <li><a href="easy" <% if(difficulty=="easy"){ %> class="active" <% } %> >EASY (5 Points)</a></li>
-            <li><a href="medium" <% if(difficulty=="medium"){ %> class="active" <% } %> >MEDIUM (15 Points)</a></li>
+            <li><a href="/CodeEnigma/easy" <% if(difficulty=="easy"){ %> class="active" <% } %> >EASY (5 Points)</a></li>
+            <li><a href="/CodeEnigma/medium" <% if(difficulty=="medium"){ %> class="active" <% } %> >MEDIUM (15 Points)</a></li>
             <li><a href="/CodeEnigma/hard" <% if(difficulty=="hard"){ %> class="active" <% } %> >HARD (25 Points)</a></li>
             <!-- <a href="/CodeEnigma/hard" means totally new link  -->
             <!-- <a href="hard" means change last subroute of current route  -->
-            <li id="instructions"><a href="#">INSTRUCTIONS</a></li>
+            <br><hr class="myHRBottom">
+            <li id="instructions"><a href="/CodeEnigma/instructions">INSTRUCTIONS</a></li>
+            <li><a href="/CodeEnigma/results">RESULTS</a></li>
+            <% if(user.type=='admin'){ %>
+            <li><a href="/config">CONFIGURATION</a></li>
+            <li><a href="/insert">INSERTION</a></li>
+            <% } %>
           </ul>
         </div>
         <div class="col-md-9" id="right-col">
+          <!-- <nav class="navbar navbar-inverse">
+  <ul class="nav navbar-nav">
+    <li><a href="#">Link</a></li>
+    <li><a href="#">Link</a></li>
+  </ul>
+  <p class="navbar-text">Some text</p>
+</nav> -->
+          <div class="row" id="right-col-header">
+            <div class="col-md-3">
+            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            TeamId : <%= user.id %></div>
+            <!-- <div class="col-md-1"> C | C++ | Java </div> -->
+            <div class="col-md-7" style="text-align:center">
+              <span class="glyphicon glyphicon-text-background" aria-hidden="true"></span>
+              Choose your default language:
+              <form style="display:inline">
+                <label class="radio-inline">
+                  <input type="radio" name="defaultLang">C
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="defaultLang" checked>C++
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="defaultLang">Java
+                </label>
+              </form>
+
+              <!-- <span class="label label-info">Info</span> -->
+              <!-- <p id="timer2">Time Remaining</p> -->
+            </div>
+            <!-- <div class="col-md-2">
+              <p id="rank2">#113/147</p>
+            </div>
+            <div class="col-md-1">
+              <p id="points2">(95 Points)</p>
+            </div> -->
+            <div class="col-md-2" style="text-align:right">
+
+              <a href="/logout"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Logout</a>
+              <!-- <button id="submitButton" type = "button" class = "btn btn-success">Logout</button> -->
+            </div>
+          </div>
+          <hr>
+          <!-- <div class="clearfix"></div> -->
           <!-- <div class="dropdown">
               <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Welcome, CE001
               <span class="caret"></span></button>
@@ -37,8 +113,8 @@
                 <li><a href="#">JavaScript</a></li>
               </ul>
             </div> -->
-          <br>Home > <%= difficulty.charAt(0).toUpperCase() + difficulty.slice(1) %>
-          <br>
+          <!-- <br>Home > <%= difficulty.charAt(0).toUpperCase() + difficulty.slice(1) %> -->
+          <!-- <br> -->
           <!-- <div class="progress">
             <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
               <span class="sr-only">60% Complete</span>
@@ -49,35 +125,56 @@
             <% questions.forEach(function(question){ %>
               <li><a href="<%= difficulty %>/<%= question.id %>/cpp">
                   <!-- <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span> -->
-                  <%# if(question.id=='B' || question.id=='D'){ %>
-                    <!-- <span class="badge">✓</span> -->
-                  <%# }else{ %>
+                  <!-- <%# if(question.id=='B' || question.id=='D'){ %> -->
+                  <% if(user.solvedQuestions[difficulty].indexOf(question.id)!=-1 ) { %>
+                    <span class="badge">✓</span>
+                  <% }else{ %>
                     <span class="badge"><%= question.id %>.</span>
-                  <%# } %>
+                  <% } %>
                   <%- question.title %> :<br><p><%- question.shortDescription %></p>
                 </a>
               </li>
             <% }); %>
 
-            <!-- <li><a href="#" class="solved">Game of Stones : [✓]<br> Two players (numbered  and ) are playing a game with  stones. Player  always plays first, and the two players move in alternating turns. The game's rules are as follows:</a></li>
-            <li><a href="#">A : Game of Stones : Two players (numbered  and ) are playing a game with  stones. Player  always plays first ...</a></li>
-            <li><a href="#">B : Amicable Number</a></li>
-            <li><a href="#">C : Bishop and Pawn</a></li>
-            <li><a href="#">D : Alphabetic Shift</a></li>
-            <li><a href="#">E : Amicable Number</a></li>
-            <li><a href="#">F : Bishop and Pawn</a></li>
-            <li><a href="#">G : Alphabetic Shift</a></li>
-            <li><a href="#">H : Amicable Number</a></li>
-            <li><a href="#">I : Bishop and Pawn</a></li>
-            <li><a href="#">I : Bishop and Pawn</a></li> -->
           </ul>
         </div>
       </div>
   </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="/javascripts/bootstrap.min.js"></script>
+
+
+  <!-- contestEndedModal -->
+  <div class="modal fade" id="contestEndedModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Competition Ended</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p>Competition has ended, check results now.</p>
+          <p>(You will be automatically redirected in 5 seconds)</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Results</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- contestEndedModal -->
+
+
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
     <script src="/javascripts/jquery-3.2.1.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/stylesheets/dashboard.css">
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/bootstrap-grid.min.css">
     <script src='/javascripts/timer.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+    <script src='/javascripts/live.js'></script>
   </body>
 </html>

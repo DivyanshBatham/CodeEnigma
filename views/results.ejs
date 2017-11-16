@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>CodeEnigma | Results </title>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="/stylesheets/loader.css">
+    <link rel="stylesheet" href="/stylesheets/loaders.css">
+
+  </head>
+  <body onload="myFunction()">
+  <!-- <body> -->
+  <div id="loaderContainer">
+    <div class="loader"><div class="ball-grid-pulse"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
+  </div>
+  <script>
+  function myFunction() {
+    var myVar = setTimeout(showPage, 1000);
+  }
+
+  function showPage()
+  {
+    // console.log("Hide Loader and show page");
+    // $(".loader").hide();
+    $("#loaderContainer").hide();
+    $(".container-fluid").show();
+    // $("#main-content").show();
+  }
+  </script>
+
+    <div class="container-fluid" style="height:100%;">
+      <div class="row" id="main-content">
+        <div class="col-md-3" id="left-col">
+          <!-- <img src="Logo.jpg" alt="CodeEnigma Logo" id="logo"> -->
+          <img src="../Logo.jpg" alt="CodeEnigma Logo" id="logo">
+          <br>
+          <br>
+          <p id="status"></p>
+          <p id="timer">Competition Ended</p>
+          <p id="rank">Rank</p>
+          <!-- <p id="points">(157 Points)</p> -->
+          <p id="points">(<%= user.score %> Points)</p>
+          <!-- <br> -->
+
+          <hr class="myHRTop"><br>
+          <ul id="nav">
+            <!-- On click of these show a modal -> Competition has ended. -->
+            <!-- <li><a href="#">EASY (5 Points)</a></li>
+            <li><a href="#">MEDIUM (15 Points)</a></li>
+            <li><a href="#">HARD (25 Points)</a></li> -->
+            <li><a href="/CodeEnigma/easy">EASY (5 Points)</a></li>
+            <li><a href="/CodeEnigma/medium">MEDIUM (15 Points)</a></li>
+            <li><a href="/CodeEnigma/hard">HARD (25 Points)</a></li>
+            <!-- <a href="/CodeEnigma/hard" means totally new link  -->
+            <!-- <a href="hard" means change last subroute of current route  -->
+            <br><hr class="myHRBottom">
+            <li id="instructions"><a href="/CodeEnigma/instructions">INSTRUCTIONS</a></li>
+            <li><a href="/CodeEnigma/results" class="active">RESULTS</a></li>
+            <% if(user.type=='admin'){ %>
+            <li><a href="/config">CONFIGURATION</a></li>
+            <li><a href="/insert">INSERTION</a></li>
+            <% } %>
+          </ul>
+        </div>
+        <div class="col-md-9" id="right-col">
+          <!-- <nav class="navbar navbar-inverse">
+  <ul class="nav navbar-nav">
+    <li><a href="#">Link</a></li>
+    <li><a href="#">Link</a></li>
+  </ul>
+  <p class="navbar-text">Some text</p>
+</nav> -->
+          <div class="row" id="right-col-header">
+            <div class="col-md-3">
+            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            TeamId : <%= user.id %></div>
+            <!-- <div class="col-md-1"> C | C++ | Java </div> -->
+            <div class="col-md-7" style="text-align:center">
+            Congratulations, You were <%= users.findIndex( u => u.id == user.id ) + 1 %>th out of <%= users.length %> Teams
+            </div>
+            <!-- <div class="col-md-2">
+              <p id="rank2">#113/147</p>
+            </div>
+            <div class="col-md-1">
+              <p id="points2">(95 Points)</p>
+            </div> -->
+            <div class="col-md-2" style="text-align:right">
+
+              <a href="/logout"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Logout</a>
+              <!-- <button id="submitButton" type = "button" class = "btn btn-success">Logout</button> -->
+            </div>
+          </div>
+          <hr>
+
+          <!-- <table id="header-fixed" class="table table-bordered table-dark">
+          </table> -->
+          <div id="filler"></div>
+          <table id="resultTableHeader" class="table table-bordered">
+              <thead class="thead-dark">
+                <tr>
+                  <th style="width:5%">#</th>
+                  <th style="width:15%">TeamID</th>
+                  <th style="width:15%">Difficulty</th>
+                  <th style="width:5%">A</th>
+                  <th style="width:5%">B</th>
+                  <th style="width:5%">C</th>
+                  <th style="width:5%">D</th>
+                  <th style="width:5%">E</th>
+                  <th style="width:5%">F</th>
+                  <th style="width:10%">Score</th>
+                  <th style="width:15%">Total Score</th>
+                  <th style="width:10%">Time</th>
+                </tr>
+              </thead>
+          </table>
+          <div id="tableWrapper">
+          <table id="resultTable" class="table table-bordered table-dark">
+              <tbody >
+                <% users.forEach(function(u, rank){ %>
+                <tr <% if( u.id == user.id ){ %>style="background-color:#2C3034"<% } %>>
+                  <td style="width:5%; vertical-align:middle;" rowspan="3"><%= rank + 1 %></td>
+                  <td style="width:15%; vertical-align:middle" rowspan="3"><%= u.id %></td>
+                  <td style="width:15%">Easy</td>
+                  <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('A')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
+                  <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('B')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
+                  <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('C')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
+                  <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('D')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
+                  <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('E')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
+                  <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('F')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
+                  <td style="width:10%"><%= u.solvedQuestions['easy'].length * 5 %></td>
+                  <td style="width:15%; vertical-align:middle" rowspan="3"><%= u.score %></td>
+                  <td style="width:10%; vertical-align:middle" rowspan="3"><%= u.lastSubmissionDisplay %></tr>
+                <tr <% if( u.id == user.id ){ %>style="background-color:#2C3034"<% } %>>
+                  <td>Medium</td>
+                  <td><% if( u.solvedQuestions['medium'].indexOf('A')!=-1 ){ %> 15 <% }else{ %> - <% } %></td>
+                  <td><% if( u.solvedQuestions['medium'].indexOf('B')!=-1 ){ %> 15 <% }else{ %> - <% } %></td>
+                  <td><% if( u.solvedQuestions['medium'].indexOf('C')!=-1 ){ %> 15 <% }else{ %> - <% } %></td>
+                  <td><% if( u.solvedQuestions['medium'].indexOf('D')!=-1 ){ %> 15 <% }else{ %> - <% } %></td>
+                  <td><% if( u.solvedQuestions['medium'].indexOf('E')!=-1 ){ %> 15 <% }else{ %> - <% } %></td>
+                  <td><% if( u.solvedQuestions['medium'].indexOf('F')!=-1 ){ %> 15 <% }else{ %> - <% } %></td>
+                  <td><%= u.solvedQuestions['medium'].length * 15 %></td>
+                </tr>
+                <tr <% if( u.id == user.id ){ %>style="background-color:#2C3034"<% } %>>
+                  <td>Hard</td>
+                  <td><% if( u.solvedQuestions['hard'].indexOf('A')!=-1 ){ %> 25 <% }else{ %> - <% } %></td>
+                  <td><% if( u.solvedQuestions['hard'].indexOf('B')!=-1 ){ %> 25 <% }else{ %> - <% } %></td>
+                  <td><% if( u.solvedQuestions['hard'].indexOf('C')!=-1 ){ %> 25 <% }else{ %> - <% } %></td>
+                  <td><% if( u.solvedQuestions['hard'].indexOf('D')!=-1 ){ %> 25 <% }else{ %> - <% } %></td>
+                  <td><% if( u.solvedQuestions['hard'].indexOf('E')!=-1 ){ %> 25 <% }else{ %> - <% } %></td>
+                  <td><% if( u.solvedQuestions['hard'].indexOf('F')!=-1 ){ %> 25 <% }else{ %> - <% } %></td>
+                  <td><%= u.solvedQuestions['hard'].length * 25 %></td>
+                </tr>
+                <% }); %>
+
+
+                <!-- <tr>
+                  <td style="vertical-align:middle" rowspan="3">1</td>
+                  <td style="vertical-align:middle" rowspan="3">CE007</td>
+                  <td>Easy</td>
+                  <td>5</td>
+                  <td>-</td>
+                  <td>5</td>
+                  <td>0</td>
+                  <td>5</td>
+                  <td>5</td>
+                  <td>20</td>
+                  <td style="vertical-align:middle" rowspan="3">85</td>
+                  <td style="vertical-align:middle" rowspan="3">2:15:17</td>
+                </tr>
+                <tr>
+                  <td>Medium</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>15</td>
+                  <td>15</td>
+                  <td>-</td>
+                  <td>15</td>
+                  <td>45</td>
+                </tr>
+                <tr>
+                  <td>Hard</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>25</td>
+                  <td>0</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>25</td>
+                </tr>
+                 -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- <ul id="ques">
+            <%# users.forEach(function(question){ %>
+              <li><a href="<%#= difficulty %>/<%#= question.id %>/cpp">
+                  <%# if(user.solvedQuestions[difficulty].indexOf(question.id)!=-1 ) { %>
+                    <span class="badge">✓</span>
+                  <%# }else{ %>
+                    <span class="badge"><%#= question.id %>.</span>
+                  <%# } %>
+                  <%#- question.title %> :<br><p><%#- question.shortDescription %></p>
+                </a>
+              </li>
+            <%# }); %>
+          </ul> -->
+        </div>
+      </div>
+  </div>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+    <script src="/javascripts/jquery-3.2.1.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/stylesheets/results.css">
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/bootstrap-grid.min.css">
+    <script src='/javascripts/timer.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+    <script src='/javascripts/live.js'></script>
+    <!-- <script src='/javascripts/results.js'></script> -->
+  </body>
+</html>

@@ -8,6 +8,7 @@
     src: url('../fonts/glyphicons-halflings-regular.ttf') format('truetype');
     src: url('../fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
 }*/
+
 #main-content {
   height: 100vh;
 }
@@ -63,6 +64,14 @@
   /*background-color: #31343D;*/
 }
 
+#currentTime {
+  font-size: 24px;
+}
+
+#right-col-body {
+  font-size: 24px;
+}
+
 
 #logo {
   max-width: 100%;
@@ -77,11 +86,14 @@
     /*background-color: #f1f1f1;*/
 }
 
+.myHR {
+  background-color: #ffbe4a;
+}
+
 #nav #instructions {
   margin-top: 4vh;
   /*bottom: 15px;*/
 }
-
 #nav li {
   margin-top:5px;
 }
@@ -148,63 +160,34 @@ a:active { text-decoration: none; }
   background-color: #ffbe4a;
 }
 
-#ques {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    /*background-color: #f1f1f1;*/
-}
-#ques #instructions {
-  margin-top: 15vh;
-  /*bottom: 15px;*/
+input[type="text"] {
+  /*height: px;*/
+  font-size: 25px;
+  margin:10px;
 }
 
-.badge {
-  /*color: #ffbe4a;*/
-  font-size: 18px;
+#dateTime {
+  font-size: 30px;
+  height: 30px;
+  size: 30px;
 }
 
-#ques li {
-  margin-top:15px;
-  margin-left: 25px;
-  margin-right: 25px;
-}
-#ques li:hover a,#ques li:hover .badge {
+#submitButton, #submitButton2 {
+  width: 180px;
+  margin-left: 30%;
+  margin-top: 5px;
+  font-size: 30px;
+  background-color: #202228;
+  border-color: #ffbe4a;
   color: #ffbe4a;
-}
-#ques li a {
-    font-size: 20px;
-    /*text-align: center;*/
-    display: block;
-    color: #FFF;
-    padding: 8px 16px;
-    background-color: #202228;
-    text-decoration: none;
+  cursor: pointer;
 }
 
-#ques li a p {
-  font-size: 15px;
-}
-
-#ques li .solved {
-    font-size: 20px;
-    /*text-align: center;*/
-    display: block;
-    /*color: #FFF;*/
-    padding: 8px 16px;
-    color: #636770;
-    text-decoration: none;
-}
-
-
-#ques li .solved:hover {
-    color: #FFF;
-}
-
-
-#ques li a.active {
-  /*background-image: url("../Active.png");*/
+#submitButton:hover, #submitButton2:hover {
+  background-color: #ffbe4a;
+  border-color: #ffbe4a;
+  color: #202228;
+  cursor: pointer;
 }
 
 

@@ -7,13 +7,15 @@ var questionsSchema = new Schema({
   title: String,
   description: String,
   shortDescription: String,
-  ignoreLines : Number,
-  inputLines : Number,
-  outputLines : Number,
+  // ignoreLines : Number,
+  // inputLines : Number,
+  // outputLines : Number,
   sampleInput: String,
   sampleOutput : String,
-  inputs : Array,
-  outputs : Array
+  hiddenInput: String,
+  hiddenOutput : String,
+  // inputs : Array,
+  // outputs : Array
 });
 
 module.exports = mongoose.model('questions', questionsSchema);

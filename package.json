@@ -7,14 +7,18 @@
   },
   "dependencies": {
     "body-parser": "~1.17.1",
+    "client-sessions": "^0.8.0",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
     "ejs": "~2.5.6",
     "express": "~4.15.2",
+    "floatthead": "^2.0.3",
+    "machinepack-hackerrank": "^0.1.2",
     "mongodb": "^2.2.31",
     "mongoose": "^4.11.10",
     "morgan": "~1.8.1",
     "nprogress": "^0.2.0",
-    "serve-favicon": "~2.4.2"
+    "serve-favicon": "~2.4.2",
+    "socket.io": "^2.0.3"
   }
 }

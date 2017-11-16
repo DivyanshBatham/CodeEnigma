@@ -1,3 +1,6 @@
+$('#backButton').click(function(){
+	window.location.href = "/CodeEnigma/easy";
+});
 
 $('#insertButton').click(function(){
 	// NProgress.done();
@@ -8,13 +11,15 @@ $('#insertButton').click(function(){
       id : document.getElementById('id').value,
       title : document.getElementById('title').value,
       description : editor.getValue(),
-			shortDescription : editor3.getValue(),
+			shortDescription : editor2.getValue(),
 			// sampleInput : editor2.getValue()
 			sampleInput : $('#sampleInput').val(),
 			sampleOutput : $('#sampleOutput').val(),
-			ignoreLines : $('#ignoreLines').val(),
-			inputLines : $('#inputLines').val(),
-			outputLines : $('#outputLines').val()
+			hiddenInput : $('#hiddenInput').val(),
+			hiddenOutput : $('#hiddenOutput').val(),
+			// ignoreLines : $('#ignoreLines').val(),
+			// inputLines : $('#inputLines').val(),
+			// outputLines : $('#outputLines').val()
 		};
 
     console.log("Insert.js(JS)" , Question);
@@ -81,3 +86,47 @@ function changeTab(clickedButton) {
 		// document.getElementById('left-col-body-sample').style.display = '';
 	}
 }
+
+
+$('#submitButton').click(function(){
+	console.log("Submit Button Pressed");
+	var Contest = {
+		type : "Contest",
+		startDate : document.getElementById('startDate').value,
+		endDate : document.getElementById('endDate').value,
+	};
+console.log(Contest);
+	$.ajax({
+			type:'POST',
+			url:'/config',
+			data:Contest,
+			dataType:'json',
+			success: function(numAffected){
+				alert("Data Successfully Updated \n" + JSON.stringify(numAffected) );
+				// NProgress.done();
+			}
+		});
+
+});
+
+
+$('#submitButton2').click(function(){
+	console.log("Submit Button 2 Pressed");
+	var Contest = {
+		type : "Contestant",
+		startId : document.getElementById('startId').value,
+		endId : document.getElementById('endId').value,
+	};
+console.log(Contest);
+	$.ajax({
+			type:'POST',
+			url:'/config',
+			data:Contest,
+			dataType:'json',
+			success: function(){
+				alert("Data Successfully Updated \n");
+				// NProgress.done();
+			}
+		});
+
+});
