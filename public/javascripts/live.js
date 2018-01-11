@@ -1,6 +1,6 @@
-var socket = io.connect('http://10.0.0.230');
+// var socket = io.connect('http://10.0.0.230');
 // var socket = io.connect('http://10.0.1.127');
-// var socket = io.connect('http://localhost');
+var socket = io.connect('http://localhost');
 
 
 getRank();
@@ -73,8 +73,11 @@ $('#submitButton').click(function(){
               if(R.result.compilemessage=="")
               {
                 if(R.status=="✔ Correct Answer")
-                $('#correctModal').modal('show');
-                // alert("MODAL FOR Correct Answer.");
+                {
+                   $('#correctModal').modal('show');
+                   $("#activeButton").html("✓");
+                   // alert("MODAL FOR Correct Answer.");
+                }
                 if(R.status=="✘ Wrong Answer")
                 $('#wrongModal').modal('show');
                 // alert("MODAL FOR Wrong Answer.");

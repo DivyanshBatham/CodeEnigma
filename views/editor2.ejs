@@ -53,7 +53,7 @@
                         <% questions.forEach(function(question){ %>
 
                           <% if(id==question.id){ %>
-                            <li><button type="button" class="btn btn-circle active">
+                            <li><button type="button" class="btn btn-circle active" id="activeButton">
                           <% }else if(lang!=""){ %>
                             <li><button type="button" class="btn btn-circle" onclick="window.location ='../<%= question.id %>/<%= lang %>'">
                           <% }else{ %>
@@ -67,7 +67,6 @@
                           <% } %>
 
                         <% }); %>
-
 
 
 
@@ -325,8 +324,18 @@ int main()
                     <p>Congratulations, you solved this challenge!</p>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Previous</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Next</button>
+                    <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Previous</button> -->
+                    <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Next</button> -->
+                    <% if( 0 < index && index < questions.length-1 ){ %>  <!--EASY Next,Previous-->
+                      <button type="button" class="btn btn-default" onclick="window.location = '../<%= questions[index-1].id %>/<%= lang %>'" >Previous</button>
+                      <button type="button" class="btn btn-default" onclick="window.location = '../<%= questions[index+1].id %>/<%= lang %>'" >Next</button>
+                    <% }else if( index == questions.length-1 ){ %> <!--Next-->
+                      <button type="button" class="btn btn-default" onclick="window.location = '../<%= questions[index-1].id %>/<%= lang %>'" >Previous</button>
+                      <button type="button" class="btn btn-default" onclick="window.location = '../../<%= ['easy','medium','hard','hard'][['easy','medium','hard'].indexOf(difficulty) + 1] %>'" >Next</button>
+                    <% }else if( index == 0 ){ %> <!--Previous-->
+                      <button type="button" class="btn btn-default" onclick="window.location = '../../<%= ['hard','medium','easy','easy'][['hard','medium','easy'].indexOf(difficulty) + 1] %>'" >Previous</button>
+                      <button type="button" class="btn btn-default" onclick="window.location = '../<%= questions[index+1].id %>/<%= lang %>'" >Next</button>
+                    <% } %>
                   </div>
                 </div>
 

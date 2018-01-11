@@ -95,8 +95,10 @@ router.post('/', function(req, res, next) {
   if(req.body.requestType=="submit")
   {
     //  CHECK WHETHER ALREADY SUBMITTED.
-    if( req.user.solvedQuestions[req.body.difficulty].indexOf(req.body.id) != -1 )
+    // console.log(req.user.type);
+    if( req.user.solvedQuestions[req.body.difficulty].indexOf(req.body.id) != -1 && req.user.type != 'admin' )
     {
+      // console.log(req.user.type); 
       var customResponse = { status : "Duplicate Submission" };
       // customResponse.status = "Compilation Error";
       res.json(customResponse);
