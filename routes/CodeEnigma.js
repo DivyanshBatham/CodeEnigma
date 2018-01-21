@@ -103,21 +103,21 @@ router.get('/:difficulty', requireLogin, function(req, res, next) {
 });
 
 // CHANGE find to findOne, for better efficiency or use AngularJS to reduce server load.
-router.get('/:difficulty(easy|medium|hard)/:id', requireLogin, function(req, res, next) {
-  console.log("/:id",req.params.lang);
-  mongoose.model('questions').find( { difficulty:req.params.difficulty } ,function(err,questions){
-    if(req.params.id.charCodeAt(0)-64 <= questions.length)
-    {
-      var index = questions.findIndex( q => q.id == req.params.id );
-      res.render('editor2', { questions:questions ,index:index, id:req.params.id ,lang: "",difficulty:req.params.difficulty})
-    }
-    else {
-      // Give 404 Error.
-      // No such question found.
-      res.send("404 Error"+" No such question found.");
-    }
-  });
-});
+// router.get('/:difficulty(easy|medium|hard)/:id', requireLogin, function(req, res, next) {
+//   console.log("/:id",req.params.lang);
+//   mongoose.model('questions').find( { difficulty:req.params.difficulty } ,function(err,questions){
+//     if(req.params.id.charCodeAt(0)-64 <= questions.length)
+//     {
+//       var index = questions.findIndex( q => q.id == req.params.id );
+//       res.render('editor2', { questions:questions ,index:index, id:req.params.id ,lang: "",difficulty:req.params.difficulty})
+//     }
+//     else {
+//       // Give 404 Error.
+//       // No such question found.
+//       res.send("404 Error"+" No such question found.");
+//     }
+//   });
+// });
 
 router.get('/:difficulty(easy|medium|hard)/:id/:lang(c|cpp|java)', requireLogin, function(req, res, next) {
   // If helpful 404 error needed, then uncomment the following and remove regex for lang :
@@ -127,7 +127,7 @@ router.get('/:difficulty(easy|medium|hard)/:id/:lang(c|cpp|java)', requireLogin,
           if(req.params.id.charCodeAt(0)-64 <= questions.length)
           {
             var index = questions.findIndex( q => q.id == req.params.id );
-            console.log(questions,req.params.id,req.params.lang,req.params.difficulty);
+            // res.render('editor2', { questions:questions , index:index, id:req.params.id ,lang: req.params.lang, difficulty:req.params.difficulty})
             res.render('editor2', { questions:questions , index:index, id:req.params.id ,lang: req.params.lang, difficulty:req.params.difficulty})
           }
           else {

@@ -20,8 +20,11 @@ var editor2 = require('./routes/editor2');
 var run = require('./routes/run');
 var login = require('./routes/login');
 var insert = require('./routes/insert');
+var save = require('./routes/save');
+var defaultLanguage = require('./routes/defaultLanguage');
 var getRank = require('./routes/getRank');
 var getTime = require('./routes/getTime');
+var getCode = require('./routes/getCode');
 var config = require('./routes/config');
 
 var app = express();
@@ -47,7 +50,14 @@ app.use(session({
 	cookieName: 'session',
 	secret: '%3RGSb.e-||Qd?$kF:IJf(8#2{(oIbaG&1w/J87T)d2_x;zQf^UIZeH%8VB/h,"A+)%)$>q}c1M"*hOlMA1LI^F%Zz%9D"[x',	// used for unique encryption and decryption
 	duration: 30 * 60 * 60 * 1000, // Time after which session will expire (in milisecond), used for banking sites
-	activeDuration: 5 * 60 * 60 * 1000
+	activeDuration: 5 * 60 * 60 * 1000,
+	cookie: {
+    // path: '/api', // cookie will only be sent to requests under '/api'
+    // maxAge: 60000, // duration of the cookie in milliseconds, defaults to duration above
+    ephemeral: true, // when true, cookie expires when the browser closes
+    // httpOnly: true, // when true, cookie is not accessible from javascript
+    // secure: false // when true, cookie will only be sent over SSL. use key 'secureProxy' instead if you handle SSL not in your node process
+  }
 }));
 
 // Connecting to MongoDB:
@@ -198,10 +208,13 @@ app.use('/users', users);
 // app.use('/editor', editor);
 // app.use('/editor2', editor2);
 app.use('/run', run);
+app.use('/save', save);
+app.use('/defaultLanguage', defaultLanguage);
 app.use('/insert', insert);
 app.use('/login', login);
 app.use('/getRank', getRank);
 app.use('/getTime', getTime);
+app.use('/getCode', getCode);
 app.use('/config', config);
 app.use('/loader', loader);
 app.get('/logout', function(req, res) {

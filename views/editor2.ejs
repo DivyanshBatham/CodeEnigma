@@ -55,9 +55,7 @@
                           <% if(id==question.id){ %>
                             <li><button type="button" class="btn btn-circle active" id="activeButton">
                           <% }else if(lang!=""){ %>
-                            <li><button type="button" class="btn btn-circle" onclick="window.location ='../<%= question.id %>/<%= lang %>'">
-                          <% }else{ %>
-                            <li><button type="button" class="btn btn-circle" onclick="window.location ='<%= question.id %>'">
+                            <li><button type="button" class="btn btn-circle" onclick="window.location ='../<%= question.id %>/<%= user.defaultLanguage %>'">
                           <% } %>
 
                           <% if(user.solvedQuestions[difficulty].indexOf(question.id)!=-1 ) { %>
@@ -226,7 +224,8 @@
 
                 <div class="col-md-6" id="right-col">
                       <div class="row" id="right-col-header">
-                          <div class="col-md-6">
+                          <div class="col-md-5">
+
                             <!-- <span class=".glyphicon-glyphicon-credit-card" aria-hidden="true"></span> -->
                             <% if(lang!=""){ %>
                               Code.<%= lang%>
@@ -247,10 +246,10 @@
                                 <!-- <option value="5">Python </option> -->
                             </select>
                           </div>
-                          <div class="col-md-1">Reset</div>
-                          <div class="col-md-1">Full.</div>
+                          <div class="col-md-1"><button id="saveButton" type = "button" class = "btn btn-info">Save</button></div>
+                          <div class="col-md-2"><button id="resetButton" type = "button" class = "btn btn-info">Reset</button></div>
                       </div>
-                      <div class="row" id="editor"><% if(lang=='cpp'){ %>#include&lt;iostream&gt;
+                      <div class="row" id="editor"><% if(user.savedCodes[difficulty].findIndex( q => q.id==id && q.language==lang ) != -1 ){ %><%= user.savedCodes[difficulty].find( q => q.id==id && q.language==lang )['code'] %><% }else if(lang=='cpp'){ %>#include&lt;iostream&gt;
 using namespace std;
 
 int main()
@@ -263,16 +262,13 @@ int main()
     {
         // System.out.println("Hello from Java");
     }
-}
-<% } else if(lang=='c'){ %>#include&lt;stdio.h&gt;
+}<% } else if(lang=='c'){ %>#include&lt;stdio.h&gt;
 
 int main()
 {
     // printf("Hello from C");
     return 0;
-}
-<% } else { %> // Please Select a Language.<% } %>
-</div>
+}<% } else { %> // Please Select a Language.<% } %></div>
                       <div class="row" id="right-col-sub-header">
                         <div class="col-md-12">Input</div>
                         <!-- <div class="col-md-6">Output</div> -->

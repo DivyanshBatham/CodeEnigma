@@ -1,0 +1,25 @@
+
+Don't Run or Submit if no language is selected. (Modal Popup) [DONE]
+
+
+Questions sorting A-b...
+
+If X is present it shows 404
+
+
+Auto Switching to Run Results for Custom inputs [DONE]
+
+
+
+Default Language URLS [DONE]
+NProgress for default language
+
+
+Stop multiple login via same account, by maintaining a list of logged in ids (Middleware)
+  - Different Usernames and Passwords.
+
+
+Auto Save with submit button
+
+
+REMOVE No language routes and language parameters [DONE]

@@ -94,3 +94,27 @@ $('#submitButton').click(function(){
 					}
 				});
 });
+
+
+$("input[name='defaultLanguage']").change(function(e){
+  // NProgress.done();
+  // NProgress.start();
+
+		var User = {
+			defaultLanguage : $(this).val()
+		};
+
+		$.ajax({
+				type:'POST',
+				url:'/defaultLanguage',
+				data:User,
+				dataType:'json',
+				success: function(res){
+					// NProgress.done();
+          // alert("DEFAULT LANGUAGE CHANGED AJAX");
+          // window.location.href = res.defaultLanguage;
+          window.location.reload(true);
+				}
+			});
+
+});

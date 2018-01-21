@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>CodeEnigma | Login</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+        <link rel="stylesheet" href="/stylesheets/login2.css">
+        <link rel="stylesheet" href="/stylesheets/loader.css">
+        <link rel="stylesheet" href="/stylesheets/loaders.css">
+
+    </head>
+    <body onload="myFunction()">
+    <!-- <body> -->
+    <div id="loaderContainer">
+      <div class="loader"><div class="ball-grid-pulse"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
+    </div>
+    <script>
+    function myFunction() {
+      var myVar = setTimeout(showPage, 1000);
+    }
+
+    function showPage()
+    {
+      // console.log("Hide Loader and show page");
+      // $(".loader").hide();
+      $("#loaderContainer").hide();
+      // $(".container-fluid").show();
+      // $(".outside-wrapper").css('display','flex');
+      $(".container-fluid").css('display','flex');
+      // $("#main-content").show();
+    }
+    </script>
+
+
+        <!-- <div class="wrapper">
+          <div class="center-me">
+            Center Me!
+          </div>
+        </div> -->
+
+        <div class="container-fluid">
+          <div class="wrapper">
+              <div class="form-signin">
+                  <h3 class="form-signin-heading">CodeEnigma (Season 4)</h3>
+                    <hr class="colorgraph"><br>
+                    <!-- You need to crack your password. -->
+
+                    <input id="id" type="text" class="form-control" name="TeamId" placeholder="TeamId" required="" autofocus="" />
+                    <!-- <input type="password" class="form-control" name="Password" placeholder="Password" required=""/> -->
+                    <p id="errorId" class="error"></p>
+                    <button id="nextButton" class="btn btn-lg btn-primary btn-block" type="button">Next</button>
+              </div>
+          </div>
+          <div class="wrapper2">
+              <div class="form-signin2">
+                  <h3 class="form-signin-heading">CodeEnigma (Season 4) : Breaking the Enigma Code</h3>
+                    <hr class="colorgraph">
+                    <div class="question-container">
+                      <h5>Francis Bacons Substitution Cipher</h5>
+                      <p>
+                        It is not a true cipher, but just a way to conceal your secret text within plain sight.
+                        The way it works is that the encoder would use two different typefaces : <b>bold</b> and regular fonts in a certain order to encode the hidden message.
+                      </p>
+                      <h6>The Algorithm:</h6>
+                      <p>
+                        Each letter is assigned to a string of five binary digits, such that regular font represent binary 0 and bold font represent binary 1.
+                          <table class="my-table">
+                            <tr>
+                              <td>A = @@@@@</td>
+                              <td>B = @@@@<B>@</B></td>
+                              <td>C = @@@<B>@</B>@</td>
+                              <td>D = @@@<B>@</B><B>@</B></td>
+                              <td>E = @@<B>@</B>@@</td>
+                            </tr>
+                            <tr>
+                              <td>F = @@<B>@</B>@<B>@</B></td>
+                              <td>G = @@<B>@</B><B>@</B>@</td>
+                              <td>H = @@<B>@</B><B>@</B><B>@</B></td>
+                              <td>I = @<B>@</B>@@@</td>
+                              <td>J = @<B>@</B>@@<B>@</B></td>
+                            </tr>
+                            <tr>
+                              <td>K = @<B>@</B>@<B>@</B>@</td>
+                              <td>L = @<B>@</B>@<B>@</B><B>@</B></td>
+                              <td>M = @<B>@</B><B>@</B>@@</td>
+                              <td>N = @<B>@</B><B>@</B>@<B>@</B></td>
+                              <td>O = @<B>@</B><B>@</B><B>@</B>@</td>
+                            </tr>
+                            <tr>
+                              <td>P = @<B>@</B><B>@</B><B>@</B><B>@</B></td>
+                              <td>Q = <B>@</B>@@@@</td>
+                              <td>R = <B>@</B>@@@<B>@</B></td>
+                              <td>S = <B>@</B>@@<B>@</B>@</td>
+                              <td>T = <B>@</B>@@<B>@</B><B>@</B></td>
+                            </tr>
+                            <tr>
+                              <td>U = <B>@</B>@<B>@</B>@@</td>
+                              <td>V = <B>@</B>@<B>@</B>@<B>@</B></td>
+                              <td>W = <B>@</B>@<B>@</B><B>@</B>@</td>
+                              <td>X = <B>@</B>@<B>@</B><B>@</B><B>@</B></td>
+                              <td>Y = <B>@</B><B>@</B>@@@</td>
+                            </tr>
+                            <tr>
+                              <td>Z = <B>@</B><B>@</B>@@<B>@</B></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                            </tr>
+                          </table>
+                      </p>
+                      <h6>Example:</h6>
+                      <p>
+                        The key "ENIGMA" is hidden in the following text: "Be<B>s</B>t of <B>l</B><B>u</B>c<B>k</B> f<B>o</B>r Code<B>E</B><B>n</B>ig<B>m</B><B>a</B> Season 4".
+                        <table class="my-table">
+
+                          <tr>
+                            <td>Be<B>s</B>to</td>
+                            <td>f<B>l</B><B>u</B>c<B>k</B></td>
+                            <td>f<B>o</B>rCo</td>
+                            <td>de<B>E</B><B>n</B>i</td>
+                            <td>g<B>m</B><B>a</B>Se</td>
+                            <td>ason4</td>
+                          </tr>
+                          <tr>
+                            <td>@@<B>@</B>@@</td>
+                            <td>@<B>@</B><B>@</B>@<B>@</B></td>
+                            <td>@<B>@</B>@@@</td>
+                            <td>@@<B>@</B><B>@</B>@</td>
+                            <td>@<B>@</B><B>@</B>@@</td>
+                            <td>@@@@@</td>
+                          </tr>
+                          <tr>
+                            <td>E</td>
+                            <td>N</td>
+                            <td>I</td>
+                            <td>G</td>
+                            <td>M</td>
+                            <td>A</td>
+                          </tr>
+                        </table>
+                      </p>
+                      <p id="code">Best of luck for CodeEnigma Season 4</p>.
+                    </div> <br>
+                    <!-- <input type="text" class="form-control" name="TeamId" placeholder="TeamId" required="" autofocus="" /> -->
+                    <input id="pass" type="password" class="form-control" name="Password" placeholder="Password" required=""/>
+                    <button id="backButton" class="btn btn-lg btn-primary" type="button">Back</button>
+                    <button id="loginButton" class="btn btn-lg btn-primary" type="button">Login</button>
+                    <p id="errorPass" class="error"></p>
+              </div>
+          </div>
+        </div>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="/javascripts/bootstrap.min.js"></script>
+        <script src="/javascripts/jquery-3.2.1.min.js"></script>
+        <script src='/javascripts/nprogress.js'></script>
+        <link rel='stylesheet' href='/stylesheets/nprogress.css'/>
+        <script>
+
+            $('#nextButton').click(function(){
+                NProgress.done();
+                NProgress.start();
+                // AJAX
+                var user = {
+                  id : $('#id').val()
+                };
+                // console.log(user);
+                $.ajax({
+        					type:'POST',
+        					url:'/getCode',
+        					data:user,
+        					dataType:'json',
+            					success: function(res){
+                        // console.log(res);
+                        if(res.status=="404")
+                        {
+                            // alert("404");
+                            $("#errorId").text("Invalid TeamId");
+                        }
+                        else
+                        {
+                          $(".wrapper").fadeOut( "slow", function(){
+                            $("#code").html("<B>Password for " + res.id + "</B> is: " + res.code);
+                            // $("#code").html("<B>Password for " + res.id + "</B> is: " + res.code);
+                            $(".wrapper2").fadeIn( "slow" );
+                            $("#errorId").text("");
+                          });
+                        }
+                        NProgress.done();
+            					}
+      				});
+            });
+
+            $('#backButton').click(function(){
+              $(".wrapper2").fadeOut( "slow", function(){
+                $(".wrapper").fadeIn( "slow" );
+                $("#errorPass").css({"float":"none"});
+                $("#errorPass").text("");
+              });
+            });
+
+            $('#loginButton').click(function(){
+                // AJAX
+                var user = {
+                  TeamId : $('#id').val(),
+                  Password : $('#pass').val()
+                };
+                // console.log(user);
+                $.ajax({
+                  type:'POST',
+                  url:'/login',
+                  data:user,
+                  dataType:'json',
+                      success: function(res){
+                        // console.log(res);
+                        if(res.status=="Correct Login")
+                        {
+                            window.location.reload(true);
+                            // alert("Correct Login redirect");
+                        }
+                        else if(res.status=="Invalid TeamId")
+                        {
+                          $("#errorPass").text("Invalid TeamId");
+                        }
+                        else if(res.status=="Invalid TeamId or Password")
+                        {
+                          $("#errorPass").css({"float":"right"});
+                          $("#errorPass").text("Invalid Password");
+                        }
+                        NProgress.done();
+                      }
+                });
+            });
+
+        </script>
+    </body>
+</html>

@@ -1,4 +1,4 @@
-/*@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");*/
+/* @import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"); */
 
 #header {
   height: 7vh;
@@ -275,6 +275,21 @@
 #languageSelector option:hover {
   color:red;
   background-color: #ffbe4a;
+}
+
+#saveButton, #resetButton {
+  padding:4px;
+  padding-left: 9px;
+  padding-right: 9px;
+  background-color: #31343D;
+  border-color: #fff;
+  color: #fff;
+  cursor: pointer;
+}
+
+#saveButton:hover, #resetButton:hover {
+  background-color: #63656b;
+  cursor: pointer;
 }
 
 #editor {

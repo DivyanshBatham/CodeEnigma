@@ -46,7 +46,7 @@
           <hr class="myHRTop"><br>
           <ul id="nav"> <!-- AJAX Calls -->
             <li><a href="/CodeEnigma/easy" <% if(difficulty=="easy"){ %> class="active" <% } %> >EASY (5 Points)</a></li>
-            <li><a href="/CodeEnigma/medium" <% if(difficulty=="medium"){ %> class="active" <% } %> >MEDIUM (15 Points)</a></li>
+            <li><a href="/CodeEnigma/medium" <% if(difficulty=="medium"){ %> class="active" <% } %> >MEDIUM (15 Points)</span></a></li>
             <li><a href="/CodeEnigma/hard" <% if(difficulty=="hard"){ %> class="active" <% } %> >HARD (25 Points)</a></li>
             <!-- <a href="/CodeEnigma/hard" means totally new link  -->
             <!-- <a href="hard" means change last subroute of current route  -->
@@ -77,13 +77,13 @@
               Choose your default language:
               <form style="display:inline">
                 <label class="radio-inline">
-                  <input type="radio" name="defaultLang">C
+                  <input type="radio" name="defaultLanguage" value="c" <% if(user.defaultLanguage=='c'){ %>checked<% } %> >C
                 </label>
                 <label class="radio-inline">
-                  <input type="radio" name="defaultLang" checked>C++
+                  <input type="radio" name="defaultLanguage" value="cpp"<% if(user.defaultLanguage=='cpp'){ %>checked<% } %> >C++
                 </label>
                 <label class="radio-inline">
-                  <input type="radio" name="defaultLang">Java
+                  <input type="radio" name="defaultLanguage" value="java"<% if(user.defaultLanguage=='java'){ %>checked<% } %> >Java
                 </label>
               </form>
 
@@ -123,7 +123,8 @@
 
           <ul id="ques"> <!-- Href Calls -->
             <% questions.forEach(function(question){ %>
-              <li><a href="<%= difficulty %>/<%= question.id %>/cpp">
+              <li><a href="<%= difficulty %>/<%= question.id %>/<%= user.defaultLanguage %>">
+              <!-- <li><a href="<%= difficulty %>/<%= question.id %>/cpp"> -->
                   <!-- <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span> -->
                   <!-- <%# if(question.id=='B' || question.id=='D'){ %> -->
                   <% if(user.solvedQuestions[difficulty].indexOf(question.id)!=-1 ) { %>

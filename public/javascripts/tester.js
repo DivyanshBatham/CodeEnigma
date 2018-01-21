@@ -31,6 +31,77 @@ $('#customInputs').click(function(){
 	}
 });
 
+$('#saveButton').click(function(){
+	NProgress.done();
+	NProgress.start();
+
+		var url = JSON.stringify(window.location.href).split('/');
+		// alert(JSON.stringify(window.location.href));
+		// alert(url);
+		var language = url.pop().slice(0,-1);
+		var id = url.pop();
+		var difficulty = url.pop();
+
+		var User = {
+      difficulty : difficulty,
+			id : id,
+			language : language,
+			code : editor.getValue()
+		};
+
+		$.ajax({
+				type:'POST',
+				url:'/save',
+				data:User,
+				dataType:'json',
+				success: function(res){
+					NProgress.done();
+					// alert("Code Successfully Saved");
+				}
+			});
+
+});
+
+$('#resetButton').click(function(){
+	NProgress.done();
+	NProgress.start();
+	var url = JSON.stringify(window.location.href).split('/');
+	var language = url.pop().slice(0,-1);
+
+	if(language=='cpp')
+		editor.setValue(`#include<iostream>
+using namespace std;
+
+int main()
+{
+	// cout << "Hello from C++";
+	return 0;
+}`, 1);
+
+	else if(language=='java')
+	editor.setValue(`class Code
+{
+    public static void main( String args[] )
+    {
+        // System.out.println("Hello from Java");
+    }
+}`, 1);
+
+else if(language=='c')
+editor.setValue(`#include<stdio.h>
+
+int main()
+{
+    // printf("Hello from C");
+    return 0;
+}`, 1);
+
+
+	NProgress.done();
+
+});
+
+
 $('#runButton').click(function(){
 	NProgress.done();
 	NProgress.start();
@@ -73,6 +144,7 @@ $('#runButton').click(function(){
 							$("#input").html(editor2.getValue());
 							$("#output").html(R.result.stdout[0]);
 							$("#expectedRow").hide();
+							changeTab("TestResults");
 							// editor3.setValue(R.result.stdout[0]);
 						}
 						else
@@ -81,6 +153,7 @@ $('#runButton').click(function(){
 							$("#input").html(editor2.getValue());
 							$("#output").html(R.result.compilemessage);
 							$("#expectedRow").hide();
+							changeTab("TestResults");
 							// editor3.setValue(R.result.compilemessage);
 						}
 						NProgress.done();

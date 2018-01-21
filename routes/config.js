@@ -64,31 +64,30 @@ if(req.body.type =="Contest")
 
   });
 }
-else if(req.body.type =="Contestant")
-{
-  for( var i = req.body.startId; i<=req.body.endId; i++ )
-  {
-
-    var newData = {
-      id: ("CE"+("000"+i).slice(-3)),
-      type: "contestant",
-      pass: "12345",
-      score : 0,
-      solvedQuestions : {
-        easy : [],
-        medium : [],
-        hard : []
-      },
-      lastSubmission : 0
-    };
-
-    console.log(newData);
-    var data = new users(newdata);
-    data.save();
-  }
-  res.send();
-  // res.end();
-}
+// else if(req.body.type =="Contestant")
+// {
+//   for( var i = req.body.startId; i<=req.body.endId; i++ )
+//   {
+//
+//     var newData = {
+//       id: ("CE"+("000"+i).slice(-3)),
+//       type: "contestant",
+//       pass: "12345",
+//       score : 0,
+//       solvedQuestions : {
+//         easy : [],
+//         medium : [],
+//         hard : []
+//       },
+//       lastSubmission : 0
+//     };
+//
+//     console.log(newData);
+//     var data = new users(newdata);
+//     data.save();
+//   }
+//   res.send();
+// }
 
   // var data = new contest(newData);
   // data.save();
