@@ -61,34 +61,41 @@ $('#submitButton').click(function(){
 					data:config,
 					dataType:'json',
 					success: function(res){
-						// console.log("Hey");
-						// var R = JSON.parse(res);
-						var R = res;
+
+            var R = res;
             if( R.status=="Duplicate Submission")
             {
               $('#duplicateModal').modal('show');
             }
-            else
-            {
-              if(R.result.compilemessage=="")
-              {
-                if(R.status=="✔ Correct Answer")
+						else
+						{
+                if(res.error=="unexpected")
                 {
-                   $('#correctModal').modal('show');
-                   $("#activeButton").html("✓");
-                   // alert("MODAL FOR Correct Answer.");
+                  $('#unexpectedModal').modal('show');
                 }
-                if(R.status=="✘ Wrong Answer")
-                $('#wrongModal').modal('show');
-                // alert("MODAL FOR Wrong Answer.");
-              }
-              else
-              {
-                $("#compileModal .code").html(R.result.compilemessage);
-                $('#compileModal').modal('show');
-                // alert("MODAL FOR Compilation Error.");
-                // MODAL FOR Compilation Error.
-              }
+                else
+                {
+                  if(R.result.compilemessage=="")
+                  {
+                    if(R.status=="✔ Correct Answer")
+                    {
+                       $('#correctModal').modal('show');
+                       $("#activeButton").html("✓");
+                       $('#saveButton').click();
+                       // alert("MODAL FOR Correct Answer.");
+                    }
+                    if(R.status=="✘ Wrong Answer")
+                    $('#wrongModal').modal('show');
+                    // alert("MODAL FOR Wrong Answer.");
+                  }
+                  else
+                  {
+                    $("#compileModal .code").html(R.result.compilemessage);
+                    $('#compileModal').modal('show');
+                    // alert("MODAL FOR Compilation Error.");
+                    // MODAL FOR Compilation Error.
+                  }
+                }
             }
 						NProgress.done();
 					}

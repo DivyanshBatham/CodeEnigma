@@ -5,9 +5,19 @@ var questions = require('../models/questions');
 var users = require('../models/users');
 var contest = require('../models/contest');
 
+function requireLogin (req, res, next) {
+  if (!req.user) {
+    console.log("REDIRECTED DUE TO requireLogin(/run)");
+    res.json('Never do the same mistake again :P');
+    // res.redirect('/login');
+  } else {
+    next();
+  }
+};
+
 /* GET users listing. */
 router.post('/', function(req, res, next) {
-  	console.log("\n\n Got a request");
+  	console.log("\n\n Got an AJAX request, sending request to API");
 	//console.log(req.body.input);
 
   if(req.body.requestType=="custom")
@@ -25,10 +35,12 @@ router.post('/', function(req, res, next) {
     // An unexpected error occurred.
     	error: function (err) {
     		console.log("Err");
-    		throw err;
+        res.json({error:"unexpected"});
+    		// throw err;
     	},
     // OK.
     	success: function (response) {
+        console.log(response);
         var customResponse = JSON.parse(response);
         if( customResponse.result.compilemessage != "" )
             customResponse.status = "Compilation Error";
@@ -47,7 +59,7 @@ router.post('/', function(req, res, next) {
   {
       // Querry the DB for sampleInput
       questions.findOne( { difficulty:req.body.difficulty, id:req.body.id } ,function(err,question){
-        console.log(question);
+        // console.log(question);
         var inputs = [question.sampleInput];
         hackerRank.submit({
         	apiKey: 'hackerrank|515066-1831|aefbf1c26653c1454fb1b2ad4a383892cbce27e9',
@@ -61,7 +73,8 @@ router.post('/', function(req, res, next) {
         // An unexpected error occurred.
         	error: function (err) {
         		console.log("Err");
-        		throw err;
+            res.json({error:"unexpected"});
+            //throw err;
         	},
         // OK.
         	success: function (response) {
@@ -98,7 +111,7 @@ router.post('/', function(req, res, next) {
     // console.log(req.user.type);
     if( req.user.solvedQuestions[req.body.difficulty].indexOf(req.body.id) != -1 && req.user.type != 'admin' )
     {
-      // console.log(req.user.type); 
+      // console.log(req.user.type);
       var customResponse = { status : "Duplicate Submission" };
       // customResponse.status = "Compilation Error";
       res.json(customResponse);
@@ -107,7 +120,7 @@ router.post('/', function(req, res, next) {
     {
       // console.log("ELSE OF DUPLICATE");
       questions.findOne( { difficulty:req.body.difficulty, id:req.body.id } ,function(err,question){
-        console.log(question);
+        // console.log(question);
         var inputs = [question.hiddenInput];
         hackerRank.submit({
           apiKey: 'hackerrank|515066-1831|aefbf1c26653c1454fb1b2ad4a383892cbce27e9',
@@ -121,7 +134,8 @@ router.post('/', function(req, res, next) {
           // An unexpected error occurred.
           error: function (err) {
             console.log("Err");
-            throw err;
+            res.json({error:"unexpected"});
+            //throw err;
           },
           // OK.
           success: function (response) {

@@ -23,6 +23,11 @@ var usersSchema = new Schema({
     medium : [String],
     hard : [String]
   },
+  // runTimes : {
+  //   easy : [{ id: String, runTime:   }],
+  //   medium : [{ id: String, runTime:   }],
+  //   hard : [{ id: String, runTime:   }]
+  // },
   savedCodes : {
     easy : [{ id: String, language: String, code: String }],
     medium : [{ id: String, language: String, code: String }],

@@ -120,7 +120,7 @@
 <div class="row" id="left-col-body-description">
   <div class ="col-md-12">
     <span id="span">
-<%- questions[id.charCodeAt(0)-65].description %>
+<%- questions[index].description %>
   </span>
   </div>
 </div>
@@ -157,8 +157,6 @@
       <table>
         <tr>
           <td style="width:20%;">Input</td>
-          <!-- <td style="width:80%;"><pre class="code"><%# testcase.join('\n')  %></pre></td> -->
-          <!-- <td class="input" style="width:80%;"><pre class="code" id="input"><%= questions[id.charCodeAt(0)-65].sampleInput  %></pre></td> -->
           <td class="input" style="width:80%;"><pre class="code" id="input">Inputs Comes Here</pre></td>
         </tr>
         <tr>
@@ -167,7 +165,6 @@
         </tr>
         <tr id="expectedRow">
           <td style="width:20%;">Expected</td>
-          <!-- <td class="expected" style="width:80%;"><pre class="code" id="expected"><%= questions[id.charCodeAt(0)-65].sampleOutput  %></pre></td> -->
           <td class="expected" style="width:80%;"><pre class="code" id="expected">Expected Output Comes Here</pre></td>
         </tr>
       </table>
@@ -203,10 +200,11 @@
 <%# } %> -->
 <!-- <%# var test = 454; %> -->
 <script>
-  var userId = '<%= user.id %>';
-  var sampleOutput = `<%= questions[id.charCodeAt(0)-65].sampleOutput %>`;
-  var outputs = `<%= questions[id.charCodeAt(0)-65].outputs %>`;
-  var sampleInput = `<%= questions[id.charCodeAt(0)-65].sampleInput %>`;
+// NO USE OF THIS!! NO USE OF THIS!! NO USE OF THIS!! NO USE OF THIS!! NO USE OF THIS!! NO USE OF THIS!!
+  // var userId = '<%# user.id %>';
+  // var sampleOutput = `<%# questions[id.charCodeAt(0)-65].sampleOutput %>`;
+  // var outputs = `<%# questions[id.charCodeAt(0)-65].outputs %>`;
+  // var sampleInput = `<%# questions[id.charCodeAt(0)-65].sampleInput %>`;
   //console.log(sO);
   // var sampleOutput = "sss";
 </script>
@@ -246,7 +244,7 @@
                                 <!-- <option value="5">Python </option> -->
                             </select>
                           </div>
-                          <div class="col-md-1"><button id="saveButton" type = "button" class = "btn btn-info">Save</button></div>
+                          <div class="col-md-1"><button id="saveButton" type = "button" class = "btn btn-info"  data-toggle="tooltip" data-placement="bottom" title="Ctrl+S">Save</button></div>
                           <div class="col-md-2"><button id="resetButton" type = "button" class = "btn btn-info">Reset</button></div>
                       </div>
                       <div class="row" id="editor"><% if(user.savedCodes[difficulty].findIndex( q => q.id==id && q.language==lang ) != -1 ){ %><%= user.savedCodes[difficulty].find( q => q.id==id && q.language==lang )['code'] %><% }else if(lang=='cpp'){ %>#include&lt;iostream&gt;
@@ -301,7 +299,7 @@ int main()
                   <button id="runButton" type = "button" class = "btn btn-info">RUN</button>
                 </div>
                 <div class="col-md-1">
-                  <button id="submitButton" type = "button" class = "btn btn-success">SUBMIT</button>
+                  <button id="submitButton" type = "button" class = "btn btn-success"  data-toggle="tooltip" data-placement="top" title="Ctrl+Enter">SUBMIT</button>
                 </div>
             </div>
 
@@ -430,6 +428,55 @@ int main()
             </div>
             <!-- contestEndedModal -->
 
+            <!-- timeoutModal -->
+            <div class="modal fade" id="timeoutModal" role="dialog">
+              <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title"> Oops, The connection timed-out...</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+                  <div class="modal-body">
+                    <!-- <p>You’ve made a mistake.</p> -->
+                    <!-- <p>The connection timed-out, please try again.</p> -->
+                    <p>Process was terminated. It took longer than 30000ms to complete.</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Try Again</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <!-- timeoutModal -->
+
+            <!-- unexpectedModal -->
+            <div class="modal fade" id="unexpectedModal" role="dialog">
+              <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title"> Oops, something went wrong...</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+                  <div class="modal-body">
+                    <!-- <p>You’ve made a mistake.</p> -->
+                    <!-- <p>The connection timed-out, please try again.</p> -->
+                    <p>Please save your code; reload and try again.</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Try Again</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <!-- unexpectedModal -->
+
+            <div id="snackbar">CODE SAVED</div>
 
         <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
         <script src="/javascripts/jquery-3.2.1.min.js"></script>
@@ -446,6 +493,7 @@ int main()
         <script src="/javascripts/ace-builds-master/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
         <script src='/javascripts/live.js'></script>
+        <script src='/javascripts/editor.js'></script>
 
         <script>
 
@@ -469,6 +517,16 @@ int main()
             // editor.session.setMode(code);
             editor.setShowPrintMargin(false);
             document.getElementById('editor').style.fontSize='15px';
+
+            // editor.commands.addCommand({
+            //     name: 'myCommand',
+            //     bindKey: {win: 'Ctrl-S',  mac: 'Command-S'},
+            //     exec: function(editor) {
+            //         alert("Command");
+            //     },
+            //     readOnly: true // false if this command should not apply in readOnly mode
+            // });
+
             // document.getElementById('editor').style.fontSize='15px';
 
             var editor2 = ace.edit("editor2");

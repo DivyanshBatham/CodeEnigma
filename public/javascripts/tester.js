@@ -31,6 +31,7 @@ $('#customInputs').click(function(){
 	}
 });
 
+
 $('#saveButton').click(function(){
 	NProgress.done();
 	NProgress.start();
@@ -55,6 +56,8 @@ $('#saveButton').click(function(){
 				data:User,
 				dataType:'json',
 				success: function(res){
+					$('#snackbar').fadeIn();
+					setTimeout(function(){ $('#snackbar').fadeOut(); }, 1000);
 					NProgress.done();
 					// alert("Code Successfully Saved");
 				}
@@ -101,16 +104,27 @@ int main()
 
 });
 
-
+var testerRequest = null;
 $('#runButton').click(function(){
 	NProgress.done();
 	NProgress.start();
 
-	//alert("runButton");
+	// testerRequest = null;
+	// Abort the previous AJAX Request, before senfing a new request.
+	if(testerRequest != null)
+	{
+		console.log("\n\n\n\nPREVIOUS REQEUEST ABORTED\n\n\n\n");
+		testerRequest.abort();
+		testerRequest = null;
+	}
 
-	// console.log(config);
-	// console.log(sampleOutput);
-	// console.log(sampleInput);
+	// Set a timeout for 30 Seconds:
+	var _TimeOUT = setTimeout(function(){
+		// alert("Timeout");
+		$('#timeoutModal').modal('show');
+		testerRequest.abort();
+		NProgress.done();
+	}, 30000);
 
 	var url = JSON.stringify(window.location).split('/');
 	url.pop();
@@ -127,37 +141,56 @@ $('#runButton').click(function(){
 			langNo : document.getElementById('languageSelector').value,
 			requestType : "custom"
 		};
-				$.ajax({
+				testerRequest = $.ajax({
 					type:'POST',
 					url:'/run',
 					data:config,
 					dataType:'json',
+					// timeout: 30000,	// New
 					success: function(res){
-						console.log("Hey");
-						// var R = JSON.parse(res);
-						var R = res;
-						console.log(R);
-						console.log(R.result);
-						if(R.result.compilemessage=="")
+						clearTimeout(_TimeOUT);
+						// alert("Timeout Cleared");
+						if(res.error=="unexpected")
 						{
-							$(".pHead").html(R.status);
-							$("#input").html(editor2.getValue());
-							$("#output").html(R.result.stdout[0]);
-							$("#expectedRow").hide();
-							changeTab("TestResults");
-							// editor3.setValue(R.result.stdout[0]);
+							$('#unexpectedModal').modal('show');
 						}
 						else
 						{
-							$(".pHead").html(R.status);
-							$("#input").html(editor2.getValue());
-							$("#output").html(R.result.compilemessage);
-							$("#expectedRow").hide();
-							changeTab("TestResults");
-							// editor3.setValue(R.result.compilemessage);
+								var R = res;
+								console.log(R);
+								console.log(R.result);
+								if(R.result.compilemessage=="")
+								{
+									// var temp = R.result.stdout[0].replace(/\\/g,'\\');
+									$(".pHead").html(R.status);
+									$("#input").html(editor2.getValue());
+									$("#output").html(R.result.stdout[0]);
+									// $("#output").html(temp);
+									// $("#output").html(R.result.stdout[0].replace(/\//g,\/\/));
+									$("#expectedRow").hide();
+									changeTab("TestResults");
+									// editor3.setValue(R.result.stdout[0]);
+								}
+								else
+								{
+									$(".pHead").html(R.status);
+									$("#input").html(editor2.getValue());
+									$("#output").html(R.result.compilemessage);
+									$("#expectedRow").hide();
+									changeTab("TestResults");
+									// editor3.setValue(R.result.compilemessage);
+								}
+								testerRequest = null;
 						}
 						NProgress.done();
 					}
+					// error: function(x, textStatus, m) {
+          //   if (textStatus=="timeout") {
+          //       NProgress.done();
+					// 			testerRequest = null;
+					// 			$('#timeoutModal').modal('show');
+          //   }
+        	// }
 				});
 	}
 	else
@@ -177,33 +210,38 @@ $('#runButton').click(function(){
 					data:config,
 					dataType:'json',
 					success: function(res){
-						// console.log("Hey");
-						// var R = JSON.parse(res);
-						var R = res;
-						// console.log(R);
-						// console.log(R.result);
-						if(R.result.compilemessage=="")
+						if(res.error=="unexpected")
 						{
-								// $("#output").html( respose varaible . result );
-								$(".pHead").html(R.status);
-								$("#input").html(R.sampleInput[0]);
-								$("#output").html(R.result.stdout[0]);
-								$("#expected").html(R.sampleOutput);
-								$("#expectedRow").show();
-								changeTab("TestResults");
+							$('#unexpectedModal').modal('show');
 						}
 						else
 						{
-								$(".pHead").html(R.status);
-								$("#input").html(R.sampleInput[0]);
-								$("#output").html(R.result.compilemessage);
-								$("#expected").html(R.sampleOutput);
-								$("#expectedRow").show();
-								changeTab("TestResults");
+								var R = res;
+								// console.log(R);
+								// console.log(R.result);
+								if(R.result.compilemessage=="")
+								{
+										// $("#output").html( respose varaible . result );
+										$(".pHead").html(R.status);
+										$("#input").html(R.sampleInput[0]);
+										$("#output").html(R.result.stdout[0]);
+										$("#expected").html(R.sampleOutput);
+										$("#expectedRow").show();
+										changeTab("TestResults");
+								}
+								else
+								{
+										$(".pHead").html(R.status);
+										$("#input").html(R.sampleInput[0]);
+										$("#output").html(R.result.compilemessage);
+										$("#expected").html(R.sampleOutput);
+										$("#expectedRow").show();
+										changeTab("TestResults");
 
-							//editor3.setValue(R.result.compilemessage);
-						}
-						NProgress.done();
+									//editor3.setValue(R.result.compilemessage);
+								}
+							}
+							NProgress.done();
 					}
 				});
 	}
@@ -241,49 +279,6 @@ function changeLanguage(currentOp){
 	window.location.href = lang;
 }
 
-function run()
-{
-		//alert("Button Clicked");
-		var config = {
-			source : editor.getValue(),
-			input  : editor2.getValue(),
-			language : 2
-		};
-
-
-		$.ajax({
-				type:'POST',
-				url:'/run',
-				data:config,
-				dataType:'json',
-				success: function(){
-					console.log("Hey");
-				}
-			});
-
-			// data=JSON.parse(data);
-			// var str = (data.result.compilemessage).toString();
-			// str=decodeURIComponent(escape(str));
-
-
-
-			// $("#runResponse").html("");
-			// if(str==""){
-			// 	$("#runResponse").html("Compile Message: Compilation Successful <br><br>");
-			// 	$("#runResponse").append("Output: <br>");
-
-			// 	(data.result.stdout).forEach(function(item,index){
-			// 	$("#runResponse").append(data.result.stdout[index]+"<br>");
-
-			// });
-			// }
-			// else{
-			// 	$("#runResponse").html("Compile Message: "+ str+"<br><br>");
-			// }
-
-
-}
-
 
 function changeTab(clickedButton) {
 	// alert(clickedButton);
@@ -311,14 +306,3 @@ function changeTab(clickedButton) {
 		// document.getElementById('left-col-body-test-results').style.display = '';
 	}
 }
-
-// function pToggle(x) {
-// 		console.log(x);
-//
-// 		// console.log(x.next());
-//
-//
-// 					$(".pBody").slideToggle("slow");
-//
-//
-// }

@@ -65,7 +65,7 @@ router.get('/:difficulty', requireLogin, function(req, res, next) {
   if( ['easy','medium','hard'].indexOf(req.params.difficulty)!=-1 )
     // mongoose.model('questions').find( { difficulty:req.params.difficulty } ,function(err,questions){
     questions.find( { difficulty:req.params.difficulty } ,function(err,questions){
-      res.render('home', { questions:questions, difficulty:req.params.difficulty })
+      res.render('home', { questions:questions.sort( (q1,q2) => q1.id.localeCompare(q2.id) ), difficulty:req.params.difficulty })
     });
   else if( 'instructions' == req.params.difficulty )
   {
@@ -124,11 +124,11 @@ router.get('/:difficulty(easy|medium|hard)/:id/:lang(c|cpp|java)', requireLogin,
   // if(req.params.id.match(/c|cpp|java/)) {
   console.log("/:id/",req.params.lang);
         mongoose.model('questions').find( { difficulty:req.params.difficulty } ,function(err,questions){
-          if(req.params.id.charCodeAt(0)-64 <= questions.length)
+          var questions = questions.sort((q1,q2) => q1.id.localeCompare(q2.id));
+          var index = questions.findIndex( q => q.id == req.params.id );
+          if( index != -1 )
           {
-            var index = questions.findIndex( q => q.id == req.params.id );
-            // res.render('editor2', { questions:questions , index:index, id:req.params.id ,lang: req.params.lang, difficulty:req.params.difficulty})
-            res.render('editor2', { questions:questions , index:index, id:req.params.id ,lang: req.params.lang, difficulty:req.params.difficulty})
+            res.render('editor2', { questions:questions, index:index, id:req.params.id ,lang: req.params.lang, difficulty:req.params.difficulty})
           }
           else {
             // Give 404 Error.
@@ -136,9 +136,7 @@ router.get('/:difficulty(easy|medium|hard)/:id/:lang(c|cpp|java)', requireLogin,
             res.send("404 Error"+" No such question found.");
           }
         });
-  // else {
-  //      res.send(req.params.lang+" is not a valid language.");
-  // }
+        
 });
 
 module.exports = router;

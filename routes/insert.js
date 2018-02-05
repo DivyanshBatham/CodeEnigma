@@ -62,7 +62,8 @@ router.post('/', function(req, res, next) {
 
   // res.redirect('CodeEnigma/');
   // res.redirect('CodeEnigma/'+data.difficulty+'/'+data.id);
-  res.end();
+  // res.end();
+  res.json("Data Updated");
   //res.send("Data Successfully Inserted");
 });
 
