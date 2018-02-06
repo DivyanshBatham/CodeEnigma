@@ -115,6 +115,7 @@ $('#runButton').click(function(){
 	{
 		console.log("\n\n\n\nPREVIOUS REQEUEST ABORTED\n\n\n\n");
 		testerRequest.abort();
+		clearTimeout(_TimeOUT);
 		testerRequest = null;
 	}
 
