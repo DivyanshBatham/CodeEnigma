@@ -34,20 +34,20 @@
             <!-- HEADER -->
             <div class="row" id="header">
               <div class="col-md-1">
-                <input type="text" class="form-control" id="id" placeholder="id">
+                <input type="text" class="form-control" id="id" placeholder="id" value="<%= question.id %>" >
               </div>
               <div class="col-md-6">
-                <input type="text" class="form-control" id="title" placeholder="title">
+                <input type="text" class="form-control" id="title" placeholder="title" value="<%= question.title %>" >
               </div>
               <div class="col-md-3">
                 <select id="difficultySelector" name="lang" required="required">
-                    <option value="easy" selected="selected" >Easy</option>
-                    <option value="medium" >Medium</option>
-                    <option value="hard" >Hard</option>
+                    <option value="easy" <% if(question.difficulty=='easy'){ %>selected="selected"<% } %> >Easy</option>
+                    <option value="medium" <% if(question.difficulty=='medium'){ %>selected="selected"<% } %> >Medium</option>
+                    <option value="hard" <% if(question.difficulty=='hard'){ %>selected="selected"<% } %> >Hard</option>
                 </select>
               </div>
               <div class="col-md-2">
-                INSERT
+                UPDATE
               </div>
             </div>
 
@@ -85,11 +85,11 @@
                           <table>
                             <tr>
                               <td>sampleInput</td>
-                              <td style="width:100%; padding-left:20px;"><textarea class="form-control" style="height:250px" rows="5" id="sampleInput"></textarea></td>
+                              <td style="width:100%; padding-left:20px;"><textarea class="form-control" style="height:250px" rows="5" id="sampleInput"><%= question.sampleInput %></textarea></td>
                             </tr>
                             <tr>
                               <td>sampleOutput</td>
-                              <td style="width:100%; padding-left:20px;"><textarea class="form-control" style="height:250px" rows="5" id="sampleOutput"></textarea></td>
+                              <td style="width:100%; padding-left:20px;"><textarea class="form-control" style="height:250px" rows="5" id="sampleOutput"><%= question.sampleOutput %></textarea></td>
                             </tr>
                           </table>
 
@@ -101,11 +101,11 @@
                             <table>
                               <tr>
                                 <td>hiddenInput</td>
-                                <td style="width:100%; padding-left:20px;"><textarea class="form-control" style="height:250px" rows="5" id="hiddenInput"></textarea></td>
+                                <td style="width:100%; padding-left:20px;"><textarea class="form-control" style="height:250px" rows="5" id="hiddenInput"><%= question.hiddenInput %></textarea></td>
                               </tr>
                               <tr>
                                 <td>hiddenOutput</td>
-                                <td style="width:100%; padding-left:20px;"><textarea class="form-control" style="height:250px" rows="5" id="hiddenOutput"></textarea></td>
+                                <td style="width:100%; padding-left:20px;"><textarea class="form-control" style="height:250px" rows="5" id="hiddenOutput"><%= question.hiddenOutput %></textarea></td>
                               </tr>
                             </table>
                         </div>
@@ -123,57 +123,14 @@
                           <div class="col-md-1">Reset</div>
                           <div class="col-md-1"></div>
                       </div>
-                      <div class="row" id="editor" onkeyup='showData()'>
-&lt;h5&gt;Improper to Mixed Fraction&lt;/h5&gt;
-Given two integers &lt;code style="color:#000"&gt;Numberator&lt;/code&gt; and &lt;code style="color:#000"&gt;Denomintator&lt;/code&gt; such that &lt;code style="color:#000"&gt;Numberator/Denominator&lt;/code&gt; is a reduced improper fraction, find it's equivalent reduced mixed fraction.
-
-&lt;br&gt;&lt;br&gt;
-
-&lt;h6&gt;Input Format:&lt;/h6&gt;
-&lt;ul&gt;
-    &lt;li&gt;First line contains an integer &lt;code style="color:#000"&gt;T&lt;/code&gt;, the number of reduced improper fractions.&lt;/li&gt;
-    &lt;li&gt;Next &lt;code class="inlineCode"&gt;T&lt;/code&gt; lines contains the different reduced improper fractions &lt;code class="inlineCode"&gt;f&lt;sub&gt;1&lt;/sub&gt;, f&lt;sub&gt;2&lt;/sub&gt;, f&lt;sub&gt;3&lt;/sub&gt;, ..., f&lt;sub&gt;T&lt;/sub&gt;&lt;/code&gt;.&lt;/li&gt;
-    &lt;li&gt;Each improper fraction is represented by a set of two numbers &lt;code style="color:#000"&gt;Numberator Denominator&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h6&gt;Output Format:&lt;/h6&gt;
-
-For each reduced improper fraction &lt;code class="inlineCode"&gt;f&lt;sub&gt;1&lt;/sub&gt;, f&lt;sub&gt;2&lt;/sub&gt;, f&lt;sub&gt;3&lt;/sub&gt;, ..., f&lt;sub&gt;T&lt;/sub&gt;&lt;/code&gt; print it's equivalent reduced mixed fraction (each in newline).
-
-&lt;br&gt;&lt;br&gt;
-
-
-&lt;h6&gt;Sample Input:&lt;/h6&gt;
-&lt;pre class="code"&gt;4
-7 2
-10 3
-40 7
-4507 233
-&lt;/pre&gt;
-
-&lt;h6&gt;Sample Output:&lt;/h6&gt;
-&lt;pre class="code"&gt;3 1 2
-3 1 3
-5 5 7
-19 80 233
-
-&lt;/pre&gt;
-
-
-&lt;h6&gt;Explaination:&lt;/h6&gt;
-&lt;ul&gt;
-    &lt;li&gt;7/2 = 3 + 1/2.&lt;/li&gt;
-    &lt;li&gt;10/3 = 3 + 1/3&lt;/li&gt;
-    &lt;li&gt;40/7 = 5 + 5/7&lt;/li&gt;
-    &lt;li&gt;4507/233 = 19 + 80/233&lt;/li&gt;
-
+                      <div class="row" id="editor" onkeyup='showData()'><%= question.description  %>
                       </div>
 
                       <div class="row" id="right-col-sub-header">
                         <div class="col-md-12">shortDescription</div>
                         <!-- <div class="col-md-6">Output</div> -->
                       </div>
-                      <div class="row" id="editor2"></div>
+                      <div class="row" id="editor2"><%= question.shortDescription %></div>
 
                 </div>
             </div>
@@ -195,7 +152,7 @@ For each reduced improper fraction &lt;code class="inlineCode"&gt;f&lt;sub&gt;1&
                   <button id="backButton" type = "button" class = "btn btn-success">BACK</button>
                 </div>
                 <div class="col-md-1">
-                  <button id="insertButton" type = "button" class = "btn btn-success">INSERT</button>
+                  <button id="updateButton" type = "button" class = "btn btn-success">UPDATE</button>
                 </div>
             </div>
 

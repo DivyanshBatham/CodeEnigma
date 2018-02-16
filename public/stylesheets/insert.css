@@ -185,14 +185,14 @@
   height: 100%;
 }
 
-#insertButton, #backButton {
+#insertButton, #updateButton, #backButton {
   background-color: #202228;
   border-color: #ffbe4a;
   color: #ffbe4a;
   cursor: pointer;
 }
 
-#insertButton:hover, #backButton:hover {
+#insertButton:hover, #updateButton:hover, #backButton:hover {
   background-color: #ffbe4a;
   border-color: #ffbe4a;
   color: #202228;

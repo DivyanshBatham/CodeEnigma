@@ -5,8 +5,8 @@ Fix Result Page Scrollbar [EXTRA WORK]
 
 Add 404 Pages [EXTRA WORK]
 
-Add more languages?  [TODO]
-Add runtime?  [TODO]
+Add more languages?  [DONE]
+Add runtime?  [EXTRA WORK]
 
 Fix where scrollbar should or should not appear [EXTRA WORK]
 
@@ -26,46 +26,4 @@ Save Error Modal [EXTRA]
 
 
 
-
-
-
-
-<h5>Cancel the Game?</h5>
-
-Four friends are playing a card game in which the game is cancelled if a single player gets all the Aces(A). Given <em>n</em> different orders/sequences of cards after shuffling, determine whether the game will be cancelled or not.
-
-<br><br>
-
-<h6>Input Format:</h6>
-<ul>
-    <li>First line contains an integer <em>T</em>, the number of orders.</li>
-    <li>Next T lines contains the different orders n<sub>1</sub>, n<sub>2</sub>, n<sub>3</sub>, ..., n<sub>T</sub>.</li>
-
-</ul>
-
-<h6>Output Format:</h6>
-
-Cancelled or Not Cancelled for each order.
-
-<br><br>
-
-
-<h6>Sample Input:</h6>
-<pre class="code"> 2
- A-Spade K-Spade 1-Club 4-Diamond 7-Heart A-Spade K-Spade 1-Club 4-Diamond 7-Heart A-Spade K-Spade 1-Club 4-Diamond 7-Heart
- A-S K-S 1-C 4-D 7-H
-</pre>
-
-<h6>Sample Output:</h6>
-<pre class="code"> 11
- 13
- 15
- 17
-</pre>
-
-
-<div style="background-color:#202020; color:#FFF; padding:15px; border: 5px solid #FFBE4A; margin-top:0px">
-<h5>Note:</h5>
-
-If you are not able to understand how input and output works, ask your senior right now. Otherwise you may face problem in the actual competition.
-</div>
+EDIT QUESTIONS PAGE [TODO]

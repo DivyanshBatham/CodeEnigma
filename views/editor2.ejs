@@ -50,7 +50,7 @@
  -->
 
  <!-- WHEN USER's DATABASE IS ACTIVE: -->
-                        <% questions.forEach(function(question){ %>
+                        <% questions.forEach(function(question, index){ %>
 
                           <% if(id==question.id){ %>
                             <li><button type="button" class="btn btn-circle active" id="activeButton">
@@ -86,13 +86,13 @@
                   <% } %>
                 </div>
                 <div class="col-md-2"></div>
-                <div class="col-md-1">
+                <div class="col-md-1 tool" class="tool" data-toggle="tooltip" data-placement="left" title="Time Remaining">
                   <p id="timer">Time Remaining</p>
                 </div>
-                <div class="col-md-1">
+                <div class="col-md-1 tool" class="tool" data-toggle="tooltip" data-placement="bottom" title="Your Rank">
                   <p id="rank">Rank</p>
                 </div>
-                <div class="col-md-1">
+                <div class="col-md-1 tool" class="tool" data-toggle="tooltip" data-placement="bottom" title="Your Score">
                   <p id="points">(<%= user.score %> Points)</p>
                 </div>
             </div>
@@ -225,27 +225,25 @@
                           <div class="col-md-5">
 
                             <!-- <span class=".glyphicon-glyphicon-credit-card" aria-hidden="true"></span> -->
-                            <% if(lang!=""){ %>
+                            <% if(/python/.test(lang)){ %>
+                              Code.py
+                            <% }else if(lang!=""){ %>
                               Code.<%= lang%>
                             <% }else{ %>
                               Code.txt
                             <% } %>
                           </div>
-                          <div class="col-md-4">
+                          <div class="col-md-4 tool"  data-toggle="tooltip" data-placement="bottom" title="Select Language">
                             <select id="languageSelector" onchange="changeLanguage(this)" name="lang" required="required" class="form-control languageSelector">
-                            <% if(lang==""){ %>
-                                <option value="-1" lang="" selected="selected" >Select a Language </option>
-                            <% } %>
                                 <option value="1" lang="c" <% if(lang=="c"){ %> selected="selected" <% } %> >C </option>
                                 <option value="2" lang="cpp" <% if(lang=="cpp"){ %> selected="selected" <% } %> >C++ </option>
-                                <!-- <option value="9">C# </option> -->
                                 <option value="3" lang="java" <% if(lang=="java"){ %> selected="selected" <% } %> >Java</option>
-                                <!-- <option value="20" lang="javascript" <% if(lang=="javascript"){ %> selected="selected" <% } %> >Javascript </option> -->
-                                <!-- <option value="5">Python </option> -->
+                                <option value="5" lang="python2" <% if(lang=="python2"){ %> selected="selected" <% } %> >Python 2</option>
+                                <option value="30" lang="python3" <% if(lang=="python3"){ %> selected="selected" <% } %> >Python 3</option>
                             </select>
                           </div>
-                          <div class="col-md-1"><button id="saveButton" type = "button" class = "btn btn-info"  data-toggle="tooltip" data-placement="bottom" title="Ctrl+S">Save</button></div>
-                          <div class="col-md-2"><button id="resetButton" type = "button" class = "btn btn-info">Reset</button></div>
+                          <div class="col-md-1"><button id="saveButton" type = "button" class = "btn btn-info tool" data-toggle="tooltip" data-placement="bottom" title="Save Code (Ctrl+S)">Save</button></div>
+                          <div class="col-md-2"><button id="resetButton" type = "button" class = "btn btn-info tool" data-toggle="tooltip" data-placement="bottom" title="Reset Code">Reset</button></div>
                       </div>
                       <div class="row" id="editor"><% if(user.savedCodes[difficulty].findIndex( q => q.id==id && q.language==lang ) != -1 ){ %><%= user.savedCodes[difficulty].find( q => q.id==id && q.language==lang )['code'] %><% }else if(lang=='cpp'){ %>#include&lt;iostream&gt;
 using namespace std;
@@ -266,7 +264,9 @@ int main()
 {
     // printf("Hello from C");
     return 0;
-}<% } else { %> // Please Select a Language.<% } %></div>
+}<% }else if(lang=='python2'){ %>print "Hello from Python2"
+ <% }else if(lang=='python3'){ %>print("Hello from Python3")<% } %>
+</div>
                       <div class="row" id="right-col-sub-header">
                         <div class="col-md-12">Input</div>
                         <!-- <div class="col-md-6">Output</div> -->
@@ -277,10 +277,17 @@ int main()
 
             <!-- FOOTER -->
             <div class="row" id="footer">
-                <div class="col-md-2">
+                <div class="col-md-1">
+                  <!-- <label id="help" class="switch" style="color:#fff;">
+                      Help?
+                      <input type="checkbox">
+
+                      <span class="slider round"></span>
+
+                  </label> -->
                   <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#correctModal">Correct</button> -->
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-3">
                   <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#wrongModal">Wrong</button> -->
                 </div>
                 <div class="col-md-2">
@@ -289,17 +296,17 @@ int main()
                 </div>
                 <div class="col-md-4">
                   <div class="radio">
-                    <label class="radioLabel">
+                    <label class="radioLabel tool"  data-toggle="tooltip" data-placement="top" title="Use Custom Inputs">
                       <input id="customInputs" type="checkbox" name="optradio" class="radioButton">
                       Run againt custom input
                     </label>
                   </div>
                 </div>
                 <div class="col-md-1">
-                  <button id="runButton" type = "button" class = "btn btn-info">RUN</button>
+                  <button id="runButton" type = "button" class = "btn btn-info tool" data-toggle="tooltip" data-placement="top" title="Run Code (Ctrl+R)">RUN</button>
                 </div>
                 <div class="col-md-1">
-                  <button id="submitButton" type = "button" class = "btn btn-success"  data-toggle="tooltip" data-placement="top" title="Ctrl+Enter">SUBMIT</button>
+                  <button id="submitButton" type = "button" class = "btn btn-success tool"  data-toggle="tooltip" data-placement="top" title="Submit Code (Ctrl+Enter)">SUBMIT</button>
                 </div>
             </div>
 
@@ -497,7 +504,7 @@ int main()
 
         <script>
 
-
+            $('[data-toggle="tooltip"]').tooltip(); 
             var editor = ace.edit("editor");
             editor.setTheme("ace/theme/twilight");
 

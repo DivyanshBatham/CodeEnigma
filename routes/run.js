@@ -19,7 +19,6 @@ function requireLogin (req, res, next) {
 router.post('/', function(req, res, next) {
   	console.log("\n\n Got an AJAX request, sending request to API");
 	//console.log(req.body.input);
-
   if(req.body.requestType=="custom")
   {
     var inputs = [req.body.input];
@@ -109,7 +108,7 @@ router.post('/', function(req, res, next) {
   {
     //  CHECK WHETHER ALREADY SUBMITTED.
     // console.log(req.user.type);
-    if( req.user.solvedQuestions[req.body.difficulty].indexOf(req.body.id) != -1 && req.user.type != 'admin' )
+    if( req.user.solvedQuestions[req.body.difficulty].indexOf(req.body.id) != -1 && req.user.type != 'admin' && req.user.type != 'tester' )
     {
       // console.log(req.user.type);
       var customResponse = { status : "Duplicate Submission" };
@@ -195,6 +194,7 @@ router.post('/', function(req, res, next) {
 
                     // Make Everyone to Request new rank.
                     res.io.emit("update2");
+                    // SHOULD THIS COME UNDER SUCCESS
             });
 
             } // Correct Answer.

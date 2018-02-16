@@ -2,6 +2,11 @@ $('#backButton').click(function(){
 	window.location.href = "/CodeEnigma/easy";
 });
 
+$('#questionSelector').change(function(){
+	alert("Question Selected");
+	alert(questions[0].id);
+})
+
 $('#insertButton').click(function(){
 	// NProgress.done();
 	// NProgress.start();
@@ -31,6 +36,46 @@ $('#insertButton').click(function(){
 				dataType:'json',
 				success: function(){
 					alert("Data Successfully Inserted");
+					// NProgress.done();
+				}
+			});
+
+});
+
+
+$('#updateButton').click(function(){
+	// NProgress.done();
+	// NProgress.start();
+
+	var url = window.location.pathname.split('/');
+	var oldId = url.pop();
+	var oldDifficulty = url.pop();
+	// alert(id);
+	// alert(difficulty);
+
+		var Question = {
+			oldId : oldId,
+			oldDifficulty : oldDifficulty,
+      difficulty : document.getElementById('difficultySelector').value,
+      id : document.getElementById('id').value,
+      title : document.getElementById('title').value,
+      description : editor.getValue(),
+			shortDescription : editor2.getValue(),
+			sampleInput : $('#sampleInput').val(),
+			sampleOutput : $('#sampleOutput').val(),
+			hiddenInput : $('#hiddenInput').val(),
+			hiddenOutput : $('#hiddenOutput').val(),
+		};
+
+    // console.log("Insert.js(JS)" , Question);
+
+		$.ajax({
+				type:'POST',
+				url:'/update',
+				data:Question,
+				dataType:'json',
+				success: function(){
+					alert("Data Updated Successfully");
 					// NProgress.done();
 				}
 			});
@@ -130,3 +175,24 @@ console.log(Contest);
 		});
 
 });
+
+
+// $('.editButton').click(function(){
+// 	var Question =
+// 	{
+// 		difficulty : $(this)[0].value.split('/')[0],
+// 		id : $(this)[0].value.split('/')[1]
+// 	}
+//
+// 	$.ajax({
+// 			type:'POST',
+// 			url:'/update',
+// 			data:Question,
+// 			dataType:'json',
+// 			success: function(){
+// 				alert("Data Successfully sent for update");
+// 				// NProgress.done();
+// 			}
+// 		});
+//
+// })

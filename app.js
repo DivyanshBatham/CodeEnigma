@@ -20,6 +20,7 @@ var editor2 = require('./routes/editor2');
 var run = require('./routes/run');
 var login = require('./routes/login');
 var insert = require('./routes/insert');
+var update = require('./routes/update');
 var save = require('./routes/save');
 var defaultLanguage = require('./routes/defaultLanguage');
 var getRank = require('./routes/getRank');
@@ -37,7 +38,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'Favicon.ico')));
 app.use(helmet())
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -211,6 +212,7 @@ app.use('/run', run);
 app.use('/save', save);
 app.use('/defaultLanguage', defaultLanguage);
 app.use('/insert', insert);
+app.use('/update', update);
 app.use('/login', login);
 app.use('/getRank', getRank);
 app.use('/getTime', getTime);
@@ -222,6 +224,9 @@ app.get('/logout', function(req, res) {
   res.redirect('/login');
 });
 
+// app.get('/graph.png', function (req, res) {
+//     res.sendfile(path.resolve('./public/graph.png'));
+// });
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

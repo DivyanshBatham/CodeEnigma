@@ -260,6 +260,10 @@
   border-left: 10px solid #353535;
 }
 
+.inlineCode {
+  color:#000;
+}
+
 #languageSelector {
   background-color: #31343D;
   color: white;

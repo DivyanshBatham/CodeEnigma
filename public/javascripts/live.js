@@ -39,6 +39,22 @@ $('#submitButton').click(function(){
 	NProgress.done();
 	NProgress.start();
 
+  if(testerRequest != null)
+  {
+    console.log("\n\n\n\nPREVIOUS REQEUEST ABORTED\n\n\n\n");
+    testerRequest.abort();
+    clearTimeout(_TimeOUT);
+    testerRequest = null;
+  }
+
+  // Set a timeout for 30 Seconds:
+  var TimeOUT = setTimeout(function(){
+    // alert("Timeout");
+    $('#timeoutModal').modal('show');
+    testerRequest.abort();
+    NProgress.done();
+  }, 30000);
+
 	//alert("runButton");
 
 	var url = JSON.stringify(window.location).split('/');
@@ -55,13 +71,14 @@ $('#submitButton').click(function(){
 			id : id,
 			difficulty : difficulty
 		};
-				$.ajax({
+		var testerRequest = $.ajax({
 					type:'POST',
 					url:'/run',
 					data:config,
 					dataType:'json',
 					success: function(res){
-
+            // alert("GOT SUBMIT RESPONSE");
+            clearTimeout(TimeOUT);
             var R = res;
             if( R.status=="Duplicate Submission")
             {
@@ -124,4 +141,24 @@ $("input[name='defaultLanguage']").change(function(e){
 				}
 			});
 
+});
+
+$("#defaultLanguageSelector").change(function(){
+  // alert($(this).val());
+  var User = {
+    defaultLanguage : $(this).val()
+  };
+
+  $.ajax({
+      type:'POST',
+      url:'/defaultLanguage',
+      data:User,
+      dataType:'json',
+      success: function(res){
+        // NProgress.done();
+        // alert("DEFAULT LANGUAGE CHANGED AJAX");
+        // window.location.href = res.defaultLanguage;
+        window.location.reload(true);
+      }
+    });
 });

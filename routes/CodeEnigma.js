@@ -119,7 +119,7 @@ router.get('/:difficulty', requireLogin, function(req, res, next) {
 //   });
 // });
 
-router.get('/:difficulty(easy|medium|hard)/:id/:lang(c|cpp|java)', requireLogin, function(req, res, next) {
+router.get('/:difficulty(easy|medium|hard)/:id/:lang(c|cpp|java|python2|python3)', requireLogin, function(req, res, next) {
   // If helpful 404 error needed, then uncomment the following and remove regex for lang :
   // if(req.params.id.match(/c|cpp|java/)) {
   console.log("/:id/",req.params.lang);
@@ -136,7 +136,7 @@ router.get('/:difficulty(easy|medium|hard)/:id/:lang(c|cpp|java)', requireLogin,
             res.send("404 Error"+" No such question found.");
           }
         });
-        
+
 });
 
 module.exports = router;

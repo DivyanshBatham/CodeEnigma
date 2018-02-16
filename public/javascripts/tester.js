@@ -5,6 +5,16 @@ $(document).ready(function(){
 
 });
 
+// $('#help').click(function(){
+// 	if(document.getElementById('help').checked)
+// 	{
+// 		$('[data-toggle="tooltip"]').tooltip();
+// 	}
+// 	else {
+// 		$('.tool').tooltip('hide')
+// 	}
+// });
+
 $('#customInputs').click(function(){
 	// alert("customInputs clicked");
 	if(document.getElementById('customInputs').checked)
@@ -99,6 +109,12 @@ int main()
     return 0;
 }`, 1);
 
+else if(language=='python2')
+editor.setValue(`print "Hello from Python2"`, 1);
+
+else if(language=='python3')
+editor.setValue(`print("Hello from Python3)"`, 1);
+
 
 	NProgress.done();
 
@@ -115,16 +131,16 @@ $('#runButton').click(function(){
 	{
 		console.log("\n\n\n\nPREVIOUS REQEUEST ABORTED\n\n\n\n");
 		testerRequest.abort();
-		clearTimeout(_TimeOUT);
+		clearTimeout(TimeOUT);
 		testerRequest = null;
 	}
 
 	// Set a timeout for 30 Seconds:
-	var _TimeOUT = setTimeout(function(){
+	var TimeOUT = setTimeout(function(){
 		// alert("Timeout");
+		NProgress.done();
 		$('#timeoutModal').modal('show');
 		testerRequest.abort();
-		NProgress.done();
 	}, 30000);
 
 	var url = JSON.stringify(window.location).split('/');
@@ -149,7 +165,7 @@ $('#runButton').click(function(){
 					dataType:'json',
 					// timeout: 30000,	// New
 					success: function(res){
-						clearTimeout(_TimeOUT);
+						clearTimeout(TimeOUT);
 						// alert("Timeout Cleared");
 						if(res.error=="unexpected")
 						{
@@ -211,6 +227,7 @@ $('#runButton').click(function(){
 					data:config,
 					dataType:'json',
 					success: function(res){
+						clearTimeout(TimeOUT);
 						if(res.error=="unexpected")
 						{
 							$('#unexpectedModal').modal('show');
@@ -267,12 +284,12 @@ function changeLanguage(currentOp){
 	 case "3":
 	 	lang="java";
 		break;
-	 case "20":
-	 	lang="javascript";
+	 case "5":
+	 	lang="python2";
 		break;
-	case "5":
-	 	lang="python";
-		break;
+	 case "30":
+ 	 	lang="python3";
+ 		break;
  }
 
 	//alert(req.url);

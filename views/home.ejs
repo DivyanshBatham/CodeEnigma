@@ -57,6 +57,7 @@
             <li><a href="/config">CONFIGURATION</a></li>
             <li><a href="/insert">INSERTION</a></li>
             <% } %>
+            <!-- <li><a href="/CodeEnigma/sponsors">SPONSORS</a></li> -->
           </ul>
         </div>
         <div class="col-md-9" id="right-col">
@@ -75,7 +76,21 @@
             <div class="col-md-7" style="text-align:center">
               <span class="glyphicon glyphicon-text-background" aria-hidden="true"></span>
               Choose your default language:
-              <form style="display:inline">
+              <select id="defaultLanguageSelector">
+                <option value="c" <% if(user.defaultLanguage=="c"){ %> selected="selected" <% } %> >C </option>
+                <option value="cpp" <% if(user.defaultLanguage=="cpp"){ %> selected="selected" <% } %> >C++ </option>
+                <option value="java" <% if(user.defaultLanguage=="java"){ %> selected="selected" <% } %> >Java</option>
+                <option value="python2" <% if(user.defaultLanguage=="python2"){ %> selected="selected" <% } %> >Python 2</option>
+                <option value="python3" <% if(user.defaultLanguage=="python3"){ %> selected="selected" <% } %> >Python 3</option>
+              </select>
+              <!-- <select id="languageSelector" onchange="changeLanguage(this)" name="lang" required="required" class="form-control languageSelector">
+                  <option value="1" lang="c" <% if(user.defaultLanguage=="c"){ %> selected="selected" <% } %> >C </option>
+                  <option value="2" lang="cpp" <% if(user.defaultLanguage=="cpp"){ %> selected="selected" <% } %> >C++ </option>
+                  <option value="3" lang="java" <% if(user.defaultLanguage=="java"){ %> selected="selected" <% } %> >Java</option>
+                  <option value="5" lang="python2" <% if(user.defaultLanguage=="python2"){ %> selected="selected" <% } %> >Python 2</option>
+                  <option value="30" lang="python3" <% if(user.defaultLanguage=="python3"){ %> selected="selected" <% } %> >Python 3</option>
+              </select> -->
+              <!-- <form style="display:inline">
                 <label class="radio-inline">
                   <input type="radio" name="defaultLanguage" value="c" <% if(user.defaultLanguage=='c'){ %>checked<% } %> >C
                 </label>
@@ -85,7 +100,7 @@
                 <label class="radio-inline">
                   <input type="radio" name="defaultLanguage" value="java"<% if(user.defaultLanguage=='java'){ %>checked<% } %> >Java
                 </label>
-              </form>
+              </form> -->
 
               <!-- <span class="label label-info">Info</span> -->
               <!-- <p id="timer2">Time Remaining</p> -->
@@ -123,6 +138,7 @@
 
           <ul id="ques"> <!-- Href Calls -->
             <% questions.forEach(function(question){ %>
+              <% if(user.type=="admin"){ %><a class="editButton" href="/update/<%= difficulty %>/<%= question.id %>" >[ EDIT ]</a><% } %>
               <li><a href="<%= difficulty %>/<%= question.id %>/<%= user.defaultLanguage %>">
               <!-- <li><a href="<%= difficulty %>/<%= question.id %>/cpp"> -->
                   <!-- <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span> -->
@@ -132,12 +148,13 @@
                   <% }else{ %>
                     <span class="badge"><%= question.id %>.</span>
                   <% } %>
-                  <%- question.title %> :<br><p><%- question.shortDescription %></p>
+                  <%- question.title %> :<br><p><%- question.shortDescription %> (read more)</p>
                 </a>
               </li>
             <% }); %>
 
           </ul>
+
         </div>
       </div>
   </div>
@@ -175,6 +192,9 @@
     <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
     <link rel="stylesheet" href="/stylesheets/bootstrap-grid.min.css">
     <script src='/javascripts/timer.js'></script>
+    <% if(user.type=='admin'){ %>
+      <script src='/javascripts/insert.js'></script>
+    <% } %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
     <script src='/javascripts/live.js'></script>
   </body>
