@@ -100,94 +100,62 @@
                 <tr>
                   <th style="width:5%">#</th>
                   <th style="width:15%">TeamID</th>
-                  <th style="width:15%">Difficulty</th>
+                  <!-- <th style="width:15%">Difficulty</th> -->
                   <th style="width:5%">A</th>
                   <th style="width:5%">B</th>
                   <th style="width:5%">C</th>
                   <th style="width:5%">D</th>
                   <th style="width:5%">E</th>
                   <th style="width:5%">F</th>
-                  <th style="width:10%">Score</th>
+                  <th style="width:5%">G</th>
+                  <th style="width:5%">H</th>
+                  <th style="width:5%">I</th>
+                  <th style="width:5%">J</th>
+                  <!-- <th style="width:10%">Score</th> -->
                   <th style="width:15%">Total Score</th>
-                  <th style="width:10%">Time</th>
+                  <th style="width:15%">Time</th>
                 </tr>
               </thead>
           </table>
           <div id="tableWrapper">
           <table id="resultTable" class="table table-bordered table-dark">
-              <tbody >
+            <!-- <thead class="thead-dark">
+              <tr>
+                <th style="width:5%">#</th>
+                <th style="width:15%">TeamID</th>
+                <!- - <th style="width:15%">Difficulty</th> - ->
+                <th style="width:5%">A</th>
+                <th style="width:5%">B</th>
+                <th style="width:5%">C</th>
+                <th style="width:5%">D</th>
+                <th style="width:5%">E</th>
+                <th style="width:5%">F</th>
+                <!- - <th style="width:10%">Score</th> - ->
+                <th style="width:15%">Total Score</th>
+                <th style="width:10%">Time</th>
+              </tr>
+            </thead> -->
+            <tbody >
                 <% users.forEach(function(u, rank){ %>
                 <tr <% if( u.id == user.id ){ %>style="background-color:#2C3034"<% } %>>
-                  <td style="width:5%; vertical-align:middle;" rowspan="3"><%= rank + 1 %></td>
-                  <td style="width:15%; vertical-align:middle" rowspan="3"><%= u.id %></td>
-                  <td style="width:15%">Easy</td>
+                  <td style="width:5%; vertical-align:middle;"><%= rank + 1 %></td>
+                  <td style="width:15%; vertical-align:middle"><%= u.id %></td>
+                  <!-- <td style="width:15%">Easy</td> -->
                   <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('A')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
                   <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('B')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
                   <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('C')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
                   <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('D')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
                   <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('E')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
                   <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('F')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
-                  <td style="width:10%"><%= u.solvedQuestions['easy'].length * 5 %></td>
-                  <td style="width:15%; vertical-align:middle" rowspan="3"><%= u.score %></td>
-                  <td style="width:10%; vertical-align:middle" rowspan="3"><%= u.lastSubmissionDisplay %></tr>
-                <tr <% if( u.id == user.id ){ %>style="background-color:#2C3034"<% } %>>
-                  <td>Medium</td>
-                  <td><% if( u.solvedQuestions['medium'].indexOf('A')!=-1 ){ %> 15 <% }else{ %> - <% } %></td>
-                  <td><% if( u.solvedQuestions['medium'].indexOf('B')!=-1 ){ %> 15 <% }else{ %> - <% } %></td>
-                  <td><% if( u.solvedQuestions['medium'].indexOf('C')!=-1 ){ %> 15 <% }else{ %> - <% } %></td>
-                  <td><% if( u.solvedQuestions['medium'].indexOf('D')!=-1 ){ %> 15 <% }else{ %> - <% } %></td>
-                  <td><% if( u.solvedQuestions['medium'].indexOf('E')!=-1 ){ %> 15 <% }else{ %> - <% } %></td>
-                  <td><% if( u.solvedQuestions['medium'].indexOf('F')!=-1 ){ %> 15 <% }else{ %> - <% } %></td>
-                  <td><%= u.solvedQuestions['medium'].length * 15 %></td>
-                </tr>
-                <tr <% if( u.id == user.id ){ %>style="background-color:#2C3034"<% } %>>
-                  <td>Hard</td>
-                  <td><% if( u.solvedQuestions['hard'].indexOf('A')!=-1 ){ %> 25 <% }else{ %> - <% } %></td>
-                  <td><% if( u.solvedQuestions['hard'].indexOf('B')!=-1 ){ %> 25 <% }else{ %> - <% } %></td>
-                  <td><% if( u.solvedQuestions['hard'].indexOf('C')!=-1 ){ %> 25 <% }else{ %> - <% } %></td>
-                  <td><% if( u.solvedQuestions['hard'].indexOf('D')!=-1 ){ %> 25 <% }else{ %> - <% } %></td>
-                  <td><% if( u.solvedQuestions['hard'].indexOf('E')!=-1 ){ %> 25 <% }else{ %> - <% } %></td>
-                  <td><% if( u.solvedQuestions['hard'].indexOf('F')!=-1 ){ %> 25 <% }else{ %> - <% } %></td>
-                  <td><%= u.solvedQuestions['hard'].length * 25 %></td>
-                </tr>
+                  <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('G')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
+                  <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('H')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
+                  <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('I')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
+                  <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('J')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
+                  <!-- <td style="width:10%"><%= u.solvedQuestions['easy'].length * 5 %></td> -->
+                  <td style="width:15%; vertical-align:middle"><%= u.score %></td>
+                  <td style="width:15%; vertical-align:middle"><%= u.lastSubmissionDisplay %></tr>
                 <% }); %>
 
-
-                <!-- <tr>
-                  <td style="vertical-align:middle" rowspan="3">1</td>
-                  <td style="vertical-align:middle" rowspan="3">CE007</td>
-                  <td>Easy</td>
-                  <td>5</td>
-                  <td>-</td>
-                  <td>5</td>
-                  <td>0</td>
-                  <td>5</td>
-                  <td>5</td>
-                  <td>20</td>
-                  <td style="vertical-align:middle" rowspan="3">85</td>
-                  <td style="vertical-align:middle" rowspan="3">2:15:17</td>
-                </tr>
-                <tr>
-                  <td>Medium</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>15</td>
-                  <td>15</td>
-                  <td>-</td>
-                  <td>15</td>
-                  <td>45</td>
-                </tr>
-                <tr>
-                  <td>Hard</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>25</td>
-                  <td>0</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>25</td>
-                </tr>
-                 -->
               </tbody>
             </table>
           </div>
