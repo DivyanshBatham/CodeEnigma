@@ -504,7 +504,7 @@ int main()
 
         <script>
 
-            $('[data-toggle="tooltip"]').tooltip(); 
+            $('[data-toggle="tooltip"]').tooltip();
             var editor = ace.edit("editor");
             editor.setTheme("ace/theme/twilight");
 
@@ -516,6 +516,8 @@ int main()
             editor.session.setMode("ace/mode/c_cpp");
             <% } else if(lang=="java") {%>
             editor.session.setMode("ace/mode/c_cpp");
+            <% } else if(lang=="python2" || lang=="python3") {%>
+            editor.session.setMode("ace/mode/python");
             <% } else { %>
             editor.session.setMode("ace/mode/plain_text");
             <% } %>
