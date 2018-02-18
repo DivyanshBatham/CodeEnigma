@@ -1,6 +1,7 @@
 // var socket = io.connect('http://10.0.0.230');
 // var socket = io.connect('http://10.0.1.127');
-var socket = io.connect('http://localhost');
+var socket = io.connect();
+// var socket = io.connect('http://localhost');
 
 
 getRank();
