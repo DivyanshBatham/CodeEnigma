@@ -328,14 +328,14 @@ int main()
                     <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Previous</button> -->
                     <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Next</button> -->
                     <% if( 0 < index && index < questions.length-1 ){ %>  <!--EASY Next,Previous-->
-                      <button type="button" class="btn btn-default" onclick="window.location = '../<%= questions[index-1].id %>/<%= lang %>'" >Previous</button>
-                      <button type="button" class="btn btn-default" onclick="window.location = '../<%= questions[index+1].id %>/<%= lang %>'" >Next</button>
+                      <button type="button" class="btn btn-default" onclick="window.location = '../<%= questions[index-1].id %>/<%= user.defaultLanguage %>'" >Previous</button>
+                      <button type="button" class="btn btn-default" onclick="window.location = '../<%= questions[index+1].id %>/<%= user.defaultLanguage %>'" >Next</button>
                     <% }else if( index == questions.length-1 ){ %> <!--Next-->
-                      <button type="button" class="btn btn-default" onclick="window.location = '../<%= questions[index-1].id %>/<%= lang %>'" >Previous</button>
-                      <button type="button" class="btn btn-default" onclick="window.location = '../../<%= ['easy','medium','hard','hard'][['easy','medium','hard'].indexOf(difficulty) + 1] %>'" >Next</button>
+                      <button type="button" class="btn btn-default" onclick="window.location = '../<%= questions[index-1].id %>/<%= user.defaultLanguage %>'" >Previous</button>
+                      <button type="button" class="btn btn-default" onclick="window.location = '../../<%= ['medium','hard','hard'][['medium','hard'].indexOf(difficulty) + 1] %>'" >Next</button>
                     <% }else if( index == 0 ){ %> <!--Previous-->
-                      <button type="button" class="btn btn-default" onclick="window.location = '../../<%= ['hard','medium','easy','easy'][['hard','medium','easy'].indexOf(difficulty) + 1] %>'" >Previous</button>
-                      <button type="button" class="btn btn-default" onclick="window.location = '../<%= questions[index+1].id %>/<%= lang %>'" >Next</button>
+                      <button type="button" class="btn btn-default" onclick="window.location = '../../<%= ['hard','medium','medium'][['hard','medium'].indexOf(difficulty) + 1] %>'" >Previous</button>
+                      <button type="button" class="btn btn-default" onclick="window.location = '../<%= questions[index+1].id %>/<%= user.defaultLanguage %>'" >Next</button>
                     <% } %>
                   </div>
                 </div>
