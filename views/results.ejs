@@ -49,8 +49,8 @@
             <li><a href="#">MEDIUM (15 Points)</a></li>
             <li><a href="#">HARD (25 Points)</a></li> -->
             <li><a href="/CodeEnigma/easy">EASY (5 Points)</a></li>
-            <li><a href="/CodeEnigma/medium">MEDIUM (15 Points)</a></li>
-            <li><a href="/CodeEnigma/hard">HARD (25 Points)</a></li>
+            <!-- <li><a href="/CodeEnigma/medium"><span class="glyphicon glyphicon-lock" style="padding-bottom:10px;"></span> MEDIUM (15 Points)</a></li> -->
+            <!-- <li><a href="/CodeEnigma/hard">HARD (25 Points)</a></li> -->
             <!-- <a href="/CodeEnigma/hard" means totally new link  -->
             <!-- <a href="hard" means change last subroute of current route  -->
             <br><hr class="myHRBottom">
@@ -76,7 +76,12 @@
             TeamId : <%= user.id %></div>
             <!-- <div class="col-md-1"> C | C++ | Java </div> -->
             <div class="col-md-7" style="text-align:center">
-            Congratulations, You were <%= users.findIndex( u => u.id == user.id ) + 1 %>th out of <%= users.length %> Teams
+            <% if( users.findIndex( u => u.id == user.id ) + 1 <= 50 ){ %>
+              Congratulations, You are qualified for the Final Round!
+            <% }else{ %>
+              Sorry, You are not qualified for the Final Round.
+              <!-- Sorry, Keep practicing and try again next season. -->
+            <% } %>
             </div>
             <!-- <div class="col-md-2">
               <p id="rank2">#113/147</p>

@@ -332,9 +332,9 @@ int main()
                       <button type="button" class="btn btn-default" onclick="window.location = '../<%= questions[index+1].id %>/<%= lang %>'" >Next</button>
                     <% }else if( index == questions.length-1 ){ %> <!--Next-->
                       <button type="button" class="btn btn-default" onclick="window.location = '../<%= questions[index-1].id %>/<%= lang %>'" >Previous</button>
-                      <button type="button" class="btn btn-default" onclick="window.location = '../../<%= ['easy','medium','hard','hard'][['easy','medium','hard'].indexOf(difficulty) + 1] %>'" >Next</button>
+                      <button type="button" class="btn btn-default" onclick="window.location = '../../easy'" >Next</button>
                     <% }else if( index == 0 ){ %> <!--Previous-->
-                      <button type="button" class="btn btn-default" onclick="window.location = '../../<%= ['hard','medium','easy','easy'][['hard','medium','easy'].indexOf(difficulty) + 1] %>'" >Previous</button>
+                      <button type="button" class="btn btn-default" onclick="window.location = '../../easy'" >Previous</button>
                       <button type="button" class="btn btn-default" onclick="window.location = '../<%= questions[index+1].id %>/<%= lang %>'" >Next</button>
                     <% } %>
                   </div>
