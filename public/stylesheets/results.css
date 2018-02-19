@@ -171,13 +171,21 @@ table tr {
   background-color: #202228;
 }
 
-#filler {
+/*#filler {
   position: fixed;
-  /*background-color: red;*/
+  /*background-color: red;* /
   background-color: #202228;
   height: 50px;
   width: 7.5px;
   left: 98.5%;
+}*/
+#filler {
+  position: fixed;
+  /*background-color: red;*/
+  background-color: #202228;
+  height: 92px;
+  width: 7.5px;
+  left: 98%;
 }
 
 #resultTableHeader {
@@ -189,7 +197,8 @@ table tr {
 }
 
 #tableWrapper {
-  height: 82vh;
+  width: 100%;
+  height: 75vh;
   overflow: auto;
   margin-top:-10px;
 }

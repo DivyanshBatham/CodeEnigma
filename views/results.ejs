@@ -48,7 +48,7 @@
             <!-- <li><a href="#">EASY (5 Points)</a></li>
             <li><a href="#">MEDIUM (15 Points)</a></li>
             <li><a href="#">HARD (25 Points)</a></li> -->
-            <li><a href="/CodeEnigma/easy">EASY (5 Points)</a></li>
+            <!-- <li><a href="/CodeEnigma/easy">EASY (5 Points)</a></li> -->
             <li><a href="/CodeEnigma/medium">MEDIUM (15 Points)</a></li>
             <li><a href="/CodeEnigma/hard">HARD (25 Points)</a></li>
             <!-- <a href="/CodeEnigma/hard" means totally new link  -->
@@ -98,16 +98,21 @@
           <table id="resultTableHeader" class="table table-bordered">
               <thead class="thead-dark">
                 <tr>
-                  <th style="width:5%">#</th>
-                  <th style="width:15%">TeamID</th>
-                  <th style="width:15%">Difficulty</th>
+                  <th style="width:5%; vertical-align:middle;" rowspan="2">#</th>
+                  <th style="width:15%; vertical-align:middle;" rowspan="2">TeamID</th>
+                  <th style="width:15%; vertical-align:middle;" rowspan="2">Difficulty</th>
+                  <th style="width:20%" colspan="4">Question</th>
+                  <th style="width:20%" colspan="2">Scores (Coding)</th>
+                  <th style="width:15%; vertical-align:middle;" rowspan="2">Final Score<br>(Round3)</th>
+                  <th style="width:10%; vertical-align:middle;" rowspan="2">Time<br>Taken</th>
+                </tr>
+                <tr>
                   <th style="width:5%">A</th>
                   <th style="width:5%">B</th>
                   <th style="width:5%">C</th>
                   <th style="width:5%">D</th>
-                  <th style="width:10%">Score</th>
-                  <th style="width:15%">Total Score</th>
-                  <th style="width:10%">Time</th>
+                  <th style="width:10%">Round 3</th>
+                  <th style="width:10%">Round 2</th>
                 </tr>
               </thead>
           </table>
@@ -124,6 +129,51 @@
                   <td style="width:5%"><% if( u.solvedQuestions['medium'].indexOf('C')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
                   <td style="width:5%"><% if( u.solvedQuestions['medium'].indexOf('D')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
                   <td style="width:10%"><%= u.solvedQuestions['medium'].length * 15 %></td>
+                  <td style="width:10%" rowspan="2"><%= u.Day1Score %></td>   <!-- New Flied ? -->
+                  <td style="width:15%; vertical-align:middle" rowspan="2"><%= u.score %></td>
+                  <td style="width:10%; vertical-align:middle" rowspan="2"><%= u.lastSubmissionDisplay %></tr>
+                <tr <% if( u.id == user.id ){ %>style="background-color:#2C3034"<% } %>>
+                  <td>Hard</td>
+                  <td><% if( u.solvedQuestions['hard'].indexOf('A')!=-1 ){ %> 15 <% }else{ %> - <% } %></td>
+                  <td><% if( u.solvedQuestions['hard'].indexOf('B')!=-1 ){ %> 15 <% }else{ %> - <% } %></td>
+                  <td><% if( u.solvedQuestions['hard'].indexOf('C')!=-1 ){ %> 15 <% }else{ %> - <% } %></td>
+                  <td><% if( u.solvedQuestions['hard'].indexOf('D')!=-1 ){ %> 15 <% }else{ %> - <% } %></td>
+                  <td><%= u.solvedQuestions['hard'].length * 25 %></td>
+                </tr>
+                <% }); %>
+                <% users.forEach(function(u, rank){ %>
+                <tr <% if( u.id == user.id ){ %>style="background-color:#2C3034"<% } %>>
+                  <td style="width:5%; vertical-align:middle;" rowspan="2"><%= rank + 1 %></td>
+                  <td style="width:15%; vertical-align:middle" rowspan="2"><%= u.id %></td>
+                  <td style="width:15%">Medium</td>
+                  <td style="width:5%"><% if( u.solvedQuestions['medium'].indexOf('A')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
+                  <td style="width:5%"><% if( u.solvedQuestions['medium'].indexOf('B')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
+                  <td style="width:5%"><% if( u.solvedQuestions['medium'].indexOf('C')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
+                  <td style="width:5%"><% if( u.solvedQuestions['medium'].indexOf('D')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
+                  <td style="width:10%"><%= u.solvedQuestions['medium'].length * 15 %></td>
+                  <td style="width:10%" rowspan="2"><%= u.Day1Score %></td>   <!-- New Flied ? -->
+                  <td style="width:15%; vertical-align:middle" rowspan="2"><%= u.score %></td>
+                  <td style="width:10%; vertical-align:middle" rowspan="2"><%= u.lastSubmissionDisplay %></tr>
+                <tr <% if( u.id == user.id ){ %>style="background-color:#2C3034"<% } %>>
+                  <td>Hard</td>
+                  <td><% if( u.solvedQuestions['hard'].indexOf('A')!=-1 ){ %> 15 <% }else{ %> - <% } %></td>
+                  <td><% if( u.solvedQuestions['hard'].indexOf('B')!=-1 ){ %> 15 <% }else{ %> - <% } %></td>
+                  <td><% if( u.solvedQuestions['hard'].indexOf('C')!=-1 ){ %> 15 <% }else{ %> - <% } %></td>
+                  <td><% if( u.solvedQuestions['hard'].indexOf('D')!=-1 ){ %> 15 <% }else{ %> - <% } %></td>
+                  <td><%= u.solvedQuestions['hard'].length * 25 %></td>
+                </tr>
+                <% }); %>
+                <% users.forEach(function(u, rank){ %>
+                <tr <% if( u.id == user.id ){ %>style="background-color:#2C3034"<% } %>>
+                  <td style="width:5%; vertical-align:middle;" rowspan="2"><%= rank + 1 %></td>
+                  <td style="width:15%; vertical-align:middle" rowspan="2"><%= u.id %></td>
+                  <td style="width:15%">Medium</td>
+                  <td style="width:5%"><% if( u.solvedQuestions['medium'].indexOf('A')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
+                  <td style="width:5%"><% if( u.solvedQuestions['medium'].indexOf('B')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
+                  <td style="width:5%"><% if( u.solvedQuestions['medium'].indexOf('C')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
+                  <td style="width:5%"><% if( u.solvedQuestions['medium'].indexOf('D')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
+                  <td style="width:10%"><%= u.solvedQuestions['medium'].length * 15 %></td>
+                  <td style="width:10%" rowspan="2"><%= u.Round2Score %></td>   <!-- New Flied ? -->
                   <td style="width:15%; vertical-align:middle" rowspan="2"><%= u.score %></td>
                   <td style="width:10%; vertical-align:middle" rowspan="2"><%= u.lastSubmissionDisplay %></tr>
                 <tr <% if( u.id == user.id ){ %>style="background-color:#2C3034"<% } %>>
