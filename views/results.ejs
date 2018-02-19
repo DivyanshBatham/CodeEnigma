@@ -76,7 +76,9 @@
             TeamId : <%= user.id %></div>
             <!-- <div class="col-md-1"> C | C++ | Java </div> -->
             <div class="col-md-7" style="text-align:center">
-            <% if( users.findIndex( u => u.id == user.id ) + 1 <= 50 ){ %>
+            <!-- <%# if( users.findIndex( u => u.id == user.id ) + 1 <= 50 ){ %> -->
+            <!-- <%# if( users.findIndex( u => u.score == user.score ) ){ %> -->
+            <% if( user.score > 0 ) { %>
               Congratulations, You are qualified for the Final Round!
             <% }else{ %>
               Sorry, You are not qualified for the Final Round.
@@ -104,21 +106,21 @@
               <thead class="thead-dark">
                 <tr>
                   <th style="width:5%">#</th>
-                  <th style="width:15%">TeamID</th>
+                  <th style="width:20%">TeamID</th>
                   <!-- <th style="width:15%">Difficulty</th> -->
-                  <th style="width:5%">A</th>
-                  <th style="width:5%">B</th>
-                  <th style="width:5%">C</th>
-                  <th style="width:5%">D</th>
-                  <th style="width:5%">E</th>
-                  <th style="width:5%">F</th>
-                  <th style="width:5%">G</th>
-                  <th style="width:5%">H</th>
-                  <th style="width:5%">I</th>
-                  <th style="width:5%">J</th>
+                  <th style="width:5%">E1</th>
+                  <th style="width:5%">E2</th>
+                  <th style="width:5%">E3</th>
+                  <th style="width:5%">E4</th>
+                  <th style="width:5%">E5</th>
+                  <th style="width:5%">E6</th>
+                  <th style="width:5%">E7</th>
+                  <!-- <th style="width:5%">-</th> -->
+                  <!-- <th style="width:5%">-</th> -->
+                  <!-- <th style="width:5%">-</th> -->
                   <!-- <th style="width:10%">Score</th> -->
-                  <th style="width:15%">Total Score</th>
-                  <th style="width:15%">Time</th>
+                  <th style="width:20%">Total Score</th>
+                  <th style="width:20%">Time</th>
                 </tr>
               </thead>
           </table>
@@ -129,12 +131,12 @@
                 <th style="width:5%">#</th>
                 <th style="width:15%">TeamID</th>
                 <!- - <th style="width:15%">Difficulty</th> - ->
-                <th style="width:5%">A</th>
-                <th style="width:5%">B</th>
-                <th style="width:5%">C</th>
-                <th style="width:5%">D</th>
-                <th style="width:5%">E</th>
-                <th style="width:5%">F</th>
+                <th style="width:5%">E1</th>
+                <th style="width:5%">E2</th>
+                <th style="width:5%">E3</th>
+                <th style="width:5%">E4</th>
+                <th style="width:5%">E5</th>
+                <th style="width:5%">E6</th>
                 <!- - <th style="width:10%">Score</th> - ->
                 <th style="width:15%">Total Score</th>
                 <th style="width:10%">Time</th>
@@ -144,21 +146,21 @@
                 <% users.forEach(function(u, rank){ %>
                 <tr <% if( u.id == user.id ){ %>style="background-color:#2C3034"<% } %>>
                   <td style="width:5%; vertical-align:middle;"><%= rank + 1 %></td>
-                  <td style="width:15%; vertical-align:middle"><%= u.id %></td>
+                  <td style="width:20%; vertical-align:middle"><%= u.id %></td>
                   <!-- <td style="width:15%">Easy</td> -->
-                  <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('A')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
-                  <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('B')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
-                  <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('C')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
-                  <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('D')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
-                  <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('E')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
-                  <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('F')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
-                  <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('G')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
-                  <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('H')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
-                  <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('I')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
-                  <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('J')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
+                  <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('E1')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
+                  <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('E2')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
+                  <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('E3')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
+                  <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('E4')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
+                  <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('E5')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
+                  <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('E6')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
+                  <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('E7')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
+                  <!-- <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('H')!=-1 ){ %> 5 <% }else{ %> - <% } %></td> -->
+                  <!-- <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('I')!=-1 ){ %> 5 <% }else{ %> - <% } %></td> -->
+                  <!-- <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('J')!=-1 ){ %> 5 <% }else{ %> - <% } %></td> -->
                   <!-- <td style="width:10%"><%= u.solvedQuestions['easy'].length * 5 %></td> -->
-                  <td style="width:15%; vertical-align:middle"><%= u.score %></td>
-                  <td style="width:15%; vertical-align:middle"><%= u.lastSubmissionDisplay %></tr>
+                  <td style="width:20%; vertical-align:middle"><%= u.score %></td>
+                  <td style="width:20%; vertical-align:middle"><%= u.lastSubmissionDisplay %></tr>
                 <% }); %>
 
               </tbody>

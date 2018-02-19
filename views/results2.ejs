@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>CodeEnigma | Results </title>
+    <link rel="stylesheet" href="/stylesheets/loader.css">
+    <link rel="stylesheet" href="/stylesheets/loaders.css">
+
+  </head>
+  <body onload="myFunction()">
+  <div id="loaderContainer">
+    <div class="loader"><div class="ball-grid-pulse"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
+  </div>
+  <script>
+  function myFunction() {
+    var myVar = setTimeout(showPage, 1000);
+  }
+
+  function showPage()
+  {
+    $("#loaderContainer").hide();
+    $(".container-fluid").show();
+  }
+  </script>
+
+    <div class="container-fluid" style="height:100%;">
+      <div class="row" id="main-content">
+        <div class="col-md-3" id="left-col">
+          <img src="../Logo.jpg" alt="CodeEnigma Logo" id="logo">
+          <br>
+          <br>
+          <p id="status"></p>
+          <p id="timer">Competition Ended</p>
+          <p id="rank">#0/75</p>
+          <p id="points">(0 Points)</p>
+
+          <hr class="myHRTop"><br>
+          <ul id="nav">
+
+            <li><a href="#">EASY (5 Points)</a></li>
+            <br><hr class="myHRBottom">
+            <li id="instructions"><a href="#">INSTRUCTIONS</a></li>
+            <li><a href="#" class="active">RESULTS</a></li>
+
+          </ul>
+        </div>
+        <div class="col-md-9" id="right-col">
+          <div class="row" id="right-col-header">
+
+            <div class="col-md-12" style="text-align:center">
+              Results for Code Enigma Round 2
+            </div>
+          </div>
+          <hr>
+
+          <div id="filler"></div>
+          <table id="resultTableHeader" class="table table-bordered">
+              <thead class="thead-dark">
+                <tr>
+                  <th style="width:5%">#</th>
+                  <th style="width:20%">TeamID</th>
+                  <th style="width:5%">E1</th>
+                  <th style="width:5%">E2</th>
+                  <th style="width:5%">E3</th>
+                  <th style="width:5%">E4</th>
+                  <th style="width:5%">E5</th>
+                  <th style="width:5%">E6</th>
+                  <th style="width:5%">E7</th>
+                  <th style="width:20%">Total Score</th>
+                  <th style="width:20%">Time</th>
+                </tr>
+              </thead>
+          </table>
+          <div id="tableWrapper">
+          <table id="resultTable" class="table table-bordered table-dark">
+            <tbody >
+                <% users.forEach(function(u, rank){ %>
+                <tr>
+                  <td style="width:5%; vertical-align:middle;"><%= rank + 1 %></td>
+                  <td style="width:20%; vertical-align:middle"><%= u.id %></td>
+                  <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('E1')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
+                  <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('E2')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
+                  <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('E3')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
+                  <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('E4')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
+                  <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('E5')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
+                  <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('E6')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
+                  <td style="width:5%"><% if( u.solvedQuestions['easy'].indexOf('E7')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
+                  <td style="width:20%; vertical-align:middle"><%= u.score %></td>
+                  <td style="width:20%; vertical-align:middle"><%= u.lastSubmissionDisplay %></tr>
+                <% }); %>
+
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+  </div>
+    <script src="/javascripts/jquery-3.2.1.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/stylesheets/results.css">
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/bootstrap-grid.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+  </body>
+</html>

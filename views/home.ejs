@@ -149,6 +149,7 @@
                     <span class="badge"><%= question.id %>.</span>
                   <% } %>
                   <%- question.title %> :<br><p><%- question.shortDescription %> (read more)</p>
+                  <!-- <%# question.title %> :<br><p><%# question.shortDescription %> (read more)</p> -->
                 </a>
               </li>
             <% }); %>
@@ -197,5 +198,7 @@
     <% } %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
     <script src='/javascripts/live.js'></script>
+
+    <script src="/javascripts/termux.js"></script>
   </body>
 </html>
