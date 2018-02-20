@@ -155,8 +155,8 @@ app.use(function(req, res, next) {
 
 			if( req.user.type != 'admin' && timeRemaining >= 0 && req.url=='/CodeEnigma/results' )
 			{
-				console.log("COMPETITION IS RUNNING THEREFORE REDIRECTED TO /CodeEnigma/easy SINCE USER CANNOT CHECK THE RESULTS YET");
-				res.redirect('/CodeEnigma/easy');
+				console.log("COMPETITION IS RUNNING THEREFORE REDIRECTED TO /CodeEnigma/medium SINCE USER CANNOT CHECK THE RESULTS YET");
+				res.redirect('/CodeEnigma/medium');
 			}
 			else
 			   next();
