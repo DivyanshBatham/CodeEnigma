@@ -10,23 +10,24 @@ var fs = require('fs');
 var session = require('client-sessions');
 var helmet = require('helmet');
 
+var users = require('./models/users');
 
 // Routes :
-var home = require('./routes/home');
-var CodeEnigma = require('./routes/CodeEnigma');
-var loader = require('./routes/loader');
+//var home = require('./routes/home');
+//var CodeEnigma = require('./routes/CodeEnigma');
+//var loader = require('./routes/loader');
 // var editor = require('./routes/editor');
-var editor2 = require('./routes/editor2');
-var run = require('./routes/run');
-var login = require('./routes/login');
-var insert = require('./routes/insert');
-var update = require('./routes/update');
-var save = require('./routes/save');
-var defaultLanguage = require('./routes/defaultLanguage');
-var getRank = require('./routes/getRank');
-var getTime = require('./routes/getTime');
-var getCode = require('./routes/getCode');
-var config = require('./routes/config');
+//var editor2 = require('./routes/editor2');
+//var run = require('./routes/run');
+//var login = require('./routes/login');
+//var insert = require('./routes/insert');
+//var update = require('./routes/update');
+//var save = require('./routes/save');
+//var defaultLanguage = require('./routes/defaultLanguage');
+//var getRank = require('./routes/getRank');
+//var getTime = require('./routes/getTime');
+//var getCode = require('./routes/getCode');
+//var config = require('./routes/config');
 
 var app = express();
 // Socket.io
@@ -198,7 +199,7 @@ app.use(function(req, res, next) {
 
 
 // app.use('/', home);
-app.get('/', function(req, res) {
+/*app.get('/', function(req, res) {
   if (!req.user)
     res.redirect('/login');
   else
@@ -219,9 +220,33 @@ app.use('/getTime', getTime);
 app.use('/getCode', getCode);
 app.use('/config', config);
 app.use('/loader', loader);
-app.get('/logout', function(req, res) {
-  req.session.reset();
-  res.redirect('/login');
+*/
+/*
+app.get(//, function(req, res) {
+  //req.session.reset();
+  res.redirect('/EasyRoundResults');
+});
+*/
+
+
+app.get('/EasyRoundResults', function(req,res) {
+	users.find( { type : "contestant" } ,function(err,users){
+		users = users.sort(function(a,b){
+			if(a.score != b.score)
+			{
+				return b.score - a.score;
+			}
+			else
+				if(a.score == b.score)
+				{
+						if(a.lastSubmission != b.lastSubmission)
+							return a.lastSubmission - b.lastSubmission ;
+						else
+							return (a.id.match(/\d+/)[0]) - (b.id.match(/\d+/)[0]) ;
+				}
+		});
+		res.render('results2', { users:users });
+	});
 });
 
 // app.get('/graph.png', function (req, res) {
@@ -230,9 +255,10 @@ app.get('/logout', function(req, res) {
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+  res.redirect('/EasyRoundResults');
+//var err = new Error('Not Found');
+ // err.status = 404;
+ // next(err);
 });
 
 // error handler

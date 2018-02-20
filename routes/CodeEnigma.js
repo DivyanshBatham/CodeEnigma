@@ -62,7 +62,7 @@ router.get('/:difficulty', requireLogin, function(req, res, next) {
   //if(req.params.difficulty=='login')
   //    res.render('login', { title: 'Login', error: '' });
 
-  if( ['easy','medium','hard'].indexOf(req.params.difficulty)!=-1 )
+  if( ['easy'].indexOf(req.params.difficulty)!=-1 )
     // mongoose.model('questions').find( { difficulty:req.params.difficulty } ,function(err,questions){
     questions.find( { difficulty:req.params.difficulty } ,function(err,questions){
       res.render('home', { questions:questions.sort( (q1,q2) => q1.id.localeCompare(q2.id) ), difficulty:req.params.difficulty })
@@ -119,7 +119,7 @@ router.get('/:difficulty', requireLogin, function(req, res, next) {
 //   });
 // });
 
-router.get('/:difficulty(easy|medium|hard)/:id/:lang(c|cpp|java|python2|python3)', requireLogin, function(req, res, next) {
+router.get('/:difficulty(easy)/:id/:lang(c|cpp|java|python2|python3)', requireLogin, function(req, res, next) {
   // If helpful 404 error needed, then uncomment the following and remove regex for lang :
   // if(req.params.id.match(/c|cpp|java/)) {
   console.log("/:id/",req.params.lang);
