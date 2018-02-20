@@ -80,16 +80,27 @@ router.get('/:difficulty', requireLogin, function(req, res, next) {
                 users = users.sort(function(a,b){
                   if(a.score != b.score)
                   {
-                    return b.score - a.score;
+                    return b.score - a.score; // DESC.
                   }
                   else
-                    if(a.score == b.score)
-                    {
-                        if(a.lastSubmission != b.lastSubmission)
-                          return a.lastSubmission - b.lastSubmission ;
+                  {
+                      if(a.lastSubmission != b.lastSubmission)
+                          return a.lastSubmission - b.lastSubmission ; // ASC.
+                      else
+                      {
+                        if(a.Round2Score != b.Round2Score)
+                            return b.Round2Score - a.Round2Score; // DESC.
                         else
-                          return (a.id.match(/\d+/)[0]) - (b.id.match(/\d+/)[0]) ;
-                    }
+                        {
+                            if(a.Round2LastSubmission != b.Round2LastSubmission )
+                                  return a.Round2LastSubmission - b.Round2LastSubmission; // ASC.
+                            else
+                                  return (a.id.match(/\d+/)[0]) - (b.id.match(/\d+/)[0]) ;
+
+                        }
+
+                      }
+                  }
                 });
                 res.render('results', { users:users });
               });

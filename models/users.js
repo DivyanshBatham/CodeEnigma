@@ -17,6 +17,7 @@ var usersSchema = new Schema({
   pass: String,
   code: String,
   score : Number,
+  Round2Score : Number,
   defaultLanguage : String,
   solvedQuestions : {
     easy : [String],
@@ -34,7 +35,8 @@ var usersSchema = new Schema({
     hard : [{ id: String, language: String, code: String }]
   },
   lastSubmissionDisplay : String,
-  lastSubmission : Number
+  lastSubmission : Number,
+  Round2LastSubmission : Number
   // lastSubmission : Number
 
 

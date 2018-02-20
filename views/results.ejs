@@ -122,16 +122,16 @@
                 <% users.forEach(function(u, rank){ %>
                 <tr <% if( u.id == user.id ){ %>style="background-color:#2C3034"<% } %>>
                   <td style="width:5%; vertical-align:middle;" rowspan="2"><%= rank + 1 %></td>
-                  <td style="width:15%; vertical-align:middle" rowspan="2"><%= u.id %></td>
+                  <td style="width:15%; vertical-align:middle;" rowspan="2"><%= u.id %></td>
                   <td style="width:15%">Medium</td>
                   <td style="width:5%"><% if( u.solvedQuestions['medium'].indexOf('A')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
                   <td style="width:5%"><% if( u.solvedQuestions['medium'].indexOf('B')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
                   <td style="width:5%"><% if( u.solvedQuestions['medium'].indexOf('C')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
                   <td style="width:5%"><% if( u.solvedQuestions['medium'].indexOf('D')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
                   <td style="width:10%"><%= u.solvedQuestions['medium'].length * 15 %></td>
-                  <td style="width:10%" rowspan="2"><%= u.Day1Score %></td>   <!-- New Flied ? -->
-                  <td style="width:15%; vertical-align:middle" rowspan="2"><%= u.score %></td>
-                  <td style="width:10%; vertical-align:middle" rowspan="2"><%= u.lastSubmissionDisplay %></tr>
+                  <td style="width:10%; vertical-align:middle;" rowspan="2"><%= u.Round2Score %></td>   <!-- New Flied ? -->
+                  <td style="width:15%; vertical-align:middle;" rowspan="2"><%= u.score %></td>
+                  <td style="width:10%; vertical-align:middle;" rowspan="2"><%= u.lastSubmissionDisplay %></tr>
                 <tr <% if( u.id == user.id ){ %>style="background-color:#2C3034"<% } %>>
                   <td>Hard</td>
                   <td><% if( u.solvedQuestions['hard'].indexOf('A')!=-1 ){ %> 15 <% }else{ %> - <% } %></td>
@@ -141,50 +141,7 @@
                   <td><%= u.solvedQuestions['hard'].length * 25 %></td>
                 </tr>
                 <% }); %>
-                <% users.forEach(function(u, rank){ %>
-                <tr <% if( u.id == user.id ){ %>style="background-color:#2C3034"<% } %>>
-                  <td style="width:5%; vertical-align:middle;" rowspan="2"><%= rank + 1 %></td>
-                  <td style="width:15%; vertical-align:middle" rowspan="2"><%= u.id %></td>
-                  <td style="width:15%">Medium</td>
-                  <td style="width:5%"><% if( u.solvedQuestions['medium'].indexOf('A')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
-                  <td style="width:5%"><% if( u.solvedQuestions['medium'].indexOf('B')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
-                  <td style="width:5%"><% if( u.solvedQuestions['medium'].indexOf('C')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
-                  <td style="width:5%"><% if( u.solvedQuestions['medium'].indexOf('D')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
-                  <td style="width:10%"><%= u.solvedQuestions['medium'].length * 15 %></td>
-                  <td style="width:10%" rowspan="2"><%= u.Day1Score %></td>   <!-- New Flied ? -->
-                  <td style="width:15%; vertical-align:middle" rowspan="2"><%= u.score %></td>
-                  <td style="width:10%; vertical-align:middle" rowspan="2"><%= u.lastSubmissionDisplay %></tr>
-                <tr <% if( u.id == user.id ){ %>style="background-color:#2C3034"<% } %>>
-                  <td>Hard</td>
-                  <td><% if( u.solvedQuestions['hard'].indexOf('A')!=-1 ){ %> 15 <% }else{ %> - <% } %></td>
-                  <td><% if( u.solvedQuestions['hard'].indexOf('B')!=-1 ){ %> 15 <% }else{ %> - <% } %></td>
-                  <td><% if( u.solvedQuestions['hard'].indexOf('C')!=-1 ){ %> 15 <% }else{ %> - <% } %></td>
-                  <td><% if( u.solvedQuestions['hard'].indexOf('D')!=-1 ){ %> 15 <% }else{ %> - <% } %></td>
-                  <td><%= u.solvedQuestions['hard'].length * 25 %></td>
-                </tr>
-                <% }); %>
-                <% users.forEach(function(u, rank){ %>
-                <tr <% if( u.id == user.id ){ %>style="background-color:#2C3034"<% } %>>
-                  <td style="width:5%; vertical-align:middle;" rowspan="2"><%= rank + 1 %></td>
-                  <td style="width:15%; vertical-align:middle" rowspan="2"><%= u.id %></td>
-                  <td style="width:15%">Medium</td>
-                  <td style="width:5%"><% if( u.solvedQuestions['medium'].indexOf('A')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
-                  <td style="width:5%"><% if( u.solvedQuestions['medium'].indexOf('B')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
-                  <td style="width:5%"><% if( u.solvedQuestions['medium'].indexOf('C')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
-                  <td style="width:5%"><% if( u.solvedQuestions['medium'].indexOf('D')!=-1 ){ %> 5 <% }else{ %> - <% } %></td>
-                  <td style="width:10%"><%= u.solvedQuestions['medium'].length * 15 %></td>
-                  <td style="width:10%" rowspan="2"><%= u.Round2Score %></td>   <!-- New Flied ? -->
-                  <td style="width:15%; vertical-align:middle" rowspan="2"><%= u.score %></td>
-                  <td style="width:10%; vertical-align:middle" rowspan="2"><%= u.lastSubmissionDisplay %></tr>
-                <tr <% if( u.id == user.id ){ %>style="background-color:#2C3034"<% } %>>
-                  <td>Hard</td>
-                  <td><% if( u.solvedQuestions['hard'].indexOf('A')!=-1 ){ %> 15 <% }else{ %> - <% } %></td>
-                  <td><% if( u.solvedQuestions['hard'].indexOf('B')!=-1 ){ %> 15 <% }else{ %> - <% } %></td>
-                  <td><% if( u.solvedQuestions['hard'].indexOf('C')!=-1 ){ %> 15 <% }else{ %> - <% } %></td>
-                  <td><% if( u.solvedQuestions['hard'].indexOf('D')!=-1 ){ %> 15 <% }else{ %> - <% } %></td>
-                  <td><%= u.solvedQuestions['hard'].length * 25 %></td>
-                </tr>
-                <% }); %>
+
 
               </tbody>
             </table>
