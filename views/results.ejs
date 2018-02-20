@@ -76,7 +76,13 @@
             TeamId : <%= user.id %></div>
             <!-- <div class="col-md-1"> C | C++ | Java </div> -->
             <div class="col-md-7" style="text-align:center">
+<<<<<<< HEAD
             <% if( user.score > 0 ){ %>
+=======
+            <!-- <%# if( users.findIndex( u => u.id == user.id ) + 1 <= 50 ){ %> -->
+            <!-- <%# if( users.findIndex( u => u.score == user.score ) ){ %> -->
+            <% if( user.score > 0 ) { %>
+>>>>>>> ab43d4d00231221a0cc5e6ed4ece2b863336a9e2
               Congratulations, You are qualified for the Final Round!
             <% }else{ %>
               Sorry, You are not qualified for the Final Round.
