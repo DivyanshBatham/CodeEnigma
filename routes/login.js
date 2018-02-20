@@ -8,11 +8,12 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res, next) {
   if (req.user) {
-    // console.log("REDIRECTED BECAUSE ALREADY LOGGED IN");
+    console.log("REDIRECTED BECAUSE ALREADY LOGGED IN");
     res.redirect('/CodeEnigma');
   }
   else
-    res.render('login2', { title: 'Login' });
+    // res.render('login2', { title: 'Login', error: '' });
+    res.render('login', { title: 'Login', error: '' });
 });
 
 router.post('/', function(req, res, next) {
@@ -21,17 +22,21 @@ router.post('/', function(req, res, next) {
   // users.findOne( { id:req.body.TeamId, pass:req.body.Password } ,function(err,users){
   users.findOne( { id:req.body.TeamId } ,function(err,user){
   if (!user) {
-    // console.log("Invalid TeamId");
-    res.send({ status : "Invalid TeamId" });
+    console.log("Invalid TeamId");
+    res.render('login.ejs', { error: 'Invalid TeamId.' });
+    // res.render('login2.ejs', { error: 'Invalid TeamId.' });
   } else {
-    // console.log(req.body.TeamId,req.body.Password,user,user.pass);
+    console.log(req.body.TeamId,req.body.Password,user,user.pass);
     if (req.body.Password === user.pass) {
-      // console.log("Correct Login");
+      console.log("Correct Login");
+      // res.send(users);
+      // sets a cookie with the user's info
       req.session.user = user;
-      res.send({ status : "Correct Login" });
+      res.redirect('/CodeEnigma');
     } else {
-      // console.log("Invalid TeamId or Password");
-      res.send({ status : "Invalid TeamId or Password" });
+      console.log("Invalid TeamId or Password");
+      res.render('login.ejs', { error: 'Invalid TeamId or Password.' });
+      // res.render('login2.ejs', { error: 'Invalid TeamId or Password.' });
     }
   }
   });
