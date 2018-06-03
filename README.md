@@ -62,7 +62,7 @@ Editor:
 
 ![Editor-Run](https://imgur.com/UTYj01k.png)
 
-![Editor-Submit](https://imgur.com/aHv4LBw)
+![Editor-Submit](https://imgur.com/aHv4LBw.png)
 
 Results:
 ![Results](https://imgur.com/u3xTjgX)
