@@ -65,7 +65,7 @@ Editor:
 ![Editor-Submit](https://imgur.com/aHv4LBw.png)
 
 Results:
-![Results](https://imgur.com/u3xTjgX)
+![Results](https://imgur.com/u3xTjgX.png)
 
 Insertion (Admin):
 ![Insertion](https://imgur.com/dXODtTI.png)
