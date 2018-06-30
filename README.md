@@ -2,6 +2,14 @@
 # CodeEnigma:
 It is a web application which was used for hosting the Code Enigma Season 3 (2018), a coding competition which is being held in LNCT Bhopal annually for the last three years (2016-18).
 
+## Table of Contents
+
+- [Problems in first two seasons](#problems-in-first-two-seasons)
+- [How this web application helps](#how-this-web-application-helps)
+- [Installation Steps](#installation-steps)
+- [Route Structure](#route-structure)
+- [Screenshots](#screenshots)
+
 ## Problems in first two seasons:
 * Obsolete Testing of Code :  The volunteers had to go to each contestant and manually check their code with the test cases however all the test cases could not be covered because it was a time consuming process. Which lead to false acceptance of invalid code.
 * Obsolete Ranking System : There was no time monitoring due to which the rank of the contestant couldn't be decided if they have solved the same number of questions. Also posting the list of contestants in the increasing order of rank was a problem because they had to sort the list of contestants manually.
